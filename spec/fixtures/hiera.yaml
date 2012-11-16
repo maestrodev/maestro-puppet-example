@@ -1,0 +1,11 @@
+---
+:backends:
+  - rspec
+  - yaml
+:yaml:
+  :datadir: './hieradata'
+:hierarchy:
+  - '%{::clientcert}'
+  - '%{::custom_location}'
+  - 'common'
+  - 'default'

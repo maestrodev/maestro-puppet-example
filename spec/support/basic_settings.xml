@@ -1,0 +1,25 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <mirrors>
+    <mirror>
+      <id>maestro-mirror</id>
+      <url>http://localhost:8082/archiva/repository/all</url>
+      <mirrorOf>external:*</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <servers>
+    <server>
+      <id>maestro-mirror</id>
+      <username>admin</username>
+      <password>admin1</password>
+    </server>
+    <server>
+      <id>maestro-deploy</id>
+      <username>admin</username>
+      <password>admin1</password>
+    </server>
+  </servers>
+
+</settings>

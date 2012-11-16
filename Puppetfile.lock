@@ -1,0 +1,223 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    maestrodev/ant (1.0.0)
+      maestrodev/wget (>= 0.0.1)
+    maestrodev/archiva (1.0.0)
+      maestrodev/wget (~> 0.0.1)
+    maestrodev/maven (0.0.2)
+      maestrodev/wget (>= 0.0.1)
+    maestrodev/wget (0.0.1)
+    puppetlabs/firewall (0.0.4)
+    puppetlabs/stdlib (3.1.1)
+
+GIT
+  remote: https://github.com/etiennep/puppet-postgresql.git
+  ref: master
+  sha: 5dcdffcf5bb2cb01eeb4d6f01d21aef06df621ce
+  specs:
+    postgresql (1.0.0)
+      puppetlabs/firewall (>= 0.0.4)
+      puppetlabs/stdlib (>= 2.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-activemq.git
+  ref: master
+  sha: c27168c6870b70c7c6ad4734f920039898eda7fb
+  specs:
+    activemq (0.0.1)
+      maestrodev/wget (~> 0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-ant.git
+  ref: master
+  sha: 184c805f931664057db1d0285069f3925006f1a7
+  specs:
+    ant (1.0.0)
+      maestrodev/wget (>= 0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-artifactory.git
+  ref: master
+  sha: cc161868f114fce8d7a6354b5be04fc7fe0f0b81
+  specs:
+    artifactory (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-bamboo.git
+  ref: master
+  sha: d36d632782c52504a13e0fe6bd698644f93e13d8
+  specs:
+    bamboo (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-capybara.git
+  ref: master
+  sha: 3f6f8f6cdcd22a1ae2c5d108ab0f6f502f628105
+  specs:
+    capybara (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-continuum.git
+  ref: master
+  sha: 459402fd3db2e9a8839bd2f28cd8c28a99becf69
+  specs:
+    continuum (0.0.1)
+      maestrodev/wget (~> 0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-cucumber.git
+  ref: master
+  sha: 4233b6753e25f4878d960ca2054da02935a03b2d
+  specs:
+    cucumber (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-flowdock.git
+  ref: master
+  sha: 514a4d659197491771676f1a0faa0e1389984cd8
+  specs:
+    flowdock (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-git.git
+  ref: master
+  sha: 09fe025b5bc19f95181e381d5de0ce01498c0ecd
+  specs:
+    git (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-install4j.git
+  ref: master
+  sha: 3619bf26de8993351c67c1a57d110a18904d6ef3
+  specs:
+    install4j (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-jenkins.git
+  ref: master
+  sha: 263d6d867a94bb82ef9f68bdc4d46d099c05c984
+  specs:
+    jenkins (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-jetty.git
+  ref: master
+  sha: 717851555f7fa142dc850400c0c49c2ca809b109
+  specs:
+    jetty (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-limits.git
+  ref: redhat
+  sha: a2264d0a6b13997aaba5fcbdaf756beae6905fe2
+  specs:
+    limits (2.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro.git
+  ref: master
+  sha: c3496c8a7fb16f2ca0f309efc28fe41a34383c87
+  specs:
+    maestro (1.0.0)
+      maestrodev/wget (>= 0.0.1)
+      puppetlabs/stdlib (>= 2.5.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_nodes.git
+  ref: master
+  sha: 251202813ebace0a8ab2f6957e3f40afbaee80f9
+  specs:
+    maestro_nodes (1.0.0)
+      maestrodev/ant (~> 1.0)
+      maestrodev/archiva (~> 1.0)
+      maestrodev/maven (>= 0.0.2)
+      maestrodev/wget (~> 0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-ntp.git
+  ref: master
+  sha: be3959c07e14ed77025a0e55c6eec53b5afcb276
+  specs:
+    ntp (1.0.2)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-perforce.git
+  ref: master
+  sha: cabc857b2a77a1dfdc755fb74836575cdb41b66c
+  specs:
+    perforce (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-rvm.git
+  ref: master
+  sha: 993688f343f1a84eb22e5a34a51e9cf503884381
+  specs:
+    rvm (1.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-sonar.git
+  ref: master
+  sha: 6a2126bbff039342c3d94be07edae1869796ac05
+  specs:
+    sonar (0.0.1)
+      maestrodev/maven (~> 0.0.2)
+      maestrodev/wget (~> 0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-subversion_edge.git
+  ref: master
+  sha: 8168fd190390e131a20d92dea297fd56586c79a2
+  specs:
+    subversion_edge (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-svn.git
+  ref: master
+  sha: 66454284cad47e81a9d5ea8ff92f4ed586f8d780
+  specs:
+    svn (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppetlabs-java.git
+  ref: master
+  sha: 4ab58a2f8867576ef25574a3882627cd2c500759
+  specs:
+    java (0.1.5)
+      puppetlabs/stdlib (>= 0.1.6)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-mcollective.git
+  ref: 596ca9
+  sha: 596ca9504062f9ba94d72d808ac24c1954d740f4
+  specs:
+    mcollective (0.2.0)
+      puppetlabs/stdlib (>= 2.1.0)
+
+DEPENDENCIES
+  activemq (>= 0)
+  ant (>= 0)
+  artifactory (>= 0)
+  bamboo (>= 0)
+  capybara (>= 0)
+  continuum (>= 0)
+  cucumber (>= 0)
+  flowdock (>= 0)
+  git (>= 0)
+  install4j (>= 0)
+  java (>= 0)
+  jenkins (>= 0)
+  jetty (>= 0)
+  limits (>= 0)
+  maestro (>= 0)
+  maestro (>= 0)
+  maestro_nodes (>= 0)
+  mcollective (>= 0)
+  ntp (>= 0)
+  perforce (>= 0)
+  postgresql (>= 0)
+  rvm (>= 0)
+  sonar (>= 0)
+  subversion_edge (>= 0)
+  svn (>= 0)
+

@@ -1,0 +1,9 @@
+/.idea
+/doc
+/.rvmrc
+/.project
+/spec/fixtures/modules/
+/spec/fixtures/manifests/
+.librarian
+.tmp
+/modules/
