@@ -5,14 +5,15 @@
 
 USERNAME=$1
 PASSWORD=$2
-PUPPET_VERSION=3.0.1
 
 
 function install_gem {
   (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1
   return $?
 }
-
+function gem_version {
+  eval "$1=`cd /etc/puppet && bundle list $2 | sed -e "s/.*\/$2-\(.*\)/\1/"`"
+}
 
 # fail fast on any error
 set -e
@@ -35,6 +36,7 @@ gpgcheck=0
 EOF
 
 # get the puppet configuration skeleton
+echo "Getting puppet configuration from GitHub"
 yum -y install git
 if [ ! -d /etc/puppet/.git ]
   then
@@ -43,13 +45,23 @@ else
   cd /etc/puppet && git pull
 fi
 
-yum -y install puppet-server-$PUPPET_VERSION rubygems
+echo "Installing gems"
+yum -y install rubygems
 install_gem bundler
 bundle install --gemfile /etc/puppet/Gemfile --without build
+
+# fetch Puppet modules with librarian puppet
+echo "Fetching Puppet modules"
+cd /etc/puppet && bundle exec librarian-puppet install --verbose
 
 
 # Puppet install and configuration
 MASTER=`hostname`
+# install puppet with same version as gems, as they may conflict
+gem_version PUPPET_VERSION puppet
+gem_version FACTER_VERSION facter
+echo "Installing Puppet $PUPPET_VERSION"
+yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
 puppet apply -e "augeas { 'puppet': \
   changes => [ \
     \"set /files/etc/puppet/puppet.conf/agent/server $MASTER\", \
@@ -59,9 +71,6 @@ puppet apply -e "augeas { 'puppet': \
   incl => '/etc/puppet/puppet.conf', \
   lens => 'Puppet.lns', \
 }"
-
-# fetch modules with librarian puppet
-cd /etc/puppet && bundle exec librarian-puppet install --verbose
 
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata
@@ -82,4 +91,5 @@ puppet resource service puppetmaster ensure=running enable=true
 service puppetmaster start
 
 # run puppet agent
+echo "Running Puppet agent"
 puppet agent --test
