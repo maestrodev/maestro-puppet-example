@@ -1,7 +1,7 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'activemq',            :git => 'https://github.com/maestrodev/puppet-activemq.git'
-mod 'java',                :git => 'https://github.com/maestrodev/puppetlabs-java.git'
+mod 'puppetlabs/java',     '~>0.2.0'
 mod 'maestro_nodes',       :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
 
 # until released

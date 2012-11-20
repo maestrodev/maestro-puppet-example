@@ -9,6 +9,8 @@ FORGE
       maestrodev/wget (>= 0.0.1)
     maestrodev/wget (0.0.1)
     puppetlabs/firewall (0.0.4)
+    puppetlabs/java (0.2.0)
+      puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (3.1.1)
 
 GIT
@@ -171,14 +173,6 @@ GIT
     svn (0.0.1)
 
 GIT
-  remote: https://github.com/maestrodev/puppetlabs-java.git
-  ref: master
-  sha: 4ab58a2f8867576ef25574a3882627cd2c500759
-  specs:
-    java (0.1.5)
-      puppetlabs/stdlib (>= 0.1.6)
-
-GIT
   remote: https://github.com/puppetlabs/puppetlabs-mcollective.git
   ref: 596ca9
   sha: 596ca9504062f9ba94d72d808ac24c1954d740f4
@@ -196,7 +190,6 @@ DEPENDENCIES
   flowdock (>= 0)
   git (>= 0)
   install4j (>= 0)
-  java (>= 0)
   jenkins (>= 0)
   jetty (>= 0)
   limits (>= 0)
@@ -207,6 +200,7 @@ DEPENDENCIES
   ntp (>= 0)
   perforce (>= 0)
   postgresql (>= 0)
+  puppetlabs/java (~> 0.2.0)
   rvm (>= 0)
   sonar (>= 0)
   subversion_edge (>= 0)
