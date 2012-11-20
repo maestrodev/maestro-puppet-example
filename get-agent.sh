@@ -9,7 +9,7 @@ MASTER_HOSTNAME=$1
 MASTER_IP=$2
 
 function gem_version {
-  eval "$1=`url -s https://raw.github.com/maestrodev/maestro-puppet-example/master/Gemfile.lock | grep "^[ ]\+$2 (" | head -n 1 | sed -e 's/.*(\(.*\))/\1/'`"
+  eval "$1=`curl -s https://raw.github.com/maestrodev/maestro-puppet-example/master/Gemfile.lock | grep "^[ ]\+$2 (" | head -n 1 | sed -e 's/.*(\(.*\))/\1/'`"
 }
 
 # fail fast on any error
