@@ -1,7 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    maestrodev/ant (1.0.0)
+    maestrodev/ant (1.0.3)
       maestrodev/wget (>= 0.0.1)
     maestrodev/archiva (1.0.0)
       maestrodev/wget (~> 0.0.1)
@@ -27,14 +27,6 @@ GIT
   specs:
     activemq (0.0.1)
       maestrodev/wget (~> 0.0.1)
-
-GIT
-  remote: https://github.com/maestrodev/puppet-ant.git
-  ref: master
-  sha: 184c805f931664057db1d0285069f3925006f1a7
-  specs:
-    ant (1.0.0)
-      maestrodev/wget (>= 0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-artifactory.git
@@ -126,7 +118,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
-  sha: 251202813ebace0a8ab2f6957e3f40afbaee80f9
+  sha: 605d97667cc2fd335f60a706ae54e3ba32f39ab9
   specs:
     maestro_nodes (1.0.0)
       maestrodev/ant (~> 1.0)
@@ -196,7 +188,6 @@ GIT
 
 DEPENDENCIES
   activemq (>= 0)
-  ant (>= 0)
   artifactory (>= 0)
   bamboo (>= 0)
   capybara (>= 0)

@@ -5,7 +5,6 @@ mod 'java',                :git => 'https://github.com/maestrodev/puppetlabs-jav
 mod 'maestro_nodes',       :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
 
 # until released
-mod 'ant',                 :git => 'https://github.com/maestrodev/puppet-ant.git'
 mod 'git',                 :git => 'https://github.com/maestrodev/puppet-git.git'
 mod 'svn',                 :git => 'https://github.com/maestrodev/puppet-svn.git'
 mod 'jenkins',             :git => 'https://github.com/maestrodev/puppet-jenkins.git'
