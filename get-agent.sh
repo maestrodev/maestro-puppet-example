@@ -1,9 +1,12 @@
 #!/bin/sh
 
 # Script to install a Maestro Agent and all requirements in a CentOS 6.2+ server from scratch
-# Syntax: get-agent.sh MASTER_HOSTNAME AGENT_HOSTNAME
+# MASTER_HOSTNAME needs to match the Puppet master certificate
+# if called with MASTER_IP a new host entry is created in the agent to avoid the need of dns
+# Syntax: get-agent.sh MASTER_HOSTNAME [MASTER_IP]
 
-MASTER=$1
+MASTER_HOSTNAME=$1
+MASTER_IP=$2
 
 function gem_version {
   eval "$1=`url -s https://raw.github.com/maestrodev/maestro-puppet-example/master/Gemfile.lock | grep "^[ ]\+$2 (" | head -n 1 | sed -e 's/.*(\(.*\))/\1/'`"
@@ -35,14 +38,22 @@ gem_version PUPPET_VERSION puppet
 echo "Installing Puppet agent $PUPPET_VERSION"
 yum -y install puppet-$PUPPET_VERSION
 
+
 # point to puppet master
-puppet apply -e "augeas { 'puppet': \
-  changes => [ \
-    \"set /files/etc/puppet/puppet.conf/agent/server $MASTER\", \
-    \"set /files/etc/puppet/puppet.conf/agent/pluginsync true\", \
-  ], \
-  incl => '/etc/puppet/puppet.conf', \
-  lens => 'Puppet.lns', \
+if [ "$MASTER_IP" ]; then
+  puppet apply -e "host { \"$MASTER_HOSTNAME\": \
+    ip    => \"$MASTER_IP\", \
+    alias => 'puppet' \
+  }"
+fi
+puppet apply -e "augeas { 'puppet':
+  context => '/files/etc/puppet/puppet.conf',
+  changes => [
+    \"set agent/server $MASTER_HOSTNAME\",
+    \"set agent/pluginsync true\",
+  ],
+  incl => '/etc/puppet/puppet.conf',
+  lens => 'Puppet.lns',
 }"
 
 

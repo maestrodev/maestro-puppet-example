@@ -5,7 +5,6 @@
 
 USERNAME=$1
 PASSWORD=$2
-DOMAIN=$3 # optional, sets the domain name if not set already
 
 function install_gem {
   (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
@@ -62,26 +61,20 @@ gem_version PUPPET_VERSION puppet
 gem_version FACTER_VERSION facter
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
-puppet apply -e "augeas { 'puppet': \
+puppet apply -e "augeas { 'puppet':
   context => '/files/etc/puppet/puppet.conf',
-  changes => [ \
-    \"set /agent/server $MASTER\", \
-    \"set /agent/certname $MASTER\", \
-    \"set /master/autosign true\", \
-  ], \
-  incl => '/etc/puppet/puppet.conf', \
-  lens => 'Puppet.lns', \
+  changes => [
+    \"set agent/server $MASTER\",
+    \"set agent/certname $MASTER\",
+    \"set agent/pluginsync true\",
+    \"set master/autosign true\",
+  ],
+  incl => '/etc/puppet/puppet.conf',
+  lens => 'Puppet.lns',
 }"
 
-# set the domain, needed for fqdn
-if [ "$DOMAIN" ]
-  then
-  puppet apply -e "augeas { 'resolv': \
-    context => '/files/etc/resolv.conf',
-    changes => [ \"set domain $DOMAIN\" ], \
-    onlyif  => 'match domain size == 0', \
-  }"
-fi
+echo "xx
+yy"
 
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata
@@ -90,6 +83,8 @@ cat > /etc/puppet/hieradata/common.yaml <<EOF
 # MaestroDev credentials
 maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
+
+maestro::agent::stomp_host: '$MASTER'
 EOF
 
 # create nodes
