@@ -39,14 +39,15 @@ node 'master' inherits 'parent' {
   # Archiva
   class { 'maestro_nodes::archivaserver': }
 
-  # open the firewall to the services
+  # open the firewall to the services: maestro, archiva, jenkins, activemq, puppet CA
   firewall { '100 allow maestro':
     proto       => 'tcp',
     port        => [
       $maestro::maestro::port,
       $archiva::port,
       $jenkins::jenkins_port,
-      $activemq::stomp::port
+      $activemq::stomp::port,
+      8140
     ],
     action      => 'accept',
   }
