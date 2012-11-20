@@ -5,14 +5,14 @@
 
 USERNAME=$1
 PASSWORD=$2
-
+DOMAIN=$3 # optional, sets the domain name if not set already
 
 function install_gem {
-  (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1
+  (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
   return $?
 }
 function gem_version {
-  eval "$1=`cd /etc/puppet && bundle list $2 | sed -e "s/.*\/$2-\(.*\)/\1/"`"
+  eval "$1=`cat /etc/puppet/Gemfile.lock | grep "^[ ]\+$2 (" | head -n 1 | sed -e 's/.*(\(.*\))/\1/'`"
 }
 
 # fail fast on any error
@@ -45,32 +45,43 @@ else
   cd /etc/puppet && git pull
 fi
 
-echo "Installing gems"
-yum -y install rubygems
-install_gem bundler
-bundle install --gemfile /etc/puppet/Gemfile --without build
+gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
+echo "Installing librarian-puppet-maestrodev $LIBRARIAN_VERSION"
+yum -y install rubygems rubygem-json
+install_gem librarian-puppet-maestrodev $LIBRARIAN_VERSION
 
 # fetch Puppet modules with librarian puppet
 echo "Fetching Puppet modules"
-cd /etc/puppet && bundle exec librarian-puppet install --verbose
+cd /etc/puppet && librarian-puppet install --verbose
 
 
 # Puppet install and configuration
 MASTER=`hostname`
-# install puppet with same version as gems, as they may conflict
+# install puppet with the version locked in gemfile
 gem_version PUPPET_VERSION puppet
 gem_version FACTER_VERSION facter
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
 puppet apply -e "augeas { 'puppet': \
+  context => '/files/etc/puppet/puppet.conf',
   changes => [ \
-    \"set /files/etc/puppet/puppet.conf/agent/server $MASTER\", \
-    \"set /files/etc/puppet/puppet.conf/agent/certname $MASTER\", \
-    \"set /files/etc/puppet/puppet.conf/master/autosign true\", \
+    \"set /agent/server $MASTER\", \
+    \"set /agent/certname $MASTER\", \
+    \"set /master/autosign true\", \
   ], \
   incl => '/etc/puppet/puppet.conf', \
   lens => 'Puppet.lns', \
 }"
+
+# set the domain, needed for fqdn
+if [ "$DOMAIN" ]
+  then
+  puppet apply -e "augeas { 'resolv': \
+    context => '/files/etc/resolv.conf',
+    changes => [ \"set domain $DOMAIN\" ], \
+    onlyif  => 'match domain size == 0', \
+  }"
+fi
 
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata
