@@ -13,6 +13,7 @@ maestro::maestro::agent_auto_activate: true
 maestro::agent::agent_version: '1.4.1'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
+maestro::agent::agent_name: %{hostname}
 
 archiva::version: '1.4-M1-maestro-3.4.3.2'
 activemq::max_memory: '64'
