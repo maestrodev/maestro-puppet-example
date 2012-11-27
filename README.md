@@ -18,6 +18,13 @@ From a minimal CentOS 6.3 server you can run the script to automatically install
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD
 ```
 
+The puppet process can also be run in the background by setting the environment variable DAEMON to true.
+
+```
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
+```
+
+
 Customizing
 ===========
 You can customize the installation using Puppet 3 Hiera's capabilities. The default configuration variables are in `/etc/puppet/hieradata/default.yaml`, and can be customized in `/etc/puppet/hieradata/common.yaml` for all nodes or `/etc/puppet/hieradata/$clientcert.yaml` for node specific configuration as defined in `hiera.yaml`.

@@ -74,9 +74,6 @@ puppet apply -e "augeas { 'puppet':
   lens => 'Puppet.lns',
 }"
 
-echo "xx
-yy"
-
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata
 cat > /etc/puppet/hieradata/common.yaml <<EOF
@@ -98,5 +95,10 @@ puppet resource service puppetmaster ensure=running enable=true
 service puppetmaster start
 
 # run puppet agent
-echo "Running Puppet agent"
-puppet agent --test
+if [ "$DAEMON" == "true" ]; then
+  echo "Running Puppet agent as a daemon"
+  puppet agent --verbose --ignorecache --no-usecacheonfailure --detailed-exit-codes --no-splay --show_diff
+else
+  echo "Running Puppet agent"
+  puppet agent --test
+fi

@@ -61,5 +61,10 @@ puppet apply -e "augeas { 'puppet':
 puppet resource service puppet ensure=stopped enable=false
 
 # run puppet agent
-echo "Running Puppet agent"
-puppet agent --test --waitforcert 60
+if [ "$DAEMON" == "true" ]; then
+  echo "Running Puppet agent as a daemon"
+  puppet agent --verbose --ignorecache --no-usecacheonfailure --detailed-exit-codes --no-splay --show_diff --waitforcert 60
+else
+  echo "Running Puppet agent"
+  puppet agent --test --waitforcert 60
+fi
