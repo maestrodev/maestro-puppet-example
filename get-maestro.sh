@@ -100,5 +100,22 @@ if [ "$DAEMON" == "true" ]; then
   puppet agent --verbose --ignorecache --no-usecacheonfailure --no-splay --show_diff
 else
   echo "Running Puppet agent"
+  set +e
   puppet agent --test
+  RETVAL=$?
+
+  # Check Puppet return code to fail fast, using --detailed-exitcodes
+  # If not using --detailed-exitcodes Puppet returns 0 even if there are failures
+  case $RETVAL in
+
+  2)  echo "Puppet Changes"
+      ;;
+  4)  echo "Puppet Failures" && exit $RETVAL
+      ;;
+  6)  echo "Puppet Changes and Failures" && exit $RETVAL
+      ;;
+  *) echo "Unknown Puppet exit code: $RETVAL" && exit $RETVAL
+     ;;
+  esac
+
 fi
