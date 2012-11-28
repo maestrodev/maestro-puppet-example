@@ -63,7 +63,7 @@ puppet resource service puppet ensure=stopped enable=false
 # run puppet agent
 if [ "$DAEMON" == "true" ]; then
   echo "Running Puppet agent as a daemon"
-  puppet agent --verbose --ignorecache --no-usecacheonfailure --detailed-exit-codes --no-splay --show_diff --waitforcert 60
+  puppet agent --verbose --ignorecache --no-usecacheonfailure --no-splay --show_diff --waitforcert 60
 else
   echo "Running Puppet agent"
   puppet agent --test --waitforcert 60
