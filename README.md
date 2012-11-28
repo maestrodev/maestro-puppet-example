@@ -24,6 +24,16 @@ The puppet process can also be run in the background by setting the environment 
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
 ```
 
+Installing agents on CentOS with Puppet
+=======================================
+The script `get-agent.sh` can install a Puppet agent and trigger a Puppet update to install a Maestro agent from a minimal CentOS 6.3 server, installing typical tools like git, subversion, ruby, java,...
+
+From a minimal CentOS 6.3 server you can automatically install the Maestro Agent, passing the hostname of the Maestro master server. Optionally you can pass the ip of the master server too if there is no dns entry for the master hostname and it will create an entry in the agent /etc/hosts file to properly resolve the name to that ip.
+
+```
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s MASTER_HOSTNAME [MASTER_IP]
+```
+
 
 Customizing
 ===========
