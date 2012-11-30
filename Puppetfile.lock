@@ -5,8 +5,14 @@ FORGE
       maestrodev/wget (>= 0.0.1)
     maestrodev/archiva (1.0.0)
       maestrodev/wget (~> 0.0.1)
-    maestrodev/maven (0.0.2)
+    maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
+    maestrodev/perforce (1.0.0)
+      maestrodev/wget (>= 0.0.1)
+    maestrodev/sonar (1.0.0)
+      maestrodev/maven (>= 0.0.2)
+      maestrodev/wget (>= 0.0.1)
+      puppetlabs/stdlib (>= 2.3.0)
     maestrodev/wget (0.0.1)
     puppetlabs/firewall (0.0.4)
     puppetlabs/java (0.2.0)
@@ -121,13 +127,13 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
-  sha: 605d97667cc2fd335f60a706ae54e3ba32f39ab9
+  sha: 1dd24947327ffc950c7758d22f765b4a9538f7c2
   specs:
     maestro_nodes (1.0.0)
-      maestrodev/ant (~> 1.0)
+      maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (~> 1.0)
       maestrodev/maven (>= 0.0.2)
-      maestrodev/wget (~> 0.0)
+      maestrodev/sonar (~> 1.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-ntp.git
@@ -137,27 +143,11 @@ GIT
     ntp (1.0.2)
 
 GIT
-  remote: https://github.com/maestrodev/puppet-perforce.git
-  ref: master
-  sha: cabc857b2a77a1dfdc755fb74836575cdb41b66c
-  specs:
-    perforce (0.0.1)
-
-GIT
   remote: https://github.com/maestrodev/puppet-rvm.git
   ref: master
   sha: 993688f343f1a84eb22e5a34a51e9cf503884381
   specs:
     rvm (1.0.0)
-
-GIT
-  remote: https://github.com/maestrodev/puppet-sonar.git
-  ref: master
-  sha: 6a2126bbff039342c3d94be07edae1869796ac05
-  specs:
-    sonar (0.0.1)
-      maestrodev/maven (~> 0.0.2)
-      maestrodev/wget (~> 0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-subversion_edge.git
@@ -195,15 +185,13 @@ DEPENDENCIES
   jetty (>= 0)
   limits (>= 0)
   maestro (>= 0)
-  maestro (>= 0)
   maestro_nodes (>= 0)
+  maestrodev/perforce (= 1.0.0)
   mcollective (>= 0)
   ntp (>= 0)
-  perforce (>= 0)
   postgresql (>= 0)
   puppetlabs/java (~> 0.2.0)
   rvm (>= 0)
-  sonar (>= 0)
   subversion_edge (>= 0)
   svn (>= 0)
 
