@@ -17,12 +17,12 @@ FORGE
     puppetlabs/firewall (0.0.4)
     puppetlabs/java (0.2.0)
       puppetlabs/stdlib (>= 0.1.6)
-    puppetlabs/stdlib (3.1.1)
+    puppetlabs/stdlib (3.2.0)
 
 GIT
   remote: https://github.com/etiennep/puppet-postgresql.git
   ref: master
-  sha: 5dcdffcf5bb2cb01eeb4d6f01d21aef06df621ce
+  sha: cc54d68578e72b70d4d0787cbe8e27a9ed9f9b32
   specs:
     postgresql (1.0.0)
       puppetlabs/firewall (>= 0.0.4)
@@ -117,10 +117,10 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro.git
   ref: master
-  sha: 7f3496901d24de8784cce5e0508efe02189f494a
+  sha: dd26ab742cd47bd26558dd9dd2320256049eb52d
   specs:
     maestro (1.0.0)
-      maestrodev/maven (>= 0.0.2)
+      maestrodev/maven (>= 1.0.0)
       maestrodev/wget (>= 0.0.1)
       puppetlabs/stdlib (>= 2.5.1)
 

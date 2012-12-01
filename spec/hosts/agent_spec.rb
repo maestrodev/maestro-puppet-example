@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe 'agent' do
-  let(:facts) { centos_facts }
+  let(:facts) { centos_facts.merge({:hostname => 'myhostname'}) }
 
   it_behaves_like 'maestro agent'
+
+  it { should contain_class('maestro::agent').with_agent_name('myhostname') }
 
   it { should_not contain_service('maestro') }
   it { should_not contain_service('activemq') }
