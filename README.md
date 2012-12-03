@@ -31,7 +31,7 @@ The script `get-agent.sh` can install a Puppet agent and trigger a Puppet update
 From a minimal CentOS 6.3 server you can automatically install the Maestro Agent, passing the hostname of the Maestro master server. Optionally you can pass the ip of the master server too if there is no dns entry for the master hostname and it will create an entry in the agent /etc/hosts file to properly resolve the name to that ip.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s MASTER_HOSTNAME [MASTER_IP]
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-agent.sh | bash -s MASTER_HOSTNAME [MASTER_IP]
 ```
 
 
