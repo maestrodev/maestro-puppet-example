@@ -5,6 +5,7 @@
 
 USERNAME=$1
 PASSWORD=$2
+BRANCH=development
 
 function install_gem {
   (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
@@ -40,8 +41,9 @@ yum -y install git
 if [ ! -d /etc/puppet/.git ]
   then
   git clone https://github.com/maestrodev/maestro-puppet-example.git /etc/puppet
+  cd /etc/puppet && git checkout $BRANCH
 else
-  cd /etc/puppet && git pull
+  cd /etc/puppet && git pull && git checkout $BRANCH
 fi
 
 gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
@@ -83,6 +85,11 @@ maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
 
 maestro::agent::stomp_host: '$MASTER'
+
+# Demo compositions configuration
+maestro::lucee::demo_compositions::archiva_host: '$MASTER'
+maestro::lucee::demo_compositions::jenkins_host: '$MASTER'
+maestro::lucee::demo_compositions::sonar_host: '$MASTER'
 EOF
 
 # create nodes

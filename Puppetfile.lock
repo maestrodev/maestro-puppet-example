@@ -117,7 +117,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro.git
   ref: master
-  sha: c78298f7d4ac8e05e482fe810232445b1e6ef57c
+  sha: 86165a63c7ed0e218af89ade8687b2eca4dcf000
   specs:
     maestro (1.0.0)
       maestrodev/maven (>= 1.0.0)
