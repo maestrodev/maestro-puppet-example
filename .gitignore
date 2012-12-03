@@ -7,3 +7,9 @@
 .librarian
 .tmp
 /modules/
+auth.conf
+fileserver.conf
+hieradata/common.yaml
+manifests/nodes/maestro.acme.com.pp
+puppet.conf
+.vagrant

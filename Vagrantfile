@@ -23,6 +23,6 @@ Vagrant::Config.run do |config|
 
   config.vm.provision :shell do |shell|
     shell.path = "get-maestro.sh"
-    shell.args = [ENV['MAESTRODEV_USERNAME'], ENV['MAESTRODEV_PASSWORD'], "development"]
+    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} development"
   end
 end
