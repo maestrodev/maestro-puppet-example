@@ -2,7 +2,7 @@
 maestro::repository::username: 'your_username'
 maestro::repository::password: 'CHANGEME'
 
-maestro::maestro::version: '4.8.0'
+maestro::maestro::version: '4.9.0'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::admin_password: 'admin1'
 maestro::maestro::master_password: 'maestro'
@@ -10,7 +10,7 @@ maestro::maestro::db_server_password: 'maestro'
 maestro::maestro::db_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 
-maestro::agent::agent_version: '1.4.1'
+maestro::agent::agent_version: '1.5.0'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
