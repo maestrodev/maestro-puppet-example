@@ -17,3 +17,11 @@ maestro::agent::agent_name: '%{hostname}'
 
 archiva::version: '1.4-M1-maestro-3.4.3.2'
 activemq::max_memory: '64'
+
+# Archiva repository
+maestro_nodes::repositories::host: 'localhost'
+
+# Demo compositions configuration
+maestro::lucee::demo_compositions::archiva_host: 'localhost'
+maestro::lucee::demo_compositions::jenkins_host: 'localhost'
+maestro::lucee::demo_compositions::sonar_host: 'localhost'

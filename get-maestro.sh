@@ -86,6 +86,9 @@ maestro::repository::password: '$PASSWORD'
 
 maestro::agent::stomp_host: '$MASTER'
 
+# Archiva repository
+maestro_nodes::repositories::host: '$MASTER'
+
 # Demo compositions configuration
 maestro::lucee::demo_compositions::archiva_host: '$MASTER'
 maestro::lucee::demo_compositions::jenkins_host: '$MASTER'
@@ -97,8 +100,9 @@ cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
 node "$MASTER" inherits "master_with_agent" {}
 EOF
 
-# enable puppet master
+# enable puppet master and disable puppet agent periodic runs
 puppet resource service puppetmaster ensure=running enable=true
+puppet resource service puppet ensure=stopped enable=false
 service puppetmaster start
 
 # run puppet agent
