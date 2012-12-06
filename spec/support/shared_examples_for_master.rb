@@ -4,7 +4,7 @@ shared_examples 'maestro master' do
 
     # not working with puppet rspec yet
     # it 'should honor hiera configuration' do
-    #   should contain_package('maestro').with_version('4.8.0')
+    #   should contain_package('maestro').with_version('4.9.0')
     # end
 
     it { should contain_user('maestro') }
@@ -60,7 +60,7 @@ shared_examples 'maestro master' do
     end
 
     it 'should have the right version' do
-      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.8.0\.rpm$/)
+      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.9.0\.rpm$/)
     end
   end
 end

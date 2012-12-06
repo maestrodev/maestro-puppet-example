@@ -13,6 +13,7 @@ FORGE
       maestrodev/maven (>= 0.0.2)
       maestrodev/wget (>= 0.0.1)
       puppetlabs/stdlib (>= 2.3.0)
+    maestrodev/ssh_keygen (1.0.0)
     maestrodev/wget (0.0.1)
     puppetlabs/firewall (0.0.4)
     puppetlabs/java (0.2.0)
@@ -117,7 +118,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro.git
   ref: master
-  sha: edf75f07b21b01b968d6ff332a499207b927dc84
+  sha: cbeeac4993522da349d3714e920997970454f656
   specs:
     maestro (1.0.0)
       maestrodev/maven (>= 1.0.0)
@@ -127,13 +128,14 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
-  sha: 1dd24947327ffc950c7758d22f765b4a9538f7c2
+  sha: 790cedc3868f531e6c1887c615759b28dca582b4
   specs:
     maestro_nodes (1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (~> 1.0)
       maestrodev/maven (>= 0.0.2)
       maestrodev/sonar (~> 1.0)
+      maestrodev/ssh_keygen (~> 1.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-ntp.git
