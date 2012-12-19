@@ -25,3 +25,14 @@ maestro_nodes::repositories::host: 'localhost'
 maestro::lucee::demo_compositions::archiva_host: 'localhost'
 maestro::lucee::demo_compositions::jenkins_host: 'localhost'
 maestro::lucee::demo_compositions::sonar_host: 'localhost'
+
+# LDAP configuration
+#
+# maestro::maestro::ldap:
+#   hostname: 'ldap.acme.com'               # The hostname of the ldap server
+#   ssl: true                               # use SSL?
+#   port: '636'                             # The port of the ldap server
+#   dn: 'o=acme'                            # The base dn of the ldap system to start searching for users
+#   bind_dn: 'cn=ldapuser,ou=system,o=acme' # the core user used for authentication to the ldap server, must be able to perform the necessary searches
+#   bind_password: 'ldapuserpassword'       # password for the bind_dn for the root ldap connection
+#   admin_user: 'johndoe'                   # ldap user that will be added as a sysadmin for Maestro
