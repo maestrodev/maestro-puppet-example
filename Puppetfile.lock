@@ -22,15 +22,6 @@ FORGE
     puppetlabs/stdlib (3.2.0)
 
 GIT
-  remote: https://github.com/etiennep/puppet-postgresql.git
-  ref: master
-  sha: 9e7ed1993dbcba297e5576c54e2c8dd89f1d5ec5
-  specs:
-    postgresql (1.0.0)
-      puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (>= 2.0.0)
-
-GIT
   remote: https://github.com/maestrodev/puppet-artifactory.git
   ref: master
   sha: cc161868f114fce8d7a6354b5be04fc7fe0f0b81
@@ -137,6 +128,15 @@ GIT
   sha: be3959c07e14ed77025a0e55c6eec53b5afcb276
   specs:
     ntp (1.0.2)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-postgresql.git
+  ref: psql-cwd
+  sha: 6b53c07da0b6fdd63b7828a220bb8636989bb311
+  specs:
+    postgresql (1.0.0)
+      puppetlabs/firewall (>= 0.0.4)
+      puppetlabs/stdlib (>= 3.2.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-rvm.git
