@@ -106,6 +106,11 @@ puppet resource service puppet ensure=stopped enable=false
 service puppetmaster start
 
 # run puppet agent
+if [ "$NO_PROVISION" ]; then
+  echo "Skipping provisioning"
+  exit 0
+fi
+
 if [ "$DAEMON" == "true" ]; then
   echo "Running Puppet agent as a daemon"
   puppet agent --verbose --ignorecache --no-usecacheonfailure --no-splay --show_diff
