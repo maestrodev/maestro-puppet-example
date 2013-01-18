@@ -24,7 +24,7 @@ The puppet process can also be run in the background by setting the environment 
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
 ```
 
-h3. Setting up a Puppet Master only
+### Setting up a Puppet Master only
 
 You can ask the `get-maestro.sh` to skip the Puppet step at the end. This
 will set up a Puppet master on the machine, which can then be customised and
@@ -34,7 +34,7 @@ used for setting up other machines.
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | NO_PROVISION=true bash -s USERNAME PASSWORD
 ```
 
-h3. Creating an Image
+### Creating an Image
 
 To create an image of the Maestro master, it is best not to start the Maestro
 software as it will configure itself for the current host. In this case, set
