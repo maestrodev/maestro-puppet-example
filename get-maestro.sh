@@ -59,6 +59,9 @@ for f in `find /etc/puppet/modules/java/ -type f `; do  chmod 644 $f; done
 
 # Puppet install and configuration
 MASTER=`hostname`
+if [ -z "$MAESTRO_ENABLED" ]; then
+  MAESTRO_ENABLED=true
+fi
 # install puppet with the version locked in gemfile
 gem_version PUPPET_VERSION puppet
 gem_version FACTER_VERSION facter
@@ -84,6 +87,10 @@ cat > /etc/puppet/hieradata/common.yaml <<EOF
 maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
 
+# Whether to start Maestro now or not (useful for creating images)
+maestro::maestro::enabled: $MAESTRO_ENABLED
+
+# Maestro Agent configuration
 maestro::agent::stomp_host: '$MASTER'
 
 # Archiva repository
