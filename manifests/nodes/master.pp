@@ -22,6 +22,7 @@ node 'master' inherits 'parent' {
   # Maestro master server
   class { 'maestro::maestro':
     repo => $maestro::repository::maestrodev,
+    enabled => hiera('maestro::maestro::enabled'),
   }
 
   class { 'maestro_nodes::database': }
