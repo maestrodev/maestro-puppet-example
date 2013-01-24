@@ -19,6 +19,7 @@ node 'master' inherits 'parent' {
   package { 'maestro_reports':
     ensure => installed,
     provider=> gem,
+    source => 'https://gems.gemfury.com/19mFQpkpgWC8xqPZVizB/'
   }
 
   include maestro
