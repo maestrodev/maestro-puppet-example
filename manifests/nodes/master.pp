@@ -12,6 +12,15 @@ node 'master' inherits 'parent' {
 
   class { 'maestro::repository': }
 
+  # Reporting
+
+  include maestro_nodes::metrics_repo
+
+  package { 'maestro_reports':
+    ensure => installed,
+    provider=> gem,
+  }
+
   include maestro
 
   include maestro_nodes::repositories
@@ -22,6 +31,7 @@ node 'master' inherits 'parent' {
   # Maestro master server
   class { 'maestro::maestro':
     repo => $maestro::repository::maestrodev,
+    metrics_enabled    => true,    
   }
 
   class { 'maestro_nodes::database': }
@@ -38,7 +48,7 @@ node 'master' inherits 'parent' {
 
   # Archiva
   class { 'maestro_nodes::archivaserver': }
-
+  
   # open the firewall to the services: maestro, archiva, jenkins, activemq, puppet CA
   firewall { '100 allow maestro':
     proto       => 'tcp',

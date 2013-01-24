@@ -24,5 +24,10 @@ mod 'limits',              :git => 'https://github.com/maestrodev/puppet-limits.
 mod 'mcollective',         :git => 'https://github.com/puppetlabs/puppetlabs-mcollective.git', :ref => '596ca9'
 mod 'ntp',                 :git => 'https://github.com/maestrodev/puppet-ntp.git'
 mod 'maestrodev/perforce', '1.0.0'
-mod 'postgresql',          :git => 'https://github.com/etiennep/puppet-postgresql.git'
+mod 'puppetlabs/postgresql', :git => 'https://github.com/maestrodev/puppet-postgresql.git', :ref => 'psql-cwd'
 mod 'subversion_edge',     :git => 'https://github.com/maestrodev/puppet-subversion_edge.git'
+mod 'puppetlabs/mongodb'
+mod 'puppetlabs/nodejs',   :git => 'https://github.com/maestrodev/puppetlabs-nodejs.git'
+mod 'statsd',              :git => 'https://github.com/maestrodev/puppet-statsd.git'
+mod 'maestrodev/archiva',  :git => 'https://github.com/maestrodev/puppet-archiva.git'
+
