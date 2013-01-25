@@ -35,7 +35,7 @@ gpgcheck=0
 EOF
 
 # Gem repositories
-cat > /root/.gemrc <<EOF
+cat > /etc/gemrc <<EOF
 :sources:
  - https://rubygems.org
  - https://gems.gemfury.com/19mFQpkpgWC8xqPZVizB/
