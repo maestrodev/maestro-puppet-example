@@ -8,7 +8,7 @@ PASSWORD=$2
 BRANCH=development
 
 function install_gem {
-  (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
+  (gem list ^$1$ | grep $1 | grep $2) || gem install --no-rdoc --no-ri $1 -v $2
   return $?
 }
 function gem_version {
