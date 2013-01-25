@@ -8,7 +8,6 @@ mod 'maestro_nodes',       :git => 'https://github.com/maestrodev/puppet-maestro
 mod 'git',                 :git => 'https://github.com/maestrodev/puppet-git.git'
 mod 'svn',                 :git => 'https://github.com/maestrodev/puppet-svn.git'
 mod 'jenkins',             :git => 'https://github.com/maestrodev/puppet-jenkins.git'
-mod 'maestro',             :git => 'https://github.com/maestrodev/puppet-maestro.git'
 mod 'rvm',                 :git => 'https://github.com/maestrodev/puppet-rvm.git'
 
 # optional modules
@@ -24,5 +23,4 @@ mod 'limits',              :git => 'https://github.com/maestrodev/puppet-limits.
 mod 'mcollective',         :git => 'https://github.com/puppetlabs/puppetlabs-mcollective.git', :ref => '596ca9'
 mod 'ntp',                 :git => 'https://github.com/maestrodev/puppet-ntp.git'
 mod 'maestrodev/perforce', '1.0.0'
-mod 'postgresql',          :git => 'https://github.com/maestrodev/puppet-postgresql.git', :ref => 'psql-cwd'
 mod 'subversion_edge',     :git => 'https://github.com/maestrodev/puppet-subversion_edge.git'

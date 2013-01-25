@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'librarian-puppet-maestrodev', '>=0.9.7.2'
+gem 'librarian-puppet-maestrodev', '>=0.9.7.4'
 
 group :build do
   gem 'puppet',       '~>3.0.0'
