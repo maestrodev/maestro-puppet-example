@@ -16,9 +16,21 @@ node 'master' inherits 'parent' {
 
   include maestro_nodes::metrics_repo
 
+  package { 'postfix':
+    ensure => installed,
+  } ->
+  service {'postfix': 
+    ensure => running,
+  }
   package { 'maestro_reports':
     ensure => installed,
     provider=> gem,
+  } ->
+  cron { 'maestroreports':
+    command => '/usr/bin/maestroreports',
+    user    => 'maestro',
+    hour    => 0,
+    minute  => 0,
   }
 
   include maestro
