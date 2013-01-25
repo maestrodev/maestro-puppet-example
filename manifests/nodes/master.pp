@@ -12,27 +12,6 @@ node 'master' inherits 'parent' {
 
   class { 'maestro::repository': }
 
-  # Reporting
-
-  include maestro_nodes::metrics_repo
-
-  package { 'postfix':
-    ensure => installed,
-  } ->
-  service {'postfix': 
-    ensure => running,
-  }
-  package { 'maestro_reports':
-    ensure => installed,
-    provider=> gem,
-  } ->
-  cron { 'maestroreports':
-    command => '/usr/bin/maestroreports',
-    user    => 'maestro',
-    hour    => 0,
-    minute  => 0,
-  }
-
   include maestro
 
   include maestro_nodes::repositories
@@ -43,7 +22,6 @@ node 'master' inherits 'parent' {
   # Maestro master server
   class { 'maestro::maestro':
     repo => $maestro::repository::maestrodev,
-    metrics_enabled    => true,    
   }
 
   class { 'maestro_nodes::database': }
