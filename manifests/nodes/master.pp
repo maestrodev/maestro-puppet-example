@@ -15,6 +15,8 @@ node 'master' inherits 'parent' {
   include maestro
 
   include maestro_nodes::repositories
+  
+  include maestro_nodes::metrics_repo
 
   # Maestro demo compositions
   class { 'maestro::lucee::demo_compositions': }
