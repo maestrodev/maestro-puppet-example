@@ -35,11 +35,20 @@ enabled=1
 gpgcheck=0
 EOF
 
+# Gem repositories
+cat > /etc/gemrc <<EOF
+:sources:
+ - https://rubygems.org
+ - https://gems.gemfury.com/19mFQpkpgWC8xqPZVizB/
+EOF
+
+
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"
 yum -y install git
 if [ ! -d /etc/puppet/.git ]
   then
+  rm -rf /etc/puppet
   git clone https://github.com/maestrodev/maestro-puppet-example.git /etc/puppet
   cd /etc/puppet && git checkout $BRANCH
 else
