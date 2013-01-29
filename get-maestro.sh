@@ -5,6 +5,7 @@
 
 USERNAME=$1
 PASSWORD=$2
+BRANCH=development
 
 function install_gem {
   (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
@@ -41,8 +42,9 @@ if [ ! -d /etc/puppet/.git ]
   then
   rm -rf /etc/puppet
   git clone https://github.com/maestrodev/maestro-puppet-example.git /etc/puppet
+  cd /etc/puppet && git checkout $BRANCH
 else
-  cd /etc/puppet && git pull
+  cd /etc/puppet && git pull && git checkout $BRANCH
 fi
 
 gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
@@ -84,6 +86,14 @@ maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
 
 maestro::agent::stomp_host: '$MASTER'
+
+# Archiva repository
+maestro_nodes::repositories::host: '$MASTER'
+
+# Demo compositions configuration
+maestro::lucee::demo_compositions::archiva_host: '$MASTER'
+maestro::lucee::demo_compositions::jenkins_host: '$MASTER'
+maestro::lucee::demo_compositions::sonar_host: '$MASTER'
 EOF
 
 # create nodes
@@ -91,8 +101,9 @@ cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
 node "$MASTER" inherits "master_with_agent" {}
 EOF
 
-# enable puppet master
+# enable puppet master and disable puppet agent periodic runs
 puppet resource service puppetmaster ensure=running enable=true
+puppet resource service puppet ensure=stopped enable=false
 service puppetmaster start
 
 # run puppet agent

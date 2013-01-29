@@ -2,7 +2,7 @@
 maestro::repository::username: 'your_username'
 maestro::repository::password: 'CHANGEME'
 
-maestro::maestro::version: '4.8.0'
+maestro::maestro::version: '4.10.0'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::admin_password: 'admin1'
 maestro::maestro::master_password: 'maestro'
@@ -10,10 +10,29 @@ maestro::maestro::db_server_password: 'maestro'
 maestro::maestro::db_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 
-maestro::agent::agent_version: '1.4.1'
+maestro::agent::agent_version: '1.5.1'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
 
-archiva::version: '1.4-M1-maestro-3.4.3.2'
+archiva::version: '1.4-M1-maestro-3.4.3.4'
 activemq::max_memory: '64'
+
+# Archiva repository
+maestro_nodes::repositories::host: 'localhost'
+
+# Demo compositions configuration
+maestro::lucee::demo_compositions::archiva_host: 'localhost'
+maestro::lucee::demo_compositions::jenkins_host: 'localhost'
+maestro::lucee::demo_compositions::sonar_host: 'localhost'
+
+# LDAP configuration
+#
+# maestro::maestro::ldap:
+#   hostname: 'ldap.acme.com'               # The hostname of the ldap server
+#   ssl: true                               # use SSL?
+#   port: '636'                             # The port of the ldap server
+#   dn: 'o=acme'                            # The base dn of the ldap system to start searching for users
+#   bind_dn: 'cn=ldapuser,ou=system,o=acme' # the core user used for authentication to the ldap server, must be able to perform the necessary searches
+#   bind_password: 'ldapuserpassword'       # password for the bind_dn for the root ldap connection
+#   admin_user: 'johndoe'                   # ldap user that will be added as a sysadmin for Maestro
