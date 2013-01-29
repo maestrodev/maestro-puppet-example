@@ -148,8 +148,8 @@ GIT
 
 GIT
   remote: https://github.com/maestrodev/puppet-rvm.git
-  ref: master
-  sha: 993688f343f1a84eb22e5a34a51e9cf503884381
+  ref: maestrodev
+  sha: 5a83431d3349cbbd51583a3e540e2efe4d795863
   specs:
     rvm (1.0.0)
 

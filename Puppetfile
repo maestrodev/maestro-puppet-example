@@ -9,7 +9,7 @@ mod 'maestro_nodes',       :git => 'https://github.com/maestrodev/puppet-maestro
 mod 'git',                 :git => 'https://github.com/maestrodev/puppet-git.git'
 mod 'svn',                 :git => 'https://github.com/maestrodev/puppet-svn.git'
 mod 'jenkins',             :git => 'https://github.com/maestrodev/puppet-jenkins.git'
-mod 'rvm',                 :git => 'https://github.com/maestrodev/puppet-rvm.git'
+mod 'rvm',                 :git => 'https://github.com/maestrodev/puppet-rvm.git', :ref => 'maestrodev'
 
 # optional modules
 mod 'artifactory',         :git => 'https://github.com/maestrodev/puppet-artifactory.git'
