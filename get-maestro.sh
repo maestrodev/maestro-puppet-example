@@ -35,14 +35,6 @@ enabled=1
 gpgcheck=0
 EOF
 
-# Gem repositories
-cat > /etc/gemrc <<EOF
-:sources:
- - https://rubygems.org
- - https://gems.gemfury.com/19mFQpkpgWC8xqPZVizB/
-EOF
-
-
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"
 yum -y install git
