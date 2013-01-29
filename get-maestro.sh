@@ -5,7 +5,7 @@
 
 USERNAME=$1
 PASSWORD=$2
-BRANCH=demo
+BRANCH=master
 
 function install_gem {
   (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
