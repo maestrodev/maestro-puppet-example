@@ -61,6 +61,11 @@ puppet apply -e "augeas { 'puppet':
 puppet resource service puppet ensure=stopped enable=false
 
 # run puppet agent
+if [ "$NO_PROVISION" ]; then
+  echo "Skipping provisioning"
+  exit 0
+fi
+
 if [ "$DAEMON" == "true" ]; then
   echo "Running Puppet agent as a daemon"
   puppet agent --verbose --ignorecache --no-usecacheonfailure --no-splay --show_diff --waitforcert 60

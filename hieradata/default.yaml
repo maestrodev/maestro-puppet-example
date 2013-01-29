@@ -9,6 +9,7 @@ maestro::maestro::master_password: 'maestro'
 maestro::maestro::db_server_password: 'maestro'
 maestro::maestro::db_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
+maestro::maestro::enabled: true
 
 maestro::agent::agent_version: '1.5.1'
 maestro::agent::package_type: 'rpm'

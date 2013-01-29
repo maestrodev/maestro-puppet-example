@@ -24,6 +24,28 @@ The puppet process can also be run in the background by setting the environment 
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
 ```
 
+### Setting up a Puppet Master only
+
+You can ask the `get-maestro.sh` to skip the Puppet step at the end. This
+will set up a Puppet master on the machine, which can then be customised and
+used for setting up other machines.
+
+```
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | NO_PROVISION=true bash -s USERNAME PASSWORD
+```
+
+### Creating an Image
+
+To create an image of the Maestro master, it is best not to start the Maestro
+software as it will configure itself for the current host. In this case, set
+`MAESTRO_ENABLED` to `false`.
+
+```
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | MAESTRO_ENABLED=false bash -s USERNAME PASSWORD
+```
+
+To later re-enable Maestro, edit the value in Hiera (see Customizing below).
+
 Installing agents on CentOS with Puppet
 =======================================
 The script `get-agent.sh` can install a Puppet agent and trigger a Puppet update to install a Maestro agent from a minimal CentOS 6.3 server, installing typical tools like git, subversion, ruby, java,...

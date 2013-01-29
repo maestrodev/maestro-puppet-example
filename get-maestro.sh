@@ -5,7 +5,7 @@
 
 USERNAME=$1
 PASSWORD=$2
-BRANCH=development
+BRANCH=demo
 
 function install_gem {
   (gem list ^$1$ | grep $1) || gem install --no-rdoc --no-ri $1 -v $2
@@ -35,6 +35,14 @@ enabled=1
 gpgcheck=0
 EOF
 
+# Gem repositories
+cat > /etc/gemrc <<EOF
+:sources:
+ - https://rubygems.org
+ - https://gems.gemfury.com/19mFQpkpgWC8xqPZVizB/
+EOF
+
+
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"
 yum -y install git
@@ -60,6 +68,9 @@ for f in `find /etc/puppet/modules/java/ -type f `; do  chmod 644 $f; done
 
 # Puppet install and configuration
 MASTER=`hostname`
+if [ -z "$MAESTRO_ENABLED" ]; then
+  MAESTRO_ENABLED=true
+fi
 # install puppet with the version locked in gemfile
 gem_version PUPPET_VERSION puppet
 gem_version FACTER_VERSION facter
@@ -85,6 +96,10 @@ cat > /etc/puppet/hieradata/common.yaml <<EOF
 maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
 
+# Whether to start Maestro now or not (useful for creating images)
+maestro::maestro::enabled: $MAESTRO_ENABLED
+
+# Maestro Agent configuration
 maestro::agent::stomp_host: '$MASTER'
 
 # Archiva repository
@@ -107,6 +122,11 @@ puppet resource service puppet ensure=stopped enable=false
 service puppetmaster start
 
 # run puppet agent
+if [ "$NO_PROVISION" ]; then
+  echo "Skipping provisioning"
+  exit 0
+fi
+
 if [ "$DAEMON" == "true" ]; then
   echo "Running Puppet agent as a daemon"
   puppet agent --verbose --ignorecache --no-usecacheonfailure --no-splay --show_diff
