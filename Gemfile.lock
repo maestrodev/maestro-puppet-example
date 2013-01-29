@@ -40,7 +40,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  librarian-puppet-maestrodev (>= 0.9.7.2)
+  librarian-puppet-maestrodev (>= 0.9.7.4)
   puppet (~> 3.0.0)
   puppet-lint (~> 0.1.12)
   puppetlabs_spec_helper (~> 0.3.0)

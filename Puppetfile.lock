@@ -127,17 +127,6 @@ GIT
     limits (2.0.0)
 
 GIT
-  remote: https://github.com/maestrodev/puppet-maestro.git
-  ref: master
-  sha: 2f86531b80d293dc653d2b01f31e6f6888a0436b
-  specs:
-    maestro (1.0.0)
-      maestrodev/maven (>= 1.0.0)
-      maestrodev/wget (>= 1.0.0)
-      puppetlabs/postgresql (>= 2.0.1)
-      puppetlabs/stdlib (>= 2.5.1)
-
-GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
   sha: 0050af5f0760b4929e7f64eba88360660157674a
@@ -156,15 +145,6 @@ GIT
   sha: be3959c07e14ed77025a0e55c6eec53b5afcb276
   specs:
     ntp (1.0.2)
-
-GIT
-  remote: https://github.com/maestrodev/puppet-postgresql.git
-  ref: psql-cwd
-  sha: 6b53c07da0b6fdd63b7828a220bb8636989bb311
-  specs:
-    postgresql (1.0.0)
-      puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (>= 3.2.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-rvm.git
@@ -226,13 +206,11 @@ DEPENDENCIES
   jenkins (>= 0)
   jetty (>= 0)
   limits (>= 0)
-  maestro (>= 0)
   maestro_nodes (>= 0)
   maestrodev/archiva (>= 0)
   maestrodev/perforce (= 1.0.0)
   mcollective (>= 0)
   ntp (>= 0)
-  postgresql (>= 0)
   puppetlabs/java (~> 0.2.0)
   puppetlabs/mongodb (>= 0)
   puppetlabs/nodejs (>= 0)
