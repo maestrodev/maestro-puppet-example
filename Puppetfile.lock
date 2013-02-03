@@ -3,6 +3,8 @@ FORGE
   specs:
     maestrodev/ant (1.0.3)
       maestrodev/wget (>= 0.0.1)
+    maestrodev/git (1.0.0)
+    maestrodev/jenkins (1.0.1)
     maestrodev/maestro (1.0.0)
       maestrodev/maven (>= 1.0.0)
       maestrodev/wget (>= 1.0.0)
@@ -12,11 +14,13 @@ FORGE
       maestrodev/wget (>= 0.0.1)
     maestrodev/perforce (1.0.0)
       maestrodev/wget (>= 0.0.1)
+    maestrodev/rvm (1.0.0)
     maestrodev/sonar (1.0.0)
       maestrodev/maven (>= 0.0.2)
       maestrodev/wget (>= 0.0.1)
       puppetlabs/stdlib (>= 2.3.0)
     maestrodev/ssh_keygen (1.0.0)
+    maestrodev/svn (1.0.0)
     maestrodev/wget (1.1.0)
     puppetlabs/apt (1.1.0)
       puppetlabs/stdlib (>= 2.2.1)
@@ -38,6 +42,14 @@ GIT
   specs:
     activemq (1.0.0)
       maestrodev/wget (>= 1.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-ant.git
+  ref: master
+  sha: fb1c575266c81e76cd08da969cc9833b51b7eb41
+  specs:
+    ant (1.0.3)
+      maestrodev/wget (>= 0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-archiva.git
@@ -108,9 +120,9 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-jenkins.git
   ref: master
-  sha: 263d6d867a94bb82ef9f68bdc4d46d099c05c984
+  sha: 725857842dfff6fa267114240df15d22fb104448
   specs:
-    jenkins (0.0.1)
+    jenkins (1.0.2)
 
 GIT
   remote: https://github.com/maestrodev/puppet-jetty.git
@@ -129,15 +141,19 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
-  sha: 0050af5f0760b4929e7f64eba88360660157674a
+  sha: 6584f3e480c1d59ccd795dbe33e317572e411cad
   specs:
-    maestro_nodes (1.0.0)
+    maestro_nodes (1.0.1)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (~> 1.0)
+      maestrodev/git (~> 1.0)
+      maestrodev/jenkins (~> 1.0)
       maestrodev/maestro (>= 1.0.0)
       maestrodev/maven (>= 0.0.2)
+      maestrodev/rvm (~> 1.0)
       maestrodev/sonar (~> 1.0)
       maestrodev/ssh_keygen (~> 1.0)
+      maestrodev/svn (~> 1.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-ntp.git
@@ -149,7 +165,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-rvm.git
   ref: maestrodev
-  sha: 5a83431d3349cbbd51583a3e540e2efe4d795863
+  sha: 9e9370dc94d35c2f4131b087abea28a11983c10c
   specs:
     rvm (1.0.0)
 
@@ -195,6 +211,7 @@ GIT
 
 DEPENDENCIES
   activemq (>= 0)
+  ant (>= 0)
   artifactory (>= 0)
   bamboo (>= 0)
   capybara (>= 0)

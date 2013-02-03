@@ -8,6 +8,7 @@ mod 'maestro_nodes',       :git => 'https://github.com/maestrodev/puppet-maestro
 # until released
 mod 'git',                 :git => 'https://github.com/maestrodev/puppet-git.git'
 mod 'svn',                 :git => 'https://github.com/maestrodev/puppet-svn.git'
+mod 'ant',                 :git => 'https://github.com/maestrodev/puppet-ant.git'
 mod 'jenkins',             :git => 'https://github.com/maestrodev/puppet-jenkins.git'
 mod 'rvm',                 :git => 'https://github.com/maestrodev/puppet-rvm.git', :ref => 'maestrodev'
 
