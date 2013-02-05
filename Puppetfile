@@ -3,13 +3,7 @@ forge 'http://forge.puppetlabs.com'
 mod 'activemq',            :git => 'https://github.com/maestrodev/puppet-activemq.git'
 
 mod 'puppetlabs/java',     '~>0.2.0'
-mod 'maestro_nodes',       :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
-
-# until released
-mod 'git',                 :git => 'https://github.com/maestrodev/puppet-git.git'
-mod 'svn',                 :git => 'https://github.com/maestrodev/puppet-svn.git'
-mod 'jenkins',             :git => 'https://github.com/maestrodev/puppet-jenkins.git'
-mod 'rvm',                 :git => 'https://github.com/maestrodev/puppet-rvm.git', :ref => 'maestrodev'
+mod 'maestrodev/maestro_nodes'
 
 # optional modules
 mod 'artifactory',         :git => 'https://github.com/maestrodev/puppet-artifactory.git'
