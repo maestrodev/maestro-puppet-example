@@ -28,9 +28,11 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository")
   end
 
+  commit = `git rev-parse HEAD`
+  puts "Provisioning using commit #{commit}"
   config.vm.provision :shell do |shell|
     shell.path = "get-maestro.sh"
-    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} development"
+    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} #{commit}"
   end
 
   if ENV["MAESTRO_CACHE"]
