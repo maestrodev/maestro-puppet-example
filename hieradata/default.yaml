@@ -37,3 +37,30 @@ maestro::lucee::demo_compositions::sonar_host: 'localhost'
 #   bind_dn: 'cn=ldapuser,ou=system,o=acme' # the core user used for authentication to the ldap server, must be able to perform the necessary searches
 #   bind_password: 'ldapuserpassword'       # password for the bind_dn for the root ldap connection
 #   admin_user: 'johndoe'                   # ldap user that will be added as a sysadmin for Maestro
+
+# Update plugin versions if needed
+# maestro::plugins::irc: '1.2'
+# maestro::plugins::continuum: '1.5'
+# maestro::plugins::scm: '1.0'
+# maestro::plugins::jenkins: '1.1.2'
+# maestro::plugins::jira: '1.0'
+# maestro::plugins::bamboo: '1.1'
+# maestro::plugins::fog: '1.3'
+
+
+# Using an existing Maven repository manager for Maven builds
+# maestro_nodes::repositories::maven_mirrors:
+#   -
+#     id: 'maestro-mirror'
+#     url: 'http://maestro.acme.com:8082/archiva/repository/all'
+#     mirrorof: 'external:*'
+
+# maestro_nodes::repositories::maven_servers:
+#   -
+#     id: 'maestro-mirror'
+#     username: 'admin'
+#     password: 'admin1'
+#   -
+#     id: 'maestro-deploy'
+#     username: 'admin'
+#     password: 'admin1'
