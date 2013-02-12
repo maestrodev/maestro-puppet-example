@@ -152,7 +152,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppetlabs-nodejs.git
   ref: master
-  sha: 0daa441039f13a56af108827c7efc6da0fa8f780
+  sha: f32225dc76918d62efcfa1340d5b2658c70a5e59
   specs:
     puppetlabs/nodejs (0.2.0)
       maestrodev/wget (>= 0.0.0)
