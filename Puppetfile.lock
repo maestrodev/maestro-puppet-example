@@ -1,7 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    maestrodev/ant (1.0.3)
+    maestrodev/ant (1.0.4)
       maestrodev/wget (>= 0.0.1)
     maestrodev/git (1.0.0)
     maestrodev/jenkins (1.0.1)
@@ -40,18 +40,20 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
-    puppetlabs/postgresql (2.0.1)
+    puppetlabs/postgresql (2.1.0)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/firewall (>= 0.0.4)
       puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
+      ripienaar/concat (>= 0.2.0)
     puppetlabs/stdlib (3.2.0)
+    ripienaar/concat (0.2.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-activemq.git
   ref: master
-  sha: a7a47faf29d9d3de0574adfe792c3562d0d76a7c
+  sha: d93574aef7d06132cc591fdfe9935c1bf46fc9fa
   specs:
-    activemq (1.0.0)
+    activemq (1.1.0)
       maestrodev/wget (>= 1.0.0)
 
 GIT
@@ -79,14 +81,14 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-capybara.git
   ref: master
-  sha: 3f6f8f6cdcd22a1ae2c5d108ab0f6f502f628105
+  sha: 89a5d216ece3c3bbdeb3af97b9d3f79ce8844a26
   specs:
     capybara (0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-continuum.git
   ref: master
-  sha: 2b097b1acaf04a28f2462ac5f1555b415233f263
+  sha: a24cc7be8d92ae34f985df9d29b7da5c713c6068
   specs:
     continuum (0.0.1)
       maestrodev/maven (>= 0.0.2)
@@ -116,7 +118,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-jetty.git
   ref: master
-  sha: 717851555f7fa142dc850400c0c49c2ca809b109
+  sha: 6eb14628e20cd3aca5c6b83ae80a7df2635f7312
   specs:
     jetty (0.0.1)
 
@@ -178,6 +180,7 @@ DEPENDENCIES
   install4j (>= 0)
   jetty (>= 0)
   limits (>= 0)
+  maestrodev/ant (>= 1.0.4)
   maestrodev/archiva (>= 0)
   maestrodev/maestro_nodes (>= 0)
   maestrodev/perforce (= 1.0.0)

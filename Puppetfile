@@ -4,6 +4,7 @@ mod 'activemq',            :git => 'https://github.com/maestrodev/puppet-activem
 
 mod 'puppetlabs/java',     '~>0.2.0'
 mod 'maestrodev/maestro_nodes'
+mod 'maestrodev/ant',      '>=1.0.4'
 
 # optional modules
 mod 'artifactory',         :git => 'https://github.com/maestrodev/puppet-artifactory.git'
