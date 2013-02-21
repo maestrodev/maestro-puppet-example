@@ -46,8 +46,6 @@ install_gem librarian-puppet-maestrodev $LIBRARIAN_VERSION
 # fetch Puppet modules with librarian puppet
 echo "Fetching Puppet modules"
 cd /etc/puppet && librarian-puppet install --verbose
-# java module has bad permissions
-for f in `find /etc/puppet/modules/java/ -type f `; do  chmod 644 $f; done
 
 # Puppet install and configuration
 MASTER=`hostname`
