@@ -28,6 +28,9 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository")
   end
 
+  abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
+  abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
+
   commit = `git rev-parse HEAD`
   puts "Provisioning using commit #{commit}"
   config.vm.provision :shell do |shell|
