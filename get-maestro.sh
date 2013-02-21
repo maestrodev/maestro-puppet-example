@@ -38,9 +38,15 @@ else
   cd /etc/puppet && git pull && git checkout $BRANCH
 fi
 
-gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
 echo "Installing librarian-puppet-maestrodev $LIBRARIAN_VERSION"
 yum -y install rubygems rubygem-json
+# install puppet with the version locked in gemfile. Installing before
+# librarian-puppet ensures we get the correct version here and in yum
+gem_version FACTER_VERSION facter
+install_gem facter $FACTER_VERSION
+gem_version PUPPET_VERSION puppet
+install_gem puppet $PUPPET_VERSION
+gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
 install_gem librarian-puppet-maestrodev $LIBRARIAN_VERSION
 
 # fetch Puppet modules with librarian puppet
@@ -52,9 +58,6 @@ MASTER=`hostname`
 if [ -z "$MAESTRO_ENABLED" ]; then
   MAESTRO_ENABLED=true
 fi
-# install puppet with the version locked in gemfile
-gem_version PUPPET_VERSION puppet
-gem_version FACTER_VERSION facter
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
 puppet apply -e "augeas { 'puppet':

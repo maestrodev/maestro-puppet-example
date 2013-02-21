@@ -13,3 +13,4 @@ hieradata/common.yaml
 manifests/nodes/maestro.acme.com.pp
 puppet.conf
 .vagrant
+*.rpmnew
