@@ -3,6 +3,9 @@ forge 'http://forge.puppetlabs.com'
 mod 'activemq',            :git => 'https://github.com/maestrodev/puppet-activemq.git'
 
 mod 'puppetlabs/java',     '~>0.2.0'
+# peg postgresql due to issues with 'concat_basedir' variable in specs, perhaps
+# related to stdlib version?
+mod 'puppetlabs/postgresql', '2.0.1'
 mod 'maestrodev/maestro_nodes'
 mod 'maestrodev/ant',      '>=1.0.4'
 
