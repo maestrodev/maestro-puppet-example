@@ -1,7 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    maestrodev/ant (1.0.3)
+    maestrodev/ant (1.0.4)
       maestrodev/wget (>= 0.0.1)
     maestrodev/git (1.0.0)
     maestrodev/jenkins (1.0.1)
@@ -10,17 +10,6 @@ FORGE
       maestrodev/wget (>= 1.0.0)
       puppetlabs/postgresql (>= 2.0.1)
       puppetlabs/stdlib (>= 2.5.1)
-    maestrodev/maestro_nodes (1.0.1)
-      maestrodev/ant (>= 1.0.3)
-      maestrodev/archiva (~> 1.0)
-      maestrodev/git (~> 1.0)
-      maestrodev/jenkins (~> 1.0)
-      maestrodev/maestro (>= 1.0.0)
-      maestrodev/maven (>= 0.0.2)
-      maestrodev/rvm (~> 1.0)
-      maestrodev/sonar (~> 1.0)
-      maestrodev/ssh_keygen (~> 1.0)
-      maestrodev/svn (~> 1.0)
     maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
     maestrodev/perforce (1.0.0)
@@ -40,11 +29,13 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
-    puppetlabs/postgresql (2.0.1)
+    puppetlabs/postgresql (2.1.0)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/firewall (>= 0.0.4)
       puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
+      ripienaar/concat (>= 0.2.0)
     puppetlabs/stdlib (3.2.0)
+    ripienaar/concat (0.2.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-activemq.git
@@ -126,6 +117,23 @@ GIT
   sha: a2264d0a6b13997aaba5fcbdaf756beae6905fe2
   specs:
     limits (2.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_nodes.git
+  ref: master
+  sha: 7a3a4c87c5bdbd6d17413168505a65b3d75476fa
+  specs:
+    maestrodev/maestro_nodes (1.0.2)
+      maestrodev/ant (>= 1.0.3)
+      maestrodev/archiva (~> 1.0)
+      maestrodev/git (~> 1.0)
+      maestrodev/jenkins (~> 1.0)
+      maestrodev/maestro (>= 1.0.0)
+      maestrodev/maven (>= 0.0.2)
+      maestrodev/rvm (~> 1.0)
+      maestrodev/sonar (~> 1.0)
+      maestrodev/ssh_keygen (~> 1.0)
+      maestrodev/svn (~> 1.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-ntp.git
