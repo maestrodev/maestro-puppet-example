@@ -10,17 +10,6 @@ FORGE
       maestrodev/wget (>= 1.0.0)
       puppetlabs/postgresql (>= 2.0.1)
       puppetlabs/stdlib (>= 2.5.1)
-    maestrodev/maestro_nodes (1.0.2)
-      maestrodev/ant (>= 1.0.3)
-      maestrodev/archiva (~> 1.0)
-      maestrodev/git (~> 1.0)
-      maestrodev/jenkins (~> 1.0)
-      maestrodev/maestro (>= 1.0.0)
-      maestrodev/maven (>= 0.0.2)
-      maestrodev/rvm (~> 1.0)
-      maestrodev/sonar (~> 1.0)
-      maestrodev/ssh_keygen (~> 1.0)
-      maestrodev/svn (~> 1.0)
     maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
     maestrodev/rvm (1.0.0)
@@ -55,10 +44,27 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-archiva.git
   ref: master
-  sha: 823caa9404fb49bad7f55da36dbfeeb625c58aad
+  sha: d78a51d36cd80a4e64c98ac94d3c001c00d3b716
   specs:
     maestrodev/archiva (1.1.0)
       maestrodev/wget (>= 1.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_nodes.git
+  ref: master
+  sha: cc90b26e711b23e3160fc50f32db7e3b93feaeb1
+  specs:
+    maestrodev/maestro_nodes (1.0.3)
+      maestrodev/ant (>= 1.0.3)
+      maestrodev/archiva (~> 1.0)
+      maestrodev/git (~> 1.0)
+      maestrodev/jenkins (~> 1.0)
+      maestrodev/maestro (>= 1.0.0)
+      maestrodev/maven (>= 0.0.2)
+      maestrodev/rvm (~> 1.0)
+      maestrodev/sonar (~> 1.0)
+      maestrodev/ssh_keygen (~> 1.0)
+      maestrodev/svn (~> 1.0)
 
 GIT
   remote: https://github.com/maestrodev/puppet-ntp.git

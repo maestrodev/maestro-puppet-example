@@ -4,7 +4,6 @@ mod 'puppetlabs/java',       '~>0.2.0'
 # peg postgresql due to issues with 'concat_basedir' variable in specs, perhaps
 # related to stdlib version?
 mod 'puppetlabs/postgresql', '2.0.1'
-mod 'maestrodev/maestro_nodes'
 mod 'maestrodev/ant',        '>=1.0.4'
 mod 'puppetlabs/mongodb'
 
@@ -14,6 +13,7 @@ mod 'ntp',                   :git => 'https://github.com/maestrodev/puppet-ntp.g
 mod 'puppetlabs/nodejs',     :git => 'https://github.com/maestrodev/puppetlabs-nodejs.git'
 mod 'statsd',                :git => 'https://github.com/maestrodev/puppet-statsd.git'
 mod 'maestrodev/archiva',    :git => 'https://github.com/maestrodev/puppet-archiva.git'
+mod 'maestrodev/maestro_nodes', :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'

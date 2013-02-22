@@ -16,7 +16,7 @@ maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
 
-archiva::version: '1.4-M1-maestro-3.4.3.4'
+archiva::version: '1.3.6'
 activemq::max_memory: '64'
 
 # Archiva repository
