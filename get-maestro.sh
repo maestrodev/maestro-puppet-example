@@ -24,21 +24,8 @@ function gem_version {
 set -e
 
 # Puppet repositories
-cat > /etc/yum.repos.d/puppetlabs.repo <<EOF
-[puppetlabs]
-name=Puppetlabs
-enabled=1
-baseurl=http://yum.puppetlabs.com/el/6/products/\$basearch
-gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
-gpgcheck=1
-EOF
-cat > /etc/yum.repos.d/epel.repo <<EOF
-[epel]
-name=epel
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=\$basearch
-enabled=1
-gpgcheck=0
-EOF
+rpm -q puppetlabs-release-6-6-noarch && \
+  rpm -i http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-6.noarch.rpm
 
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"
@@ -52,25 +39,26 @@ else
   cd /etc/puppet && git pull && git checkout $BRANCH
 fi
 
-gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
 echo "Installing librarian-puppet-maestrodev $LIBRARIAN_VERSION"
 yum -y install rubygems rubygem-json
+# install puppet with the version locked in gemfile. Installing before
+# librarian-puppet ensures we get the correct version here and in yum
+gem_version FACTER_VERSION facter
+install_gem facter $FACTER_VERSION
+gem_version PUPPET_VERSION puppet
+install_gem puppet $PUPPET_VERSION
+gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
 install_gem librarian-puppet-maestrodev $LIBRARIAN_VERSION
 
 # fetch Puppet modules with librarian puppet
 echo "Fetching Puppet modules"
 cd /etc/puppet && librarian-puppet install --verbose
-# java module has bad permissions
-for f in `find /etc/puppet/modules/java/ -type f `; do  chmod 644 $f; done
 
 # Puppet install and configuration
 MASTER=`hostname`
 if [ -z "$MAESTRO_ENABLED" ]; then
   MAESTRO_ENABLED=true
 fi
-# install puppet with the version locked in gemfile
-gem_version PUPPET_VERSION puppet
-gem_version FACTER_VERSION facter
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
 puppet apply -e "augeas { 'puppet':

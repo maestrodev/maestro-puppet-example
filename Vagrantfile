@@ -1,7 +1,7 @@
 Vagrant::Config.run do |config|
 
   config.vm.box = "CentOS-6.3-x86_64-minimal"
-  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-bare.box"
+  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-minimal.box"
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
@@ -27,6 +27,9 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "repo1", "/var/local/maestro-agent/.m2/repository", File.expand_path("~/.m2/repository")
     config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository")
   end
+
+  abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
+  abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
 
   commit = `git rev-parse HEAD`
   puts "Provisioning using commit #{commit}"
