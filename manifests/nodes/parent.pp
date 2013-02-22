@@ -20,7 +20,7 @@ node 'parent' {
   } ->
   exec { "/bin/sh /etc/profile": } 
   class { 'java': distribution => 'java-1.6.0-openjdk' }
-  package { "java-1.6.0-openjdk-devel": ensure => "latest"}
+  package { "java-1.6.0-openjdk-devel": ensure => present}
 
   case $::kernel {
    'Linux': {
