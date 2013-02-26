@@ -8,7 +8,7 @@
 # * Jenkins
 # * Archiva
 
-node 'master' inherits 'parent' {
+node 'master_simple' inherits 'parent' {
 
 class { 'maestro::repository': }
 
