@@ -7,14 +7,13 @@ USERNAME=$1
 PASSWORD=$2
 NODE_TYPE=$3
 
-if [ -z "$NODE_TYPE" ]
-  then
+if [ -z "$NODE_TYPE" ]; then
   $NODE_TYPE=master_with_agent
 fi
 
-
-BRANCH=master
-
+if [ -z "$BRANCH" ]; then
+  BRANCH=master
+fi
 
 function install_gem {
   (gem list ^$1$ | grep $1 | grep $2) || gem install --no-rdoc --no-ri $1 -v $2
