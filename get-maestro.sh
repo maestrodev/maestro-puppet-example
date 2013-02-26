@@ -8,7 +8,7 @@ PASSWORD=$2
 NODE_TYPE=$3
 
 if [ -z "$NODE_TYPE" ]; then
-  $NODE_TYPE=master_with_agent
+  NODE_TYPE=master_with_agent
 fi
 
 if [ -z "$BRANCH" ]; then
