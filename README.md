@@ -27,10 +27,10 @@ curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maest
 ### Setting up a Maestro server without any of the other servers (Maestro Agent, Jenkins, Archiva, etc)
 
 You can install the Maestro server without any of the servers needed by the default examples. To do this, simply specify
-the master_simple node type when invoking the get-maestro.sh script. Like so:
+the master_base node type when invoking the get-maestro.sh script. Like so:
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD master_simple
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD master_base
 ```
 
 ### Setting up a Puppet Master only
