@@ -24,6 +24,15 @@ The puppet process can also be run in the background by setting the environment 
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
 ```
 
+### Setting up a Maestro server without any of the other servers (Jenkins, Archiva, etc)
+
+You can install the Maestro server without any of the servers needed by the default examples. To do this, simply specify
+the master_simple node type when invoking the get-maestro.sh script. Like so:
+
+```
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD master_simple
+```
+
 ### Setting up a Puppet Master only
 
 You can ask the `get-maestro.sh` to skip the Puppet step at the end. This
@@ -50,11 +59,26 @@ Installing agents on CentOS with Puppet
 =======================================
 The script `get-agent.sh` can install a Puppet agent and trigger a Puppet update to install a Maestro agent from a minimal CentOS 6.3 server, installing typical tools like git, subversion, ruby, java,...
 
-From a minimal CentOS 6.3 server you can automatically install the Maestro Agent, passing the hostname of the Maestro master server. Optionally you can pass the ip of the master server too if there is no dns entry for the master hostname and it will create an entry in the agent /etc/hosts file to properly resolve the name to that ip.
+From a minimal CentOS 6.3 server you can automatically install the Maestro Agent, passing the hostname of the Maestro master server.
+Optionally you can pass the ip of the master server too if there is no dns entry for the master hostname and it will create an entry in the agent /etc/hosts file to properly resolve the name to that ip.
 
 ```
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-agent.sh | bash -s MASTER_HOSTNAME [MASTER_IP]
 ```
+
+### Installing the agents on a machine with non-standard hostname.
+
+By default, agent hosts must have the word *agent* in their name. If you want to install the agent on a machine that
+doesn't have a host name that has the word *agent* in it, you must first add a node definition on the puppet master for
+this new machine.  From the puppet master do the following:
+
+``` cd /etc/puppet ```
+
+```./add-agent-hode.sh AGENTHOSTNAME```
+
+Where *AGENTHOSTNAME* is the name of the host where you wish to install the agent.
+
+Then, simply follow standard agent installation instructions on the agent host.
 
 
 Customizing

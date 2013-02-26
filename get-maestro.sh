@@ -5,12 +5,16 @@
 
 USERNAME=$1
 PASSWORD=$2
-BRANCH=$3
+NODE_TYPE=$3
 
-if [ -z "$BRANCH" ]
+if [ -z "$NODE_TYPE" ]
   then
-  BRANCH=master
+  $NODE_TYPE=master_with_agent
 fi
+
+
+BRANCH=master
+
 
 function install_gem {
   (gem list ^$1$ | grep $1 | grep $2) || gem install --no-rdoc --no-ri $1 -v $2
@@ -98,7 +102,7 @@ EOF
 
 # create nodes
 cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
-node "$MASTER" inherits "master_with_agent" {}
+node "$MASTER" inherits "$NODE_TYPE" {}
 EOF
 
 # enable puppet master and disable puppet agent periodic runs
