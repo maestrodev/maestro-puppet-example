@@ -74,7 +74,7 @@ this new machine.  From the puppet master do the following:
 
 ``` cd /etc/puppet ```
 
-```./add-agent-hode.sh AGENTHOSTNAME```
+```./add-agent-node.sh AGENTHOSTNAME```
 
 Where *AGENTHOSTNAME* is the name of the host where you wish to install the agent.
 
