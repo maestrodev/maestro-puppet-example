@@ -5,10 +5,13 @@
 
 USERNAME=$1
 PASSWORD=$2
-BRANCH=$3
+NODE_TYPE=$3
 
-if [ -z "$BRANCH" ]
-  then
+if [ -z "$NODE_TYPE" ]; then
+  NODE_TYPE=master_with_agent
+fi
+
+if [ -z "$BRANCH" ]; then
   BRANCH=master
 fi
 
@@ -25,7 +28,7 @@ set -e
 
 # Puppet repositories
 rpm -q puppetlabs-release-6-6.noarch || \
-  rpm -i http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-6.noarch.rpm
+  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-6.noarch.rpm
 
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"
@@ -98,7 +101,7 @@ EOF
 
 # create nodes
 cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
-node "$MASTER" inherits "master_with_agent" {}
+node "$MASTER" inherits "$NODE_TYPE" {}
 EOF
 
 # enable puppet master and disable puppet agent periodic runs

@@ -35,7 +35,7 @@ Vagrant::Config.run do |config|
   puts "Provisioning using commit #{commit}"
   config.vm.provision :shell do |shell|
     shell.path = "get-maestro.sh"
-    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} #{commit}"
+    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} #{ENV['NODE_TYPE']}"
   end
 
   if ENV["MAESTRO_CACHE"]

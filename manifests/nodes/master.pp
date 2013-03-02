@@ -8,49 +8,20 @@
 # * Jenkins
 # * Archiva
 
-node 'master' inherits 'parent' {
-
-  class { 'maestro::repository': }
-
-  include maestro
-
-  include maestro_nodes::repositories
-  
-  include maestro_nodes::metrics_repo
-
-  # Maestro demo compositions
-  class { 'maestro::lucee::demo_compositions': }
-
-  # Maestro master server
-  class { 'maestro::maestro':
-    repo => $maestro::repository::maestrodev,
-    enabled => hiera('maestro::maestro::enabled'),
-  }
-
-  class { 'maestro_nodes::database': }
-
-  # ActiveMQ
-  class { 'activemq': }
-  class { 'activemq::stomp': }
-
-  # Maestro plugins
-  class { 'maestro::plugins': }
+node 'master' inherits 'master_base' {
 
   # Jenkins
   class { 'maestro_nodes::jenkinsserver': }
 
   # Archiva
   class { 'maestro_nodes::archivaserver': }
-  
-  # open the firewall to the services: maestro, archiva, jenkins, activemq, puppet CA
-  firewall { '100 allow maestro':
+
+  # open the firewall to the services: archiva, jenkins
+  firewall { '100 allow jenkins and archiva':
     proto       => 'tcp',
     port        => [
-      $maestro::maestro::port,
       $archiva::port,
       $jenkins::jenkins_port,
-      $activemq::stomp::port,
-      8140
     ],
     action      => 'accept',
   }
