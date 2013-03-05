@@ -32,10 +32,11 @@ Vagrant::Config.run do |config|
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
 
   commit = `git rev-parse HEAD`
-  puts "Provisioning using commit #{commit}"
+  puts "Provisioning using commit #{commit} on branch #{ENV['BRANCH']}"
+
   config.vm.provision :shell do |shell|
     shell.path = "get-maestro.sh"
-    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} #{ENV['NODE_TYPE']}"
+    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
   end
 
   if ENV["MAESTRO_CACHE"]

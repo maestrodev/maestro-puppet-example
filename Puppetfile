@@ -5,6 +5,7 @@ mod 'puppetlabs/java',       '~>0.2.0'
 # related to stdlib version?
 mod 'puppetlabs/postgresql', '2.0.1'
 mod 'maestrodev/ant',        '>=1.0.4'
+#mod 'maestrodev/android',    '>=1.0.1' # Not pushed to forge yet, so must use git
 mod 'puppetlabs/mongodb'
 
 # Until released
@@ -14,6 +15,9 @@ mod 'puppetlabs/nodejs',     :git => 'https://github.com/maestrodev/puppetlabs-n
 mod 'statsd',                :git => 'https://github.com/maestrodev/puppet-statsd.git'
 mod 'maestrodev/archiva',    :git => 'https://github.com/maestrodev/puppet-archiva.git'
 mod 'maestrodev/maestro_nodes', :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
+mod 'maestrodev/android', :git => 'https://github.com/maestrodev/puppet-android.git'
+mod 'maestrodev/maestro', :git => 'https://github.com/maestrodev/puppet-maestro.git'
+mod 'maestrodev/maestro_demo', :git => 'https://github.com/maestrodev/puppet-maestro_demo.git'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'

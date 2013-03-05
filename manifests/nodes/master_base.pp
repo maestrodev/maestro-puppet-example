@@ -14,9 +14,6 @@ node 'master_base' inherits 'parent' {
 
   include maestro_nodes::metrics_repo
 
-  # Maestro demo compositions
-  class { 'maestro::lucee::demo_compositions': }
-
   # Maestro master server
   class { 'maestro::maestro':
     repo => $maestro::repository::maestrodev,

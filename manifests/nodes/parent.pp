@@ -4,6 +4,11 @@ node 'parent' {
 
   filebucket { main: server => 'puppet' }
 
+  # Flag that enables "is_demo" on lucee config.
+  # Note that this is only temporary as we'll be pushing demos into lucee via API.  As soon as that happens
+  # the requirement for this flag will go away
+  $demo = true
+
   File { backup => main }
   Exec { path => "/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/bin" }
 

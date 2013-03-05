@@ -5,11 +5,6 @@ FORGE
       maestrodev/wget (>= 0.0.1)
     maestrodev/git (1.0.0)
     maestrodev/jenkins (1.0.1)
-    maestrodev/maestro (1.0.1)
-      maestrodev/maven (>= 1.0.0)
-      maestrodev/wget (>= 1.0.0)
-      puppetlabs/postgresql (>= 2.0.1)
-      puppetlabs/stdlib (>= 2.5.1)
     maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
     maestrodev/rvm (1.0.0)
@@ -28,9 +23,9 @@ FORGE
     puppetlabs/mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
     puppetlabs/postgresql (2.0.1)
-      puppetlabs/apt (< 2.0.0, >= 1.1.0)
+      puppetlabs/apt (>= 1.1.0, < 2.0.0)
       puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
+      puppetlabs/stdlib (>= 3.2.0, < 4.0.0)
     puppetlabs/stdlib (3.2.0)
 
 GIT
@@ -42,12 +37,38 @@ GIT
       maestrodev/wget (>= 1.0.0)
 
 GIT
+  remote: https://github.com/maestrodev/puppet-android.git
+  ref: master
+  sha: d260e7ad6c600c1532ee85f65c4e3491f0d7a971
+  specs:
+    maestrodev/android (1.0.1)
+      maestrodev/wget (>= 0.0.1)
+
+GIT
   remote: https://github.com/maestrodev/puppet-archiva.git
   ref: master
   sha: d78a51d36cd80a4e64c98ac94d3c001c00d3b716
   specs:
     maestrodev/archiva (1.1.0)
       maestrodev/wget (>= 1.0.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro.git
+  ref: master
+  sha: b10daf815e3be4d4c5d519253a808127f3c348c6
+  specs:
+    maestrodev/maestro (1.0.2)
+      maestrodev/maven (>= 1.0.0)
+      maestrodev/wget (>= 1.0.0)
+      puppetlabs/postgresql (>= 2.0.1)
+      puppetlabs/stdlib (>= 2.5.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_demo.git
+  ref: master
+  sha: 7270a48a328a03def23c7297301742335f07ce51
+  specs:
+    maestrodev/maestro_demo (0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
@@ -93,8 +114,11 @@ GIT
 
 DEPENDENCIES
   activemq (>= 0)
+  maestrodev/android (>= 0)
   maestrodev/ant (>= 1.0.4)
   maestrodev/archiva (>= 0)
+  maestrodev/maestro (>= 0)
+  maestrodev/maestro_demo (>= 0)
   maestrodev/maestro_nodes (>= 0)
   ntp (>= 0)
   puppetlabs/java (~> 0.2.0)

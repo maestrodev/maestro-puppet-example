@@ -6,6 +6,7 @@
 USERNAME=$1
 PASSWORD=$2
 NODE_TYPE=$3
+BRANCH=$4
 
 if [ -z "$NODE_TYPE" ]; then
   NODE_TYPE=master_with_agent
@@ -14,6 +15,8 @@ fi
 if [ -z "$BRANCH" ]; then
   BRANCH=master
 fi
+
+echo "get-maestro: Using branch $BRANCH"
 
 function install_gem {
   (gem list ^$1$ | grep $1 | grep $2) || gem install --no-rdoc --no-ri $1 -v $2
