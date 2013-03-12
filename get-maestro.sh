@@ -81,7 +81,10 @@ puppet apply -e "augeas { 'puppet':
 
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata
-cat > /etc/puppet/hieradata/common.yaml <<EOF
+# don't overwrite common.yaml if already exists
+if [ ! -e /etc/puppet/hieradata/common.yaml ]
+  then
+  cat > /etc/puppet/hieradata/common.yaml <<EOF
 ---
 # MaestroDev credentials
 maestro::repository::username: '$USERNAME'
@@ -101,6 +104,7 @@ maestro::lucee::demo_compositions::archiva_host: '$MASTER'
 maestro::lucee::demo_compositions::jenkins_host: '$MASTER'
 maestro::lucee::demo_compositions::sonar_host: '$MASTER'
 EOF
+fi
 
 # create nodes
 cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
