@@ -23,9 +23,13 @@ Vagrant::Config.run do |config|
   if ENV["MAESTRO_CACHE"]
     src = File.expand_path("~/.maestro/src")
     File.exists?(File.expand_path(src)) or Dir.mkdir(src)
-    config.vm.share_folder "src", "/usr/local/src", File.expand_path(src), :owner => "root", :group => "root"
+    config.vm.share_folder "src", "/usr/local/src", src, :owner => "root", :group => "root"
     config.vm.share_folder "repo1", "/var/local/maestro-agent/.m2/repository", File.expand_path("~/.m2/repository")
     config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository")
+    # keep yum cache in host
+    yum = File.expand_path("~/.maestro/yum")
+    File.exists?(File.expand_path(yum)) or Dir.mkdir(yum)
+    config.vm.share_folder "yum", "/var/cache/yum", yum, :owner => "root", :group => "root"
   end
 
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
