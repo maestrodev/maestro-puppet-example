@@ -17,7 +17,7 @@ FORGE
     maestrodev/wget (1.1.0)
     puppetlabs/apt (1.1.0)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/firewall (0.2.0)
+    puppetlabs/firewall (0.2.1)
     puppetlabs/java (0.2.0)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.1.0)
@@ -55,7 +55,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro.git
   ref: master
-  sha: 0ffd89b55a8dd93a7b5ebcc12d7fab1b5259c1b3
+  sha: 983646eb4c262c61c49d279c23baf16cf02fcc1d
   specs:
     maestrodev/maestro (1.0.2)
       maestrodev/maven (>= 1.0.0)
