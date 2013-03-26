@@ -112,8 +112,8 @@ node "$MASTER" inherits "$NODE_TYPE" {}
 EOF
 
 # enable puppet master and disable puppet agent periodic runs
-puppet resource service puppetmaster ensure=running enable=true
-puppet resource service puppet ensure=stopped enable=false
+puppet resource Service puppetmaster ensure=running enable=true
+puppet resource Service puppet ensure=stopped enable=false
 service puppetmaster start
 
 # run puppet agent
