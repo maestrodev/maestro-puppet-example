@@ -23,9 +23,9 @@ activemq::max_memory: '64'
 maestro_nodes::repositories::host: 'localhost'
 
 # Demo compositions configuration
-maestro::lucee::demo_compositions::archiva_host: 'localhost'
-maestro::lucee::demo_compositions::jenkins_host: 'localhost'
-maestro::lucee::demo_compositions::sonar_host: 'localhost'
+maestro_demo::archiva_host: 'localhost'
+maestro_demo::jenkins_host: 'localhost'
+maestro_demo::sonar_host: 'localhost'
 
 # LDAP configuration
 #

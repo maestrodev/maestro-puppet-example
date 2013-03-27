@@ -39,7 +39,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-android.git
   ref: master
-  sha: d260e7ad6c600c1532ee85f65c4e3491f0d7a971
+  sha: 48ab2522364d70f45bc0202cb6a177f1f7e0c312
   specs:
     maestrodev/android (1.0.1)
       maestrodev/wget (>= 0.0.1)
@@ -55,7 +55,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro.git
   ref: master
-  sha: 983646eb4c262c61c49d279c23baf16cf02fcc1d
+  sha: d97a817544cb43d915a6df5d6724352ee5addc90
   specs:
     maestrodev/maestro (1.0.2)
       maestrodev/maven (>= 1.0.0)
@@ -66,16 +66,19 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_demo.git
   ref: master
-  sha: 7270a48a328a03def23c7297301742335f07ce51
+  sha: 69d26ec74e9178beb2f9419fa1b87ffbd2de3470
   specs:
-    maestrodev/maestro_demo (0.0.1)
+    maestrodev/maestro_demo (1.0.0)
+      maestrodev/maestro (>= 1.0.2)
+      maestrodev/maestro_nodes (>= 1.0.3)
 
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
-  sha: cc90b26e711b23e3160fc50f32db7e3b93feaeb1
+  sha: cfb70e7872bd4f80b431c51d3acdcf89745276fa
   specs:
     maestrodev/maestro_nodes (1.0.3)
+      maestrodev/android (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (~> 1.0)
       maestrodev/git (~> 1.0)

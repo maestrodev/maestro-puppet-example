@@ -100,9 +100,9 @@ maestro::agent::stomp_host: '$MASTER'
 maestro_nodes::repositories::host: '$MASTER'
 
 # Demo compositions configuration
-maestro::lucee::demo_compositions::archiva_host: '$MASTER'
-maestro::lucee::demo_compositions::jenkins_host: '$MASTER'
-maestro::lucee::demo_compositions::sonar_host: '$MASTER'
+maestro_demo::archiva_host: '$MASTER'
+maestro_demo::jenkins_host: '$MASTER'
+maestro_demo::sonar_host: '$MASTER'
 EOF
 fi
 
