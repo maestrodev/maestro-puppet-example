@@ -60,7 +60,7 @@ shared_examples 'maestro master' do
     end
 
     it 'should have the right version' do
-      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.12.1\.rpm$/)
+      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.13.*\.rpm$/)
     end
   end
 end
