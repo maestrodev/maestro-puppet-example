@@ -9,4 +9,6 @@ node 'agent' inherits 'parent' {
   class { 'maestro_nodes::agent':
     repo => $maestro::repository::maestrodev,
   }
+
+  include maestro::test::dependencies
 }
