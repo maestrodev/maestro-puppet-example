@@ -14,7 +14,8 @@ Vagrant::Config.run do |config|
   config.vm.host_name = "maestro.acme.com"
 
   vm_name = "Maestro example"
-  config.vm.customize ["modifyvm", :id, "--memory", 4096]
+  vm_memory = ENV["MAESTRO_VM_MEMORY"] || 4096
+  config.vm.customize ["modifyvm", :id, "--memory", vm_memory]
   config.vm.customize ["modifyvm", :id, "--name", vm_name] # in order to export it with that name
   config.vm.customize ["modifyvm", :id, "--rtcuseutc", "on"] # use UTC clock https://github.com/mitchellh/vagrant/issues/912
 
