@@ -39,7 +39,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-android.git
   ref: master
-  sha: c4efa5dc13efe6f0fc76e3a5a60a9998c5be5034
+  sha: b332779072f5d7a3571e1bd67caaffb55ec3ff6b
   specs:
     maestrodev/android (1.0.1)
       maestrodev/wget (>= 0.0.1)
@@ -66,7 +66,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_demo.git
   ref: master
-  sha: 785393013aea03c86535bb69f3f2b9d7937ef2a9
+  sha: 2d991e5e8ad80e65b68746e1be783a06e8aa6bf6
   specs:
     maestrodev/maestro_demo (1.0.0)
       maestrodev/maestro (>= 1.0.2)
