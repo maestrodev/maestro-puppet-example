@@ -8,6 +8,7 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 8080, 8080
   config.vm.forward_port 8082, 8082
   config.vm.forward_port 8181, 8181
+  config.vm.forward_port 61613, 61613
 
   config.vm.host_name = "maestro.acme.com"
 
