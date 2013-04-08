@@ -30,6 +30,7 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "repo1", "/var/local/maestro-agent/.m2/repository", File.expand_path("~/.m2/repository")
     config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository")
     # keep yum cache in host
+    config.vm.provision :shell, :inline => "sed -i 's/keepcache=0/keepcache=1/' /etc/yum.conf"
     yum = File.expand_path("~/.maestro/yum")
     File.exists?(File.expand_path(yum)) or Dir.mkdir(yum)
     config.vm.share_folder "yum", "/var/cache/yum", yum, :owner => "root", :group => "root"
