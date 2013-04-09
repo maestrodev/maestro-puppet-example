@@ -11,7 +11,7 @@ maestro::maestro::db_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 maestro::maestro::enabled: true
 
-maestro::agent::agent_version: '1.7.0'
+maestro::agent::agent_version: '1.7.1'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
