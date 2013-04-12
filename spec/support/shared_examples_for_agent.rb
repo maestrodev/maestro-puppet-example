@@ -10,7 +10,7 @@ shared_examples 'maestro agent' do
 
     it { should contain_user('maestro_agent') }
 
-    it { should contain_service('ntpd').with_ensure('running') }
+    it { should contain_service('ntp').with_ensure('running') }
     it { should contain_package('java').with_name('java-1.6.0-openjdk') }
 
     it 'should generate valid settings.xml' do

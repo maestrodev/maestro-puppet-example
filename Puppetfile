@@ -5,9 +5,9 @@ mod 'puppetlabs/java',       '~>0.2.0'
 mod 'puppetlabs/mongodb'
 mod 'maestrodev/activemq'
 mod 'maestrodev/android', '>=1.1.0'
+mod 'puppetlabs/ntp'
 
 # Until released
-mod 'ntp',                   :git => 'https://github.com/maestrodev/puppet-ntp.git'
 mod 'puppetlabs/nodejs',     :git => 'https://github.com/maestrodev/puppetlabs-nodejs.git'
 mod 'statsd',                :git => 'https://github.com/maestrodev/puppet-statsd.git'
 

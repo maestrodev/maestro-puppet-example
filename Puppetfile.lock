@@ -46,18 +46,13 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
+    puppetlabs/ntp (0.3.0)
+      puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/postgresql (2.0.1)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/firewall (>= 0.0.4)
       puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
     puppetlabs/stdlib (3.2.0)
-
-GIT
-  remote: https://github.com/maestrodev/puppet-ntp.git
-  ref: master
-  sha: be3959c07e14ed77025a0e55c6eec53b5afcb276
-  specs:
-    ntp ()
 
 GIT
   remote: https://github.com/maestrodev/puppet-statsd.git
@@ -80,9 +75,9 @@ DEPENDENCIES
   maestrodev/activemq (>= 0)
   maestrodev/android (>= 1.1.0)
   maestrodev/maestro_demo (>= 1.0.2)
-  ntp (>= 0)
   puppetlabs/java (~> 0.2.0)
   puppetlabs/mongodb (>= 0)
   puppetlabs/nodejs (>= 0)
+  puppetlabs/ntp (>= 0)
   statsd (>= 0)
 

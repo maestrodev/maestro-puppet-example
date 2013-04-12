@@ -21,7 +21,7 @@ shared_examples 'maestro master' do
     it { should contain_service('jenkins').with_ensure('running') }
     it { should_not contain_service('maestro-test-remote-control') }
     it { should contain_service('postgresqld').with_ensure('running') }
-    it { should contain_service('ntpd').with_ensure('running') }
+    it { should contain_service('ntp').with_ensure('running') }
     it { should_not contain_service('maestro-test-hub') }
     it { should_not contain_service('continuum') }
     it { should_not contain_service('sonar') }
