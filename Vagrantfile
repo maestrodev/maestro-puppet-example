@@ -1,6 +1,6 @@
 Vagrant::Config.run do |config|
 
-  config.vm.box = "CentOS-6.3-x86_64-minimal"
+  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.3-x86_64-minimal"
   config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-minimal.box"
 
   # Forward a port from the guest to the host, which allows for outside
