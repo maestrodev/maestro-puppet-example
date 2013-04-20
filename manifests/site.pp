@@ -1,3 +1,3 @@
-#hiera_include(classes, [])
+hiera_include(classes, [""])
 
 import 'nodes/*.pp'
