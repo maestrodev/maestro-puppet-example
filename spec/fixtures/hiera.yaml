@@ -7,5 +7,4 @@
 :hierarchy:
   - '%{::clientcert}'
   - '%{::custom_location}'
-  - 'common'
   - 'default'
