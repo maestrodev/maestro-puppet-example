@@ -31,16 +31,6 @@ node 'master_base' inherits 'parent' {
   # Maestro plugins
   class { 'maestro::plugins': }
 
-  # open the firewall to the services: maestro, activemq, puppet CA
-  firewall { '100 allow maestro':
-    proto       => 'tcp',
-    port        => [
-      $maestro::maestro::port,
-      $activemq::stomp::port,
-      8140,
-      80
-    ],
-    action      => 'accept',
-  }
-
+  include maestro_nodes::maestrofirewall
+  include maestro_nodes::firewall::puppetmaster
 }

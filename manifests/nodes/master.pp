@@ -17,14 +17,4 @@ node 'master' inherits 'master_base' {
   # Archiva
   include maestro_nodes::archivaserver
   include maestro_nodes::nginx::archiva
-
-  # open the firewall to the services: archiva, jenkins
-  firewall { '100 allow jenkins and archiva':
-    proto       => 'tcp',
-    port        => [
-      $archiva::port,
-      $jenkins::jenkins_port,
-    ],
-    action      => 'accept',
-  }
 }
