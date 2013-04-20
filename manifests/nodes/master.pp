@@ -11,11 +11,11 @@
 node 'master' inherits 'master_base' {
 
   # Jenkins
-  class { 'maestro_nodes::jenkinsserver': }
+  include maestro_nodes::jenkinsserver
   include maestro_nodes::nginx::jenkins
 
   # Archiva
-  class { 'maestro_nodes::archivaserver': }
+  include maestro_nodes::archivaserver
   include maestro_nodes::nginx::archiva
 
   # open the firewall to the services: archiva, jenkins
@@ -27,5 +27,4 @@ node 'master' inherits 'master_base' {
     ],
     action      => 'accept',
   }
-
 }

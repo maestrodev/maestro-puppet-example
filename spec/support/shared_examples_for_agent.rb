@@ -23,5 +23,8 @@ shared_examples 'maestro agent' do
       content.should eq(expected)
     end
 
+    it 'should install the required packages for Selenium to run' do
+      should contain_package('xorg-x11-server-Xvfb')
+    end
   end
 end

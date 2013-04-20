@@ -24,8 +24,15 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     it { should contain_service('ntp').with_ensure('running') }
     it { should_not contain_service('maestro-test-hub') }
     it { should_not contain_service('continuum') }
-    it { should_not contain_service('sonar') }
     it { should contain_service('archiva').with_ensure('running') }
+
+    it { should contain_class('maestro::maestro').with_jetty_forwarded(true) }
+
+    it "should add the metrics repo" do
+      should contain_class('maestro::maestro').with_metrics_enabled(true)
+      should contain_class('statsd')
+      should contain_class('mongodb')
+    end
 
     it 'should run archiva under archiva user' do
       should contain_file('basic/archiva.xml').with(
@@ -46,6 +53,8 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
       content = catalogue.resource('file', '/var/lib/jenkins/.m2/settings.xml').send(:parameters)[:content]
       content.should eq(expected)
     end
+
+    it { should contain_class('jenkins').with_jenkins_prefix('/jenkins') }
 
     it 'should download packages from maestrodev repo' do
       should contain_wget__authfetch('archiva_download').with(

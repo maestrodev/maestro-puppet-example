@@ -22,8 +22,10 @@ maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
 
 archiva::version: '1.3.6'
+
 sonar::context_path: '/sonar'
 sonar::version: '3.5.1'
+
 jenkins::jenkins_prefix: '/jenkins'
 
 # Archiva repository

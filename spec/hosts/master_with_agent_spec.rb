@@ -7,4 +7,6 @@ describe 'master_with_agent' do
 
   it_behaves_like 'maestro master'
   it_behaves_like 'maestro agent'
+
+  it { should_not contain_class('sonar') }
 end

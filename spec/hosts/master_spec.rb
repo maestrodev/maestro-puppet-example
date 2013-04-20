@@ -6,4 +6,5 @@ describe 'master' do
   it_behaves_like 'maestro master'
 
   it { should_not contain_class('svn') }
+  it { should_not contain_class('sonar') }
 end

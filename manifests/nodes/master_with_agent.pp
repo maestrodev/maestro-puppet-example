@@ -9,7 +9,7 @@ node 'master_with_agent' inherits 'master' {
   }
 
   # Maestro demo compositions
-  class { 'maestro_demo': }
+  include maestro_demo
 
   include maestro::test::dependencies
 }
