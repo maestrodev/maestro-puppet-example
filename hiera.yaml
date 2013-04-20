@@ -6,5 +6,6 @@
 :hierarchy:
   - '%{::clientcert}'
   - '%{::custom_location}'
+  - 'pe_%{::puppet_enterprise}'
   - 'common'
   - 'default'
