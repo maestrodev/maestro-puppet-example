@@ -72,7 +72,21 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
       should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.13.*\.rpm$/)
     end
 
-    it 'should establish a proxy' do
+    it 'should generate valid nginx proxy configurations' do
+      content = catalogue.resource('file', "/etc/nginx/conf.d/maestro_app-upstream.conf").send(:parameters)[:content]
+      content.should_not be_nil
+      content.should =~ %r[localhost:8080]
+
+      content = catalogue.resource('file', "/etc/nginx/conf.d/jenkins_app-upstream.conf").send(:parameters)[:content]
+      content.should_not be_nil
+      content.should =~ %r[localhost:8181]
+
+      content = catalogue.resource('file', "/etc/nginx/conf.d/archiva_app-upstream.conf").send(:parameters)[:content]
+      content.should_not be_nil
+      content.should =~ %r[localhost:8082]
+    end
+
+    it 'should establish an nginx proxy' do
       should contain_class('maestro_nodes::nginxproxy').with(
                  :hostname => hostname,
                  :maestro_port => '8080',
