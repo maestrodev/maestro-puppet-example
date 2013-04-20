@@ -84,10 +84,10 @@ GIT
   ref: master
   sha: 0ba02de8f56963afc5ded6eeb57bc3073d800c35
   specs:
-    maestro_nodes (0.0.1)
+    maestrodev/maestro_nodes (1.1.1)
 
 DEPENDENCIES
-  maestro_nodes (>= 0)
+  maestrodev/maestro_nodes (>= 0)
   maestrodev/activemq (>= 0)
   maestrodev/android (>= 1.1.0)
   maestrodev/maestro_demo (>= 1.0.2)
