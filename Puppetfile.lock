@@ -82,6 +82,7 @@ GIT
 GIT
   remote: https://github.com/maestrodev/puppet-maestro_nodes.git
   ref: master
+  sha: 0ba02de8f56963afc5ded6eeb57bc3073d800c35
   specs:
     maestro_nodes (0.0.1)
 
