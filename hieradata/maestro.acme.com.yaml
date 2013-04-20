@@ -1,0 +1,7 @@
+# Use small memory settings for Vagrant
+maestro::maestro::initmemory: '32'
+maestro::maestro::maxmemory: '256'
+maestro::maestro::permsize: '32m'
+maestro::maestro::maxpermsize: '128m'
+maestro::agent::maxmemory: '64'
+archiva::maxmemory: '64'
