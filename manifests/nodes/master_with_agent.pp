@@ -12,4 +12,6 @@ node 'master_with_agent' inherits 'master' {
   include maestro_demo
 
   include maestro::test::dependencies
+
+  include maestro_nodes::agentrvm
 }
