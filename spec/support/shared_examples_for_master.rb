@@ -1,4 +1,4 @@
-shared_examples 'maestro master' do
+shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
 
   describe 'master' do
 
@@ -61,6 +61,14 @@ shared_examples 'maestro master' do
 
     it 'should have the right version' do
       should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.13.*\.rpm$/)
+    end
+
+    it 'should establish a proxy' do
+      should contain_class('maestro_nodes::nginxproxy').with(
+                 :hostname => hostname,
+                 :maestro_port => '8080',
+                 :ssl => false,
+             )
     end
   end
 end

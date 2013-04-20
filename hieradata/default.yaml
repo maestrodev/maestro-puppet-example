@@ -25,6 +25,7 @@ maestro::agent::agent_name: '%{hostname}'
 
 archiva::version: '1.3.6'
 activemq::max_memory: '64'
+jenkins::jenkins_prefix: '/jenkins'
 
 # Archiva repository
 maestro_nodes::repositories::host: 'localhost'
@@ -33,6 +34,12 @@ maestro_nodes::repositories::host: 'localhost'
 maestro_demo::archiva_host: 'localhost'
 maestro_demo::jenkins_host: 'localhost'
 maestro_demo::sonar_host: 'localhost'
+maestro_demo::sonar_port: 8083
+maestro_demo::sonar_context_path: '/sonar'
+maestro_demo::jenkins_context_path: '/jenkins'
+
+# Proxy configuration for nginx and Jetty
+maestro::maestro::jetty_forwarded: true
 
 # LDAP configuration
 #
@@ -71,3 +78,4 @@ maestro_demo::sonar_host: 'localhost'
 #     id: 'maestro-deploy'
 #     username: 'admin'
 #     password: 'admin1'
+

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'master' do
-  let(:facts) { centos_facts }
+  let(:facts) { centos_facts.merge({:fqdn => 'myhostname.acme.com'}) }
 
   it_behaves_like 'maestro master'
 

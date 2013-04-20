@@ -1,5 +1,6 @@
 forge 'http://forge.puppetlabs.com'
 
+mod 'maestro_nodes', :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
 mod 'maestrodev/maestro_demo', '>=1.0.2'
 mod 'puppetlabs/java',       '~>0.2.0'
 mod 'puppetlabs/mongodb'
@@ -10,6 +11,7 @@ mod 'puppetlabs/ntp'
 # Until released
 mod 'puppetlabs/nodejs',     :git => 'https://github.com/maestrodev/puppetlabs-nodejs.git'
 mod 'statsd',                :git => 'https://github.com/maestrodev/puppet-statsd.git'
+mod 'nginx',                 :git => 'https://github.com/jfryman/puppet-nginx.git'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'

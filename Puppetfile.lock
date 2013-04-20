@@ -55,6 +55,14 @@ FORGE
     puppetlabs/stdlib (3.2.0)
 
 GIT
+  remote: https://github.com/jfryman/puppet-nginx.git
+  ref: master
+  sha: e333b4cca0c348e30af8fa5cebeeb76b61866d2f
+  specs:
+    nginx ()
+      puppetlabs/stdlib (>= 0.1.6)
+ 
+GIT
   remote: https://github.com/maestrodev/puppet-statsd.git
   ref: master
   sha: 01b547a7ac82783c7669f47abd54ad05f544c3b5
@@ -71,10 +79,18 @@ GIT
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/stdlib (>= 2.0.0)
 
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_nodes.git
+  ref: master
+  specs:
+    maestro_nodes (0.0.1)
+
 DEPENDENCIES
+  maestro_nodes (>= 0)
   maestrodev/activemq (>= 0)
   maestrodev/android (>= 1.1.0)
   maestrodev/maestro_demo (>= 1.0.2)
+  nginx (>= 0)
   puppetlabs/java (~> 0.2.0)
   puppetlabs/mongodb (>= 0)
   puppetlabs/nodejs (>= 0)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'master_with_agent' do
-  let(:facts) { centos_facts.merge({:hostname => 'myhostname'}) }
+  let(:facts) { centos_facts.merge({:hostname => 'myhostname', :fqdn => 'myhostname.acme.com'}) }
 
   it { should contain_class('maestro::agent').with_agent_name('myhostname') }
 

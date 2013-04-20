@@ -22,6 +22,8 @@ node 'master_base' inherits 'parent' {
 
   class { 'maestro_nodes::database': }
 
+  include maestro_nodes::nginxproxy
+
   # ActiveMQ
   class { 'activemq': }
   class { 'activemq::stomp': }
@@ -35,7 +37,8 @@ node 'master_base' inherits 'parent' {
     port        => [
       $maestro::maestro::port,
       $activemq::stomp::port,
-      8140
+      8140,
+      80
     ],
     action      => 'accept',
   }
