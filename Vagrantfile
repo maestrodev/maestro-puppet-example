@@ -3,13 +3,7 @@ Vagrant::Config.run do |config|
   config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.3-x86_64-minimal"
   config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-minimal.box"
 
-  # Forward a port from the guest to the host, which allows for outside
-  # computers to access the VM, whereas host only networking does not.
-  config.vm.forward_port 8080, 8080
-  config.vm.forward_port 8082, 8082
-  config.vm.forward_port 8181, 8181
-  config.vm.forward_port 61613, 61613
-  config.vm.forward_port 5432, 5432
+  config.vm.network :hostonly, "192.168.33.30"
 
   config.vm.host_name = "maestro.acme.com"
 
