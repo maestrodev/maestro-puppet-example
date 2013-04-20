@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'librarian-puppet-maestrodev', '>=0.9.7.4'
 
