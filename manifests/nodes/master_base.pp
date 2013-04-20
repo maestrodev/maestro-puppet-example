@@ -20,7 +20,7 @@ node 'master_base' inherits 'parent' {
     enabled => hiera('maestro::maestro::enabled'),
   }
 
-  class { 'maestro_nodes::database': }
+  include maestro_nodes::database
 
   include maestro_nodes::nginxproxy
 
