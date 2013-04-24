@@ -8,7 +8,7 @@ mod 'maestrodev/maestro_demo',  :git => 'https://github.com/maestrodev/puppet-ma
 mod 'maestrodev/maestro_nodes', :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
 mod 'puppetlabs/nodejs',     :git => 'https://github.com/maestrodev/puppetlabs-nodejs.git'
 mod 'statsd',                :git => 'https://github.com/maestrodev/puppet-statsd.git'
-mod 'nginx',                 :git => 'https://github.com/jfryman/puppet-nginx.git'
+mod 'nginx',                 :git => 'https://github.com/jfryman/puppet-nginx.git', :ref => 'e333b4'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'
