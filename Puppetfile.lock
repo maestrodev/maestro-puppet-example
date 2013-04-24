@@ -11,24 +11,11 @@ FORGE
       maestrodev/wget (>= 1.0.0)
     maestrodev/git (1.0.0)
     maestrodev/jenkins (1.0.1)
-    maestrodev/maestro (1.1.0)
+    maestrodev/maestro (1.0.2)
       maestrodev/maven (>= 1.0.0)
       maestrodev/wget (>= 1.0.0)
-      puppetlabs/postgresql (= 2.0.1)
+      puppetlabs/postgresql (>= 2.0.1)
       puppetlabs/stdlib (>= 2.5.1)
-    maestrodev/maestro_demo (1.0.2)
-      maestrodev/maestro_nodes (>= 1.0.3)
-    maestrodev/maestro_nodes (1.1.0)
-      maestrodev/ant (>= 1.0.3)
-      maestrodev/archiva (~> 1.0)
-      maestrodev/git (>= 1.0.0)
-      maestrodev/jenkins (>= 0.0.0)
-      maestrodev/maestro (>= 1.0.0)
-      maestrodev/maven (>= 0.0.2)
-      maestrodev/rvm (>= 0.0.0)
-      maestrodev/sonar (~> 1.0)
-      maestrodev/ssh_keygen (~> 1.0)
-      maestrodev/svn (>= 0.0.0)
     maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
     maestrodev/rvm (1.0.0)
@@ -41,27 +28,56 @@ FORGE
     maestrodev/wget (1.1.0)
     puppetlabs/apt (1.1.0)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/firewall (0.2.1)
+    puppetlabs/firewall (0.3.0)
     puppetlabs/java (0.2.0)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
     puppetlabs/ntp (0.3.0)
       puppetlabs/stdlib (>= 0.1.6)
-    puppetlabs/postgresql (2.0.1)
+    puppetlabs/postgresql (2.2.1)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
-    puppetlabs/stdlib (3.2.0)
+      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
+      ripienaar/concat (>= 0.2.0)
+    puppetlabs/stdlib (4.0.2)
+    ripienaar/concat (0.2.0)
 
 GIT
   remote: https://github.com/jfryman/puppet-nginx.git
   ref: master
-  sha: e333b4cca0c348e30af8fa5cebeeb76b61866d2f
+  sha: 2e8a148852ac62c13fe81ca529d938f732d2b25f
   specs:
     nginx ()
       puppetlabs/stdlib (>= 0.1.6)
- 
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_demo.git
+  ref: master
+  sha: 540fed5e8020c06a3fa610fa91ac3119bd8e6e34
+  specs:
+    maestrodev/maestro_demo ()
+      maestrodev/android (>= 1.1.0)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maestro_nodes.git
+  ref: master
+  sha: d631ebc09726d91504bbea1e5222ae8ebc9a246e
+  specs:
+    maestrodev/maestro_nodes ()
+      maestrodev/activemq (>= 1.0.0)
+      maestrodev/ant (>= 1.0.3)
+      maestrodev/archiva (>= 1.0.0)
+      maestrodev/git (>= 1.0.0)
+      maestrodev/jenkins (>= 1.0.0)
+      maestrodev/maestro (>= 1.0.0)
+      maestrodev/maven (>= 0.0.2)
+      maestrodev/rvm (>= 1.0.0)
+      maestrodev/sonar (>= 1.0.0)
+      maestrodev/ssh_keygen (>= 1.0.0)
+      maestrodev/svn (>= 1.0.0)
+      puppetlabs/mongodb (>= 0.1.0)
+
 GIT
   remote: https://github.com/maestrodev/puppet-statsd.git
   ref: master
@@ -79,21 +95,11 @@ GIT
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/stdlib (>= 2.0.0)
 
-GIT
-  remote: https://github.com/maestrodev/puppet-maestro_nodes.git
-  ref: master
-  sha: b32dd07ef6b8b1d67a0a68f66d040eac5dbb55e8
-  specs:
-    maestrodev/maestro_nodes (1.1.1)
-
 DEPENDENCIES
+  maestrodev/maestro_demo (>= 0)
   maestrodev/maestro_nodes (>= 0)
-  maestrodev/activemq (>= 0)
-  maestrodev/android (>= 1.1.0)
-  maestrodev/maestro_demo (>= 1.0.2)
   nginx (>= 0)
   puppetlabs/java (~> 0.2.0)
-  puppetlabs/mongodb (>= 0)
   puppetlabs/nodejs (>= 0)
   puppetlabs/ntp (>= 0)
   statsd (>= 0)

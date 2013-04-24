@@ -7,5 +7,6 @@
 :hierarchy:
   - '%{::clientcert}'
   - '%{::custom_location}'
+  - '%{::maestro_node_type}'
   - 'pe_%{::puppet_enterprise}'
   - 'default'

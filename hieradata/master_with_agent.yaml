@@ -1,0 +1,6 @@
+---
+maestro_demo::archiva_host: '%{ipaddress}'
+maestro_demo::jenkins_host: '%{ipaddress}'
+
+classes:
+  - maestro_nodes::firewall::puppetmaster
