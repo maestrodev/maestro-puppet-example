@@ -22,7 +22,6 @@ node 'master' inherits 'parent' {
   include maestro_nodes::nginx::jenkins
 
   # Archiva
-  include maestro::repository
   include maestro_nodes::archivaserver
   include maestro_nodes::nginx::archiva
 
