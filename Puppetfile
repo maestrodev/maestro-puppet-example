@@ -4,11 +4,12 @@ mod 'puppetlabs/java',       '~>0.2.0'
 mod 'puppetlabs/ntp'
 
 # Until released
-mod 'maestrodev/maestro_demo',  :git => 'https://github.com/maestrodev/puppet-maestro_demo.git'
-mod 'maestrodev/maestro_nodes', :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
+mod 'maestro_nodes',         :git => 'https://github.com/maestrodev/puppet-maestro_nodes.git'
+mod 'maestro_demo',          :git => 'https://github.com/maestrodev/puppet-maestro_demo.git'
 mod 'puppetlabs/nodejs',     :git => 'https://github.com/maestrodev/puppetlabs-nodejs.git'
 mod 'statsd',                :git => 'https://github.com/maestrodev/puppet-statsd.git'
 mod 'nginx',                 :git => 'https://github.com/jfryman/puppet-nginx.git', :ref => 'e333b4'
+mod 'maestrodev/maestro',    :git => 'https://github.com/maestrodev/puppet-maestro.git'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'

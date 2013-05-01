@@ -11,11 +11,6 @@ FORGE
       maestrodev/wget (>= 1.0.0)
     maestrodev/git (1.0.0)
     maestrodev/jenkins (1.0.1)
-    maestrodev/maestro (1.0.2)
-      maestrodev/maven (>= 1.0.0)
-      maestrodev/wget (>= 1.0.0)
-      puppetlabs/postgresql (>= 2.0.1)
-      puppetlabs/stdlib (>= 2.5.1)
     maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
     maestrodev/rvm (1.0.0)
@@ -35,13 +30,11 @@ FORGE
       puppetlabs/apt (>= 0.0.2)
     puppetlabs/ntp (0.3.0)
       puppetlabs/stdlib (>= 0.1.6)
-    puppetlabs/postgresql (2.2.1)
+    puppetlabs/postgresql (2.0.1)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
-      ripienaar/concat (>= 0.2.0)
-    puppetlabs/stdlib (4.0.2)
-    ripienaar/concat (0.2.0)
+      puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
+    puppetlabs/stdlib (3.2.0)
 
 GIT
   remote: https://github.com/jfryman/puppet-nginx.git
@@ -52,11 +45,22 @@ GIT
       puppetlabs/stdlib (>= 0.1.6)
 
 GIT
+  remote: https://github.com/maestrodev/puppet-maestro.git
+  ref: master
+  sha: 020e7a4973342e2cc9d538ba6b671b0d66bdd31f
+  specs:
+    maestrodev/maestro (1.1.1)
+      maestrodev/maven (>= 1.0.0)
+      maestrodev/wget (>= 1.0.0)
+      puppetlabs/postgresql (= 2.0.1)
+      puppetlabs/stdlib (>= 2.5.1)
+
+GIT
   remote: https://github.com/maestrodev/puppet-maestro_demo.git
   ref: master
-  sha: 540fed5e8020c06a3fa610fa91ac3119bd8e6e34
+  sha: c6bcb36310056d3f0e9ac2dcf4855dcd88f2e144
   specs:
-    maestrodev/maestro_demo ()
+    maestro_demo ()
       maestrodev/android (>= 1.1.0)
 
 GIT
@@ -64,7 +68,7 @@ GIT
   ref: master
   sha: d631ebc09726d91504bbea1e5222ae8ebc9a246e
   specs:
-    maestrodev/maestro_nodes ()
+    maestro_nodes ()
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (>= 1.0.0)
@@ -96,8 +100,9 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 DEPENDENCIES
-  maestrodev/maestro_demo (>= 0)
-  maestrodev/maestro_nodes (>= 0)
+  maestro_demo (>= 0)
+  maestro_nodes (>= 0)
+  maestrodev/maestro (>= 0)
   nginx (>= 0)
   puppetlabs/java (~> 0.2.0)
   puppetlabs/nodejs (>= 0)
