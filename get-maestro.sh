@@ -103,6 +103,9 @@ maestro_nodes::repositories::host: '$MASTER'
 maestro_demo::archiva_host: '$MASTER'
 maestro_demo::jenkins_host: '$MASTER'
 maestro_demo::sonar_host: '$MASTER'
+
+classes:
+ - maestro_nodes::maestrofirewall
 EOF
 fi
 
