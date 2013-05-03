@@ -11,6 +11,11 @@ FORGE
       maestrodev/wget (>= 1.0.0)
     maestrodev/git (1.0.0)
     maestrodev/jenkins (1.0.1)
+    maestrodev/maestro (1.2.0)
+      maestrodev/maven (>= 1.0.0)
+      maestrodev/wget (>= 1.0.0)
+      puppetlabs/postgresql (= 2.0.1)
+      puppetlabs/stdlib (>= 2.5.1)
     maestrodev/maven (1.0.0)
       maestrodev/wget (>= 0.0.1)
     maestrodev/rvm (1.0.0)
@@ -45,22 +50,11 @@ GIT
       puppetlabs/stdlib (>= 0.1.6)
 
 GIT
-  remote: https://github.com/maestrodev/puppet-maestro.git
-  ref: master
-  sha: 020e7a4973342e2cc9d538ba6b671b0d66bdd31f
-  specs:
-    maestrodev/maestro (1.1.1)
-      maestrodev/maven (>= 1.0.0)
-      maestrodev/wget (>= 1.0.0)
-      puppetlabs/postgresql (= 2.0.1)
-      puppetlabs/stdlib (>= 2.5.1)
-
-GIT
   remote: https://github.com/maestrodev/puppet-maestro_demo.git
   ref: master
   sha: c6bcb36310056d3f0e9ac2dcf4855dcd88f2e144
   specs:
-    maestro_demo ()
+    maestrodev/maestro_demo ()
       maestrodev/android (>= 1.1.0)
 
 GIT
@@ -68,7 +62,7 @@ GIT
   ref: master
   sha: d631ebc09726d91504bbea1e5222ae8ebc9a246e
   specs:
-    maestro_nodes ()
+    maestrodev/maestro_nodes ()
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (>= 1.0.0)
@@ -100,9 +94,9 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 DEPENDENCIES
-  maestro_demo (>= 0)
-  maestro_nodes (>= 0)
-  maestrodev/maestro (>= 0)
+  maestrodev/maestro (>= 1.2.0)
+  maestrodev/maestro_demo (>= 0)
+  maestrodev/maestro_nodes (>= 0)
   nginx (>= 0)
   puppetlabs/java (~> 0.2.0)
   puppetlabs/nodejs (>= 0)
