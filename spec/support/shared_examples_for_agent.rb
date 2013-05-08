@@ -1,4 +1,4 @@
-shared_examples 'maestro agent' do
+shared_examples 'maestro agent' do |master = 'localhost'|
   USER_HOME="/var/local/maestro-agent"
 
   describe 'agent' do
@@ -14,13 +14,12 @@ shared_examples 'maestro agent' do
     it { should contain_package('java').with_name('java-1.6.0-openjdk-devel') }
 
     it 'should generate valid settings.xml' do
-      file = File.open(File.expand_path("basic_settings.xml", File.dirname(__FILE__)), "r")
-      expected = file.read
+      expected = File.read(File.expand_path("basic_settings.xml", File.dirname(__FILE__)))
       expected.should_not be_nil
 
       content = catalogue.resource('file', "#{USER_HOME}/.m2/settings.xml").send(:parameters)[:content]
       content.should_not be_nil
-      content.should eq(expected)
+      content.should eq(expected.gsub(/localhost/, master))
     end
 
     it 'should install the required packages for Selenium to run' do
