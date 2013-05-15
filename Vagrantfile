@@ -1,16 +1,7 @@
-Vagrant::Config.run do |config|
-
-  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.3-x86_64-minimal"
-  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-minimal.box"
-
-  config.vm.network :hostonly, "192.168.33.30"
-
-  config.vm.host_name = "maestro.acme.com"
-
-  vm_name = "Maestro example"
+# Common config for all vms
+def setup(config)
   vm_memory = ENV["MAESTRO_VM_MEMORY"] || 4096
   config.vm.customize ["modifyvm", :id, "--memory", vm_memory]
-  config.vm.customize ["modifyvm", :id, "--name", vm_name] # in order to export it with that name
   config.vm.customize ["modifyvm", :id, "--rtcuseutc", "on"] # use UTC clock https://github.com/mitchellh/vagrant/issues/912
 
   # use local git repo
@@ -30,9 +21,6 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "yum", "/var/cache/yum", yum, :owner => "root", :group => "root"
   end
 
-  abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
-  abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
-
   commit = `git rev-parse HEAD`
   puts "Provisioning using commit #{commit} on branch #{ENV['BRANCH']}"
 
@@ -45,5 +33,29 @@ Vagrant::Config.run do |config|
     # remount the shared folders as the right user so compositions don't fail
     config.vm.provision :shell, :path => "remount.sh", :args => "repo1 /var/local/maestro-agent/.m2/repository maestro_agent"
     config.vm.provision :shell, :path => "remount.sh", :args => "repo2 /var/lib/jenkins/.m2/repository jenkins"
+  end
+end
+
+Vagrant::Config.run do |config|
+
+  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.3-x86_64-minimal"
+  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-minimal.box"
+
+  abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
+  abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
+
+  config.vm.define :default do |config|
+    config.vm.network :hostonly, "192.168.33.30"
+    config.vm.host_name = "maestro.acme.com"
+    config.vm.customize ["modifyvm", :id, "--name", "Maestro example master"] # in order to export it with that name
+    setup(config)
+  end
+  if ENV['MAESTRO_SLAVE']
+    config.vm.define :slave do |config|
+      config.vm.network :hostonly, "192.168.33.31"
+      config.vm.host_name = "maestro-slave.acme.com"
+      config.vm.customize ["modifyvm", :id, "--name", "Maestro example slave"] # in order to export it with that name
+      setup(config)
+    end
   end
 end
