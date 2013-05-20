@@ -5,3 +5,6 @@ maestro::maestro::permsize: '32m'
 maestro::maestro::maxpermsize: '128m'
 maestro::agent::maxmemory: '64'
 archiva::maxmemory: '64'
+
+# enable JPDA debugging
+maestro::agent::enable_jpda: false
