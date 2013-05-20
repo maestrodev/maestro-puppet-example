@@ -40,4 +40,7 @@ node 'parent' {
 
     }
   }
+
+  # needed to gem install ruby-augeas in the RVM ruby
+  package { "augeas-devel": ensure => present}
 }
