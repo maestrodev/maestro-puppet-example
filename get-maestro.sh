@@ -30,8 +30,8 @@ function gem_version {
 set -e
 
 # Puppet repositories
-rpm -q puppetlabs-release-6-6.noarch || \
-  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-6.noarch.rpm
+rpm -q puppetlabs-release-6-7.noarch || \
+  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"

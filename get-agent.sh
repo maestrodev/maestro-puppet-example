@@ -16,22 +16,8 @@ function gem_version {
 set -e
 
 # Puppet repositories
-cat > /etc/yum.repos.d/puppetlabs.repo <<EOF
-[puppetlabs]
-name=Puppetlabs
-enabled=1
-baseurl=http://yum.puppetlabs.com/el/6/products/\$basearch
-gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
-gpgcheck=1
-EOF
-cat > /etc/yum.repos.d/epel.repo <<EOF
-[epel]
-name=epel
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=\$basearch
-enabled=1
-gpgcheck=0
-EOF
-
+rpm -q puppetlabs-release-6-7.noarch || \
+  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 
 # Puppet install and configuration
 gem_version PUPPET_VERSION puppet
