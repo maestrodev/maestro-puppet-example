@@ -69,7 +69,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     end
 
     it 'should have the right version' do
-      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.16.*\.rpm$/)
+      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4..*\.rpm$/)
     end
 
     it 'should generate valid nginx proxy configurations' do
