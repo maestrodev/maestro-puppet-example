@@ -54,8 +54,8 @@ maestro::maestro::jetty_forwarded: true
 # Memory settings
 #maestro::maestro::initmemory: '32'
 #maestro::maestro::maxmemory: '256'
-#maestro::maestro::permsize: '32m'
-#maestro::maestro::maxpermsize: '128m'
+#maestro::maestro::permsize: '384m'
+#maestro::maestro::maxpermsize: '384m'
 activemq::max_memory: '64'
 #archiva::maxmemory: '64'
 #maestro::agent::maxmemory: '64'
