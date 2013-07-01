@@ -13,7 +13,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     it { should_not contain_file('/root/.mavenrc') }
 
     it { should contain_class('maestro') }
-    it { should contain_package('java').with_name('java-1.6.0-openjdk') }
+    it { should contain_package('java').with_name('java-1.6.0-openjdk-devel') }
     it { should contain_class('activemq').with_max_memory('64') }
 
     it { should contain_service('maestro').with_ensure('running') }
@@ -69,7 +69,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     end
 
     it 'should have the right version' do
-      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.13.*\.rpm$/)
+      should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4.16.*\.rpm$/)
     end
 
     it 'should generate valid nginx proxy configurations' do
