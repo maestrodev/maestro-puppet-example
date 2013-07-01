@@ -24,6 +24,16 @@ The puppet process can also be run in the background by setting the environment 
 curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
 ```
 
+### Other parameters
+
+The `get-maestro.sh` script accepts the following parameters in order
+
+* username
+* password
+* node type [`master`, `master_with_agent`, or any of the other puppet nodes defined under `manifests/nodes`]
+* branch [`master`, `development`, or any other git branch]
+
+
 ### Setting up a Maestro server without any of the other servers (Maestro Agent, Jenkins, Archiva, etc)
 
 You can install the Maestro server without any of the servers needed by the default examples. To do this, simply specify
