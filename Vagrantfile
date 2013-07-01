@@ -12,8 +12,8 @@ def setup(config)
     src = File.expand_path("~/.maestro/src")
     File.exists?(File.expand_path(src)) or Dir.mkdir(src)
     config.vm.share_folder "src", "/usr/local/src", src, :owner => "root", :group => "root"
-    config.vm.share_folder "repo1", "/var/local/maestro-agent/.m2/repository", File.expand_path("~/.m2/repository")
-    config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository")
+    config.vm.share_folder "repo1", "/var/local/maestro-agent/.m2/repository", File.expand_path("~/.m2/repository"), :create => true, :extra => "dmode=777,fmode=666"
+    config.vm.share_folder "repo2", "/var/lib/jenkins/.m2/repository", File.expand_path("~/.m2/repository"), :create => true, :extra => "dmode=777,fmode=666"
     # keep yum cache in host
     config.vm.provision :shell, :inline => "sed -i 's/keepcache=0/keepcache=1/' /etc/yum.conf"
     yum = File.expand_path("~/.maestro/yum")
@@ -27,12 +27,6 @@ def setup(config)
   config.vm.provision :shell do |shell|
     shell.path = "get-maestro.sh"
     shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
-  end
-
-  if ENV["MAESTRO_CACHE"]
-    # remount the shared folders as the right user so compositions don't fail
-    config.vm.provision :shell, :path => "remount.sh", :args => "repo1 /var/local/maestro-agent/.m2/repository maestro_agent"
-    config.vm.provision :shell, :path => "remount.sh", :args => "repo2 /var/lib/jenkins/.m2/repository jenkins"
   end
 end
 
