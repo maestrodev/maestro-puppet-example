@@ -32,8 +32,8 @@ end
 
 Vagrant::Config.run do |config|
 
-  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.3-x86_64-minimal"
-  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.3/CentOS-6.3-x86_64-minimal.box"
+  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.4-x86_64-minimal"
+  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.4/CentOS-6.4-x86_64-minimal.box"
 
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
