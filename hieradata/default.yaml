@@ -73,32 +73,38 @@ activemq::max_memory: '64'
 
 # Update plugin and versions if needed
 #maestro::plugins::plugins:
-#  'maestro-bamboo-plugin':
-#    version: '1.1'
-#  'maestro-continuum-plugin':
-#    version: '1.6'
-#  'maestro-cucumber-plugin':
-#    version: '1.0'
-#  'maestro-flowdock-plugin':
-#    version: '1.0'
-#  'maestro-fog-plugin':
-#    version: '1.5'
-#  'maestro-irc-plugin':
-#    version: '1.2'
-#  'maestro-jenkins-plugin':
-#    version: '1.4.3'
-#  'maestro-jira-plugin':
-#    version: '1.0'
-#  'maestro-puppet-plugin':
-#    version: '1.0'
-#  'maestro-rightscale-plugin':
-#    version: '1.0'
-#  'maestro-rpm-plugin':
-#    version: '1.0'
-#  'maestro-scm-plugin':
-#    version: '1.0'
-#  'maestro-ssh-plugin':
-#    version: '1.0'
+  'maestro-bamboo-plugin':
+    version: '1.1'
+  'maestro-continuum-plugin':
+    version: '1.6'
+  'maestro-cucumber-plugin':
+    version: '1.0'
+  'maestro-flowdock-plugin':
+    version: '1.0'
+  'maestro-fog-plugin':
+    version: '1.6'
+  'maestro-gitblit-plugin':
+    version: '1.0'
+    dir: 'com/maestrodev/maestro/plugins'
+  'maestro-irc-plugin':
+    version: '1.2'
+  'maestro-jenkins-plugin':
+    version: '2.1.0'
+  'maestro-jira-plugin':
+    version: '1.0'
+  'maestro-puppet-plugin':
+    version: '1.0'
+  'maestro-rightscale-plugin':
+    version: '1.0'
+  'maestro-rpm-plugin':
+    version: '1.0'
+  'maestro-scm-plugin':
+    version: '1.0'
+  'maestro-ssh-plugin':
+    version: '1.0'
+  'maestro-sonar-plugin':
+    version: '1.0.2'
+    dir: 'com/maestrodev/maestro/plugins'
 
 # Using an existing Maven repository manager for Maven builds
 # maestro_nodes::repositories::maven_mirrors:
