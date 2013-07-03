@@ -56,6 +56,11 @@ install_gem puppet $PUPPET_VERSION
 gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
 install_gem librarian-puppet-maestrodev $LIBRARIAN_VERSION
 
+if [ -z `facter fqdn` ]; then
+  echo "Unable to find fact 'fqdn', please check your networking configuration"
+  exit 1
+fi
+
 # fetch Puppet modules with librarian puppet
 echo "Fetching Puppet modules"
 cd /etc/puppet && librarian-puppet install --verbose

@@ -90,6 +90,23 @@ Where *AGENTHOSTNAME* is the name of the host where you wish to install the agen
 
 Then, simply follow standard agent installation instructions on the agent host.
 
+Troubleshooting
+===============
+
+### Issues with hostnames
+
+You might receive the following error:
+
+```Unable to find fact 'fqdn', please check your networking configuration```
+
+This should be corrected by ensuring that `hostname` and `hostname -d` have
+the expected values. This will usually involve adjusting
+`/etc/sysconfig/network` on CentOS (and either rebooting or changing
+temporarily with `hostname` as well). You may also need to change
+`/etc/resolv.conf` and/or `/etc/hosts`.
+
+Problems can also be encountered if the hostname or domain name includes
+uppercase characters. Use lowercase for more predictable results.
 
 Customizing
 ===========
