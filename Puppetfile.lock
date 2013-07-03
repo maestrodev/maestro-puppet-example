@@ -20,7 +20,7 @@ FORGE
       maestrodev/android (>= 1.1.0)
       maestrodev/maestro (>= 1.2.0)
       puppetlabs/postgresql (= 2.0.1)
-    maestrodev/maestro_nodes (1.2.4)
+    maestrodev/maestro_nodes (1.2.5)
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (>= 1.0.0)
@@ -89,7 +89,7 @@ GIT
 
 DEPENDENCIES
   maestrodev/maestro_demo (>= 0)
-  maestrodev/maestro_nodes (>= 1.2.3)
+  maestrodev/maestro_nodes (>= 1.2.5)
   nginx (>= 0)
   puppetlabs/nodejs (>= 0)
   statsd (>= 0)

@@ -14,13 +14,13 @@ node 'master' inherits 'parent' {
   include maestro_nodes::repositories
 
   # Maestro
-  include maestro_nodes::maestroserver
+  include maestro_nodes::nginx::maestroservernginx
 
   # Jenkins
-  include maestro_nodes::jenkinsserver
+  include maestro_nodes::nginx::jenkinsservernginx
 
   # Archiva
-  include maestro_nodes::archivaserver
+  include maestro_nodes::nginx::archivaservernginx
 
   # Maestro demo compositions
   include maestro_demo
