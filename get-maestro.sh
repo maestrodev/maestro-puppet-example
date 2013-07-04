@@ -111,6 +111,7 @@ maestro_demo::sonar_host: '$MASTER'
 
 classes:
  - maestro_nodes::maestrofirewall
+ - maestro_nodes::firewall::puppetmaster
 EOF
 fi
 
