@@ -3,6 +3,7 @@ Dir["./spec/support/**/*.rb"].each {|f| require f}
 require 'puppetlabs_spec_helper/module_spec_helper'
 
 RSpec.configure do |c|
+  c.include MaestroNodes::CentOS # set centos_facts as default facts
   c.manifest_dir = './manifests'
   c.module_path = './modules'
 

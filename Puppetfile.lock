@@ -20,7 +20,7 @@ FORGE
       maestrodev/android (>= 1.1.0)
       maestrodev/maestro (>= 1.2.0)
       puppetlabs/postgresql (= 2.0.1)
-    maestrodev/maestro_nodes (1.2.5)
+    maestrodev/maestro_nodes (1.2.6)
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (>= 1.0.0)
@@ -46,7 +46,7 @@ FORGE
     maestrodev/ssh_keygen (1.0.0)
     maestrodev/svn (1.1.0)
     maestrodev/wget (1.2.0)
-    puppetlabs/apt (1.1.1)
+    puppetlabs/apt (1.2.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/firewall (0.3.1)
     puppetlabs/java (0.3.0)
@@ -60,7 +60,7 @@ FORGE
       puppetlabs/firewall (>= 0.0.4)
       puppetlabs/stdlib (< 4.0.0, >= 3.2.0)
     puppetlabs/stdlib (3.2.0)
-    stahnma/epel (0.0.3)
+    stahnma/epel (0.0.5)
 
 GIT
   remote: https://github.com/jfryman/puppet-nginx.git
