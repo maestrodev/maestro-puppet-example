@@ -11,7 +11,7 @@ FORGE
       maestrodev/wget (>= 1.0.0)
     maestrodev/git (1.0.1)
     maestrodev/jenkins (1.0.1)
-    maestrodev/maestro (1.2.9)
+    maestrodev/maestro (1.2.11)
       maestrodev/maven (>= 1.0.0)
       maestrodev/wget (>= 1.0.0)
       puppetlabs/postgresql (= 2.0.1)
@@ -20,7 +20,7 @@ FORGE
       maestrodev/android (>= 1.1.0)
       maestrodev/maestro (>= 1.2.0)
       puppetlabs/postgresql (= 2.0.1)
-    maestrodev/maestro_nodes (1.2.6)
+    maestrodev/maestro_nodes (1.2.9)
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
       maestrodev/archiva (>= 1.0.0)
@@ -31,6 +31,7 @@ FORGE
       maestrodev/rvm (>= 1.0.0)
       maestrodev/sonar (>= 1.0.0)
       maestrodev/ssh_keygen (>= 1.0.0)
+      maestrodev/statsd (>= 0.0.0)
       maestrodev/svn (>= 1.0.0)
       puppetlabs/java (>= 0.3.0)
       puppetlabs/mongodb (>= 0.1.0)
@@ -44,16 +45,18 @@ FORGE
       maestrodev/wget (>= 0.0.1)
       puppetlabs/stdlib (>= 2.3.0)
     maestrodev/ssh_keygen (1.0.0)
+    maestrodev/statsd (1.0.3)
+      puppetlabs/nodejs (>= 0.2.0)
     maestrodev/svn (1.1.0)
     maestrodev/wget (1.2.0)
     puppetlabs/apt (1.2.0)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/firewall (0.3.1)
+    puppetlabs/firewall (0.4.0)
     puppetlabs/java (0.3.0)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
-    puppetlabs/ntp (0.3.0)
+    puppetlabs/ntp (1.0.0)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/postgresql (2.0.1)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
@@ -71,19 +74,11 @@ GIT
       puppetlabs/stdlib (>= 0.1.6)
 
 GIT
-  remote: https://github.com/maestrodev/puppet-statsd.git
+  remote: https://github.com/puppetlabs/puppetlabs-nodejs.git
   ref: master
-  sha: 01b547a7ac82783c7669f47abd54ad05f544c3b5
+  sha: 6223d95ffd6e2955de5f86d26090cf9c430fb205
   specs:
-    statsd (1.0.2)
-
-GIT
-  remote: https://github.com/maestrodev/puppetlabs-nodejs.git
-  ref: master
-  sha: f32225dc76918d62efcfa1340d5b2658c70a5e59
-  specs:
-    puppetlabs/nodejs (0.2.0)
-      maestrodev/wget (>= 0.0.0)
+    puppetlabs/nodejs (0.2.1)
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/stdlib (>= 2.0.0)
 
@@ -92,5 +87,4 @@ DEPENDENCIES
   maestrodev/maestro_nodes (>= 1.2.5)
   nginx (>= 0)
   puppetlabs/nodejs (>= 0)
-  statsd (>= 0)
 

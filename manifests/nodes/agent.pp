@@ -5,7 +5,6 @@ node 'agent' inherits 'parent' {
   include wget
 
   # Maestro agent
-  include maestro_nodes::agent
   include maestro::test::dependencies
   include maestro_nodes::agentrvm
 }
