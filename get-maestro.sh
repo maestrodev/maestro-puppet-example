@@ -72,17 +72,20 @@ if [ -z "$MAESTRO_ENABLED" ]; then
 fi
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
-puppet apply -e "augeas { 'puppet':
-  context => '/files/etc/puppet/puppet.conf',
-  changes => [
-    \"set agent/server $MASTER\",
-    \"set agent/certname $MASTER\",
-    \"set agent/pluginsync true\",
-    \"set master/autosign true\",
-  ],
-  incl => '/etc/puppet/puppet.conf',
-  lens => 'Puppet.lns',
-}"
+puppet apply -e "
+  augeas { 'puppet':
+    context => '/files/etc/puppet/puppet.conf',
+    changes => [
+      'set master/autosign true',
+    ],
+    incl => '/etc/puppet/puppet.conf',
+    lens => 'Puppet.lns',
+  }
+
+  host { 'puppet':
+    ensure => present,
+    ip     => '127.0.0.1',
+  }"
 
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata

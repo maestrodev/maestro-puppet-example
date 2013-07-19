@@ -36,7 +36,6 @@ puppet apply -e "augeas { 'puppet':
   context => '/files/etc/puppet/puppet.conf',
   changes => [
     \"set agent/server $MASTER_HOSTNAME\",
-    \"set agent/pluginsync true\",
   ],
   incl => '/etc/puppet/puppet.conf',
   lens => 'Puppet.lns',
