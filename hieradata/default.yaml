@@ -25,7 +25,7 @@ maestro::maestro::agent_auto_activate: true
 maestro::maestro::enabled: true
 maestro::maestro::metrics_enabled: true
 
-maestro::agent::agent_version: '1.11.0'
+maestro::agent::agent_version: '1.12.0'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
