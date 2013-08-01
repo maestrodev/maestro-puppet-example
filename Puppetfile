@@ -2,8 +2,8 @@ forge 'http://forge.puppetlabs.com'
 
 mod 'maestrodev/maestro_nodes', '>=1.2.5'
 mod 'maestrodev/maestro_demo'
-mod 'puppetlabs/nodejs',        :git => 'https://github.com/puppetlabs/puppetlabs-nodejs.git'
-mod 'nginx',                    :git => 'https://github.com/jfryman/puppet-nginx.git', :ref => 'e333b4'
+mod 'puppetlabs/nodejs', '>=0.3.0'
+mod 'jfryman/nginx'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'
