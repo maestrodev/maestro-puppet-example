@@ -42,7 +42,7 @@ if [ ! -d /etc/puppet/.git ]
   git clone https://github.com/maestrodev/maestro-puppet-example.git /etc/puppet
   cd /etc/puppet && git checkout $BRANCH
 else
-  cd /etc/puppet && git pull && git checkout $BRANCH
+  cd /etc/puppet && git fetch && git checkout $BRANCH && git rebase origin/$BRANCH
 fi
 
 echo "Installing librarian-puppet-maestrodev $LIBRARIAN_VERSION"
