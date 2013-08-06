@@ -1,11 +1,6 @@
 # Common config for all vms
 def setup(config)
-  vm_memory = ENV["MAESTRO_VM_MEMORY"] || 4096
-  config.vm.customize ["modifyvm", :id, "--memory", vm_memory]
   config.vm.customize ["modifyvm", :id, "--rtcuseutc", "on"] # use UTC clock https://github.com/mitchellh/vagrant/issues/912
-
-  # use local git repo
-  config.vm.share_folder "puppet", "/etc/puppet", ".", :create => true, :owner => "puppet", :group => "puppet"
 
   # Keep downloaded packages in host for faster creation of new vms
   if ENV["MAESTRO_CACHE"]
@@ -20,14 +15,18 @@ def setup(config)
     File.exists?(File.expand_path(yum)) or Dir.mkdir(yum)
     config.vm.share_folder "yum", "/var/cache/yum", yum, :owner => "root", :group => "root"
   end
+end
+
+def setup_master(config)
+  setup(config)
+  vm_memory = ENV["MAESTRO_VM_MEMORY"] || 4096
+  config.vm.customize ["modifyvm", :id, "--memory", vm_memory]
+
+  # use local git repo
+  config.vm.share_folder "puppet", "/etc/puppet", ".", :create => true, :owner => "puppet", :group => "puppet"
 
   commit = `git rev-parse HEAD`
   puts "Provisioning using commit #{commit} on branch #{ENV['BRANCH']}"
-
-  config.vm.provision :shell do |shell|
-    shell.path = "get-maestro.sh"
-    shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
-  end
 end
 
 Vagrant::Config.run do |config|
@@ -41,15 +40,30 @@ Vagrant::Config.run do |config|
   config.vm.define :default do |config|
     config.vm.network :hostonly, "192.168.33.30"
     config.vm.host_name = "maestro.acme.com"
-    config.vm.customize ["modifyvm", :id, "--name", "Maestro example master"] # in order to export it with that name
-    setup(config)
+    setup_master(config)
+    config.vm.provision :shell do |shell|
+      shell.path = "get-maestro.sh"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
+    end
   end
   if ENV['MAESTRO_SLAVE']
     config.vm.define :slave do |config|
       config.vm.network :hostonly, "192.168.33.31"
       config.vm.host_name = "maestro-slave.acme.com"
-      config.vm.customize ["modifyvm", :id, "--name", "Maestro example slave"] # in order to export it with that name
-      setup(config)
+      setup_master(config)
+      config.vm.provision :shell do |shell|
+        shell.path = "get-maestro.sh"
+        shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
+      end
+    end
+  end
+  config.vm.define :agent do |config|
+    config.vm.network :hostonly, "192.168.33.40"
+    config.vm.host_name = "maestro-agent-01.acme.com"
+    setup(config)
+    config.vm.provision :shell do |shell|
+      shell.path = "get-agent.sh"
+      shell.args = "maestro.acme.com 192.168.33.30"
     end
   end
 end
