@@ -16,7 +16,8 @@ function gem_version {
 set -e
 
 # Puppet repositories
-rpm -q puppetlabs-release-6-7.noarch || \
+# TODO installs 2 versions if previous already exists
+rpm -q puppetlabs-release-6-7 || \
   rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 
 # Puppet install and configuration
