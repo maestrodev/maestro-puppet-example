@@ -7,12 +7,12 @@ maestro::repository::username: 'your_username'
 maestro::repository::password: 'CHANGEME'
 maestro_nodes::agent::repo:
   url: 'https://repo.maestrodev.com/archiva/repository/all'
-  username: '%{maestro::repository::username}'
-  password: '%{maestro::repository::password}'
+  username: 'your_username'
+  password: 'CHANGEME'
 maestro_nodes::maestroserver::repo:
   url: 'https://repo.maestrodev.com/archiva/repository/all'
-  username: '%{maestro::repository::username}'
-  password: '%{maestro::repository::password}'
+  username: 'your_username'
+  password: 'CHANGEME'
 
 
 maestro::maestro::version: '4.16.0'
