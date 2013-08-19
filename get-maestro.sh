@@ -99,6 +99,15 @@ if [ ! -e /etc/puppet/hieradata/common.yaml ]
 maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
 
+maestro_nodes::agent::repo:
+  url: 'https://repo.maestrodev.com/archiva/repository/all'
+  username: '$USERNAME'
+  password: '$PASSWORD'
+maestro_nodes::maestroserver::repo:
+  url: 'https://repo.maestrodev.com/archiva/repository/all'
+  username: '$USERNAME'
+  password: '$PASSWORD'
+
 # Whether to start Maestro now or not (useful for creating images)
 maestro::maestro::enabled: $MAESTRO_ENABLED
 
