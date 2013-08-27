@@ -47,7 +47,7 @@ else
 fi
 
 echo "Installing librarian-puppet-maestrodev $LIBRARIAN_VERSION"
-yum -y install rubygems rubygem-json
+yum -y install rubygems ruby-json
 # install puppet with the version locked in gemfile. Installing before
 # librarian-puppet ensures we get the correct version here and in yum
 gem_version FACTER_VERSION facter
