@@ -2,10 +2,9 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
 
   describe 'master' do
 
-    # not working with puppet rspec yet
-    # it 'should honor hiera configuration' do
-    #   should contain_package('maestro').with_version('4.10.0')
-    # end
+    it 'should honor hiera configuration' do
+      should contain_class('maestro::maestro').with_version(maestro_version)
+    end
 
     it { should contain_user('maestro') }
     it { should contain_group('maestro') }
@@ -93,5 +92,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
                  :ssl => false,
              )
     end
+
+    it { should contain_class('maestro_nodes::maestroserver').with_repo(repo) }
   end
 end
