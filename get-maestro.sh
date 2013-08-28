@@ -66,6 +66,15 @@ fi
 echo "Fetching Puppet modules"
 cd /etc/puppet && librarian-puppet install --verbose
 
+# disable yum priorities, or fails to install puppet in Amazon AMI
+if [ -e /etc/yum/pluginconf.d/priorities.conf ]
+  then
+  cat > /etc/yum/pluginconf.d/priorities.conf <<EOF
+[main]
+enabled = 0
+EOF
+fi
+
 # Puppet install and configuration
 MASTER=`hostname`
 if [ -z "$MAESTRO_ENABLED" ]; then
