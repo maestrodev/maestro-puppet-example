@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provider :aws do |aws, override|
-    config.vm.box = "dummy"
+    override.vm.box = "dummy"
     aws.name = "maestro-puppet-example-#{ENV['USER']}"
     aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
     aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
@@ -87,7 +87,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provider :rackspace do |rs, override|
-    config.vm.box = "dummy"
+    override.vm.box = "dummy"
     rs.username = ENV['RACKSPACE_USERNAME']
     rs.api_key  = ENV['RACKSPACE_API_KEY']
     rs.flavor   = /4GB/
