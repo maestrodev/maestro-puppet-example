@@ -15,7 +15,7 @@ maestro_nodes::maestroserver::repo:
   password: 'CHANGEME'
 
 
-maestro::maestro::version: '4.16.0'
+maestro::maestro::version: '4.17.2'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::admin_password: 'admin1'
 maestro::maestro::master_password: 'maestro'
@@ -25,7 +25,7 @@ maestro::maestro::agent_auto_activate: true
 maestro::maestro::enabled: true
 maestro::maestro::metrics_enabled: true
 
-maestro::agent::agent_version: '1.12.0'
+maestro::agent::agent_version: '2.0.4'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
@@ -73,66 +73,66 @@ activemq::max_memory: '64'
 
 # Update plugin and versions if needed
 maestro::plugins::plugins:
-  #'maestro-ant-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
-  #'maestro-archive-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
+  'maestro-ant-plugin':
+    version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
+  'maestro-archive-plugin':
+    version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-bamboo-plugin':
     version: '1.1'
   'maestro-continuum-plugin':
-    version: '1.6'
+    version: '1.6.1'
   'maestro-cucumber-plugin':
-    version: '1.0'
+    version: '1.0.1'
   'maestro-flowdock-plugin':
-    version: '1.0'
+    version: '1.1'
   'maestro-fog-plugin':
-    version: '1.6'
-  #'maestro-git-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
+    version: '1.10'
+    dir: 'com/maestrodev/maestro/plugins'
+  'maestro-git-plugin':
+    version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-gitblit-plugin':
     version: '1.0'
     dir: 'com/maestrodev/maestro/plugins'
-  #'maestro-httputils-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
+  'maestro-httputils-plugin':
+    version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-irc-plugin':
     version: '1.2'
   'maestro-jenkins-plugin':
-    version: '2.1.0'
+    version: '2.1.2'
   'maestro-jira-plugin':
     version: '1.0'
-  #'maestro-maven-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
+  'maestro-maven-plugin':
+    version: '1.1.1'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-puppet-plugin':
-    version: '1.0'
-  #'maestro-rake-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
+    version: '1.2'
+  'maestro-rake-plugin':
+    version: '1.2'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-rightscale-plugin':
     version: '1.0'
   'maestro-rpm-plugin':
-    version: '1.0'
+    version: '1.1'
   'maestro-scm-plugin':
     version: '1.0'
-  #'maestro-shell-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
+  'maestro-shell-plugin':
+    version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-ssh-plugin':
     version: '1.0'
   'maestro-sonar-plugin':
     version: '1.0.2'
     dir: 'com/maestrodev/maestro/plugins'
-  #'maestro-svn-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
-  #'maestro-tomcat-plugin':
-    #version: '1.0'
-    #dir: 'com/maestrodev/maestro/plugins'
-
+  'maestro-svn-plugin':
+    version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
+  'maestro-tomcat-plugin':
+    version: '1.2'
+    dir: 'com/maestrodev/maestro/plugins'
 
 # Using an existing Maven repository manager for Maven builds
 # maestro_nodes::repositories::maven_mirrors:

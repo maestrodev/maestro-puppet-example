@@ -30,7 +30,8 @@ function gem_version {
 set -e
 
 # Puppet repositories
-rpm -q puppetlabs-release-6-7.noarch || \
+# TODO installs 2 versions if previous already exists
+rpm -q puppetlabs-release-6-7 || \
   rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 
 # get the puppet configuration skeleton
@@ -65,6 +66,15 @@ fi
 echo "Fetching Puppet modules"
 cd /etc/puppet && librarian-puppet install --verbose
 
+# disable yum priorities, or fails to install puppet in Amazon AMI
+if [ -e /etc/yum/pluginconf.d/priorities.conf ]
+  then
+  cat > /etc/yum/pluginconf.d/priorities.conf <<EOF
+[main]
+enabled = 0
+EOF
+fi
+
 # Puppet install and configuration
 MASTER=`hostname`
 if [ -z "$MAESTRO_ENABLED" ]; then
@@ -97,6 +107,15 @@ if [ ! -e /etc/puppet/hieradata/common.yaml ]
 # MaestroDev credentials
 maestro::repository::username: '$USERNAME'
 maestro::repository::password: '$PASSWORD'
+
+maestro_nodes::agent::repo:
+  url: 'https://repo.maestrodev.com/archiva/repository/all'
+  username: '$USERNAME'
+  password: '$PASSWORD'
+maestro_nodes::maestroserver::repo:
+  url: 'https://repo.maestrodev.com/archiva/repository/all'
+  username: '$USERNAME'
+  password: '$PASSWORD'
 
 # Whether to start Maestro now or not (useful for creating images)
 maestro::maestro::enabled: $MAESTRO_ENABLED

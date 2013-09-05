@@ -7,7 +7,8 @@ describe 'agent' do
     :maestro_node_type => 'agent',
     :maestro_host => 'maestro.maestrodev.net'
   }) }
-  
+
+  include_context :maestro
   it_behaves_like 'maestro agent', 'maestro.maestrodev.net'
   
   it do should contain_class('maestro::agent').with(
