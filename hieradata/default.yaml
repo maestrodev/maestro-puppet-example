@@ -15,7 +15,7 @@ maestro_nodes::maestroserver::repo:
   password: 'CHANGEME'
 
 
-maestro::maestro::version: '4.17.2'
+maestro::maestro::version: '4.17.3'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::admin_password: 'admin1'
 maestro::maestro::master_password: 'maestro'
