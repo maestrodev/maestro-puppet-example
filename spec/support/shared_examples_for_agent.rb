@@ -1,5 +1,6 @@
 shared_examples 'maestro agent' do |master = 'localhost'|
   let(:user_home) { "/var/local/maestro-agent" }
+  let(:agent_maxmem) { "128" }
 
   describe 'agent' do
 
@@ -20,6 +21,15 @@ shared_examples 'maestro agent' do |master = 'localhost'|
 
     it 'should install the required packages for Selenium to run' do
       should contain_package('xorg-x11-server-Xvfb')
+    end
+
+    it "modify wrapper.conf correctly" do
+      augeas_resource_name = "maestro-agent-wrapper-maxmemory"
+      should contain_augeas(augeas_resource_name)
+  
+      params = catalogue.resource('augeas', augeas_resource_name).send(:parameters)
+      params[:changes].should == "set wrapper.java.maxmemory #{agent_maxmem}"
+      params[:incl].should == "/usr/local/maestro-agent/conf/wrapper.conf"
     end
 
     it { should contain_class('maestro_nodes::agent').with_repo(repo) }
