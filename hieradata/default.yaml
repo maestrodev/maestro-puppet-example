@@ -77,7 +77,7 @@ maestro::plugins::plugins:
     version: '1.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-archive-plugin':
-    version: '1.1'
+    version: '1.1.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-bamboo-plugin':
     version: '1.1'
