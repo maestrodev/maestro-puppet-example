@@ -5,7 +5,7 @@ Scripts and Puppet manifests to easily install Maestro and related services (jen
 
 Nodes defined
 =============
-There are a few useful nodes defined for a Maestro master server, agent node and maestro master+agent node. See the `manifests/nodes` files for details.
+There are a few useful nodes defined for a Maestro master server, agent node and maestro master+agent node. See the `manifests/nodes/default` files for details.
 Includes classes defined in [Maestro-Nodes](https://github.com/maestrodev/puppet-maestro_nodes) for reusability.
 
 Installing in a fresh machine
@@ -30,7 +30,7 @@ The `get-maestro.sh` script accepts the following parameters in order
 
 * username
 * password
-* node type [`master`, `master_with_agent`, or any of the other puppet nodes defined under `manifests/nodes`]
+* node type [`master`, `master_with_agent`, or any of the other puppet nodes defined under `manifests/nodes/default`]
 * branch [`master`, `development`, or any other git branch]
 
 
@@ -142,7 +142,7 @@ Customizing
 ===========
 You can customize the installation using Puppet 3 Hiera's capabilities. The default configuration variables are in `/etc/puppet/hieradata/default.yaml`, and can be customized in `/etc/puppet/hieradata/common.yaml` for all nodes or `/etc/puppet/hieradata/$clientcert.yaml` for node specific configuration as defined in `hiera.yaml`.
 
-You can add your own Puppet nodes to `/etc/puppet/manifests/nodes`.
+You can add your own Puppet nodes to `/etc/puppet/manifests/nodes` and they will take precedence over those defined in `/etc/puppet/manifests/nodes/default` and will not be overwritten on upgrades.
 
 Building
 ========

@@ -137,10 +137,13 @@ classes:
 EOF
 fi
 
-# create nodes
-cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
+# create node if it doesn't exist already
+if [ ! -e /etc/puppet/manifests/nodes/$MASTER.pp ]
+  then
+  cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
 node "$MASTER" inherits "$NODE_TYPE" {}
 EOF
+fi
 
 # enable puppet master and disable puppet agent periodic runs
 puppet resource Service puppetmaster ensure=running enable=true
