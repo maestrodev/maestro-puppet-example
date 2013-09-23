@@ -100,7 +100,8 @@ maestro::plugins::plugins:
     version: '1.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-irc-plugin':
-    version: '1.2'
+    version: '1.2.1'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-jenkins-plugin':
     version: '2.1.2'
   'maestro-jira-plugin':
