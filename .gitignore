@@ -16,3 +16,4 @@ manifests/nodes/maestro-slave.acme.com.pp
 puppet.conf
 .vagrant
 *.rpmnew
+/pkg

@@ -9,4 +9,5 @@ group :build do
   gem 'puppet-lint'
   gem 'puppetlabs_spec_helper'
   # gem 'rspec-hiera-puppet'
+  gem 'puppet-blacksmith'
 end
