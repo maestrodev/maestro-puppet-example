@@ -14,7 +14,7 @@ FORGE
       maestrodev/wget (>= 1.0.0)
     maestrodev/git (1.0.1)
     maestrodev/jenkins (1.0.2)
-    maestrodev/maestro (1.2.23)
+    maestrodev/maestro (1.2.22)
       maestrodev/maven (>= 1.0.0)
       maestrodev/wget (>= 1.0.0)
       puppetlabs/postgresql (>= 2.0.1)
