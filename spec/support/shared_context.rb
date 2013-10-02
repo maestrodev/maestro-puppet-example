@@ -1,7 +1,7 @@
 shared_context :maestro do
 
   let(:maestro_version) { '4.17.3' }
-  let(:agent_version) { '2.0.4' }
+  let(:agent_version) { '2.0.5' }
 
   let(:repo) {{
     "url" => "https://repo.maestrodev.com/archiva/repository/all",
