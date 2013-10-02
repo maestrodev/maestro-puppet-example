@@ -12,7 +12,7 @@ FORGE
       maestrodev/wget (>= 0.0.1)
     maestrodev/archiva (1.1.1)
       maestrodev/wget (>= 1.0.0)
-    maestrodev/git (1.0.1)
+    maestrodev/git (1.0.2)
     maestrodev/jenkins (1.0.2)
     maestrodev/maestro (1.2.25)
       maestrodev/maven (>= 1.0.0)
