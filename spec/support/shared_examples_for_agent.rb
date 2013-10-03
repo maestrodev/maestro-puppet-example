@@ -29,7 +29,7 @@ shared_examples 'maestro agent' do |master = 'localhost'|
   
       params = catalogue.resource('augeas', augeas_resource_name).send(:parameters)
       params[:changes].should == "set wrapper.java.maxmemory #{agent_maxmem}"
-      params[:incl].should == "/usr/local/maestro-agent/conf/wrapper.conf"
+      params[:incl].should == "/var/local/maestro-agent/conf/wrapper.conf"
     end
 
     it { should contain_class('maestro_nodes::agent').with_repo(repo) }
