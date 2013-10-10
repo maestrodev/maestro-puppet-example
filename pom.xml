@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.maestrodev.maestro.puppet</groupId>
+  <artifactId>maestro-puppet-example</artifactId>
+  <version>4.18.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Maestro Puppet example site</name>
+  <description>Example Puppet site to install Maestro</description>
+  <url>https://github.com/maestrodev/maestro-puppet-example</url>
+
+  <scm>
+    <connection>scm:git:ssh://git@github.com/maestrodev/maestro-puppet-example.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/maestrodev/maestro-puppet-example.git</developerConnection>
+    <url>https://github.com/maestrodev/maestro-puppet-example</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>maestro-deploy</id>
+      <url>https://repo.maestrodev.com/archiva/repository/public-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maestro-deploy</id>
+      <url>https://repo.maestrodev.com/archiva/repository/public-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>attach-zip</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>${project.build.directory}/${project.artifactId}-${project.version}.tar.gz</file>
+                  <type>tar.gz</type>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/${project.artifactId}-${project.version}.rpm</file>
+                  <type>rpm</type>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

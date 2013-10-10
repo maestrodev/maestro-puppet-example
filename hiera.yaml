@@ -7,6 +7,8 @@
   - '%{::clientcert}'
   - '%{::custom_location}'
   - '%{::maestro_node_type}'
+  - '%{::environment}'
+  - 'template_%{::template}'
   - 'pe_%{::puppet_enterprise}'
   - 'common'
   - 'default'

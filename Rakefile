@@ -1,22 +1,39 @@
 require 'bundler'
 Bundler.require(:rake)
 require 'rake/clean'
+require 'maestro/plugin/rake_tasks/pom'
 
-require 'puppetlabs_spec_helper/rake_tasks'
-require 'puppet_blacksmith/rake_tasks'
 
 CLEAN.include('modules', 'doc', 'spec/fixtures/manifests', 'spec/fixtures/modules', 'auth.conf',
-  'fileserver.conf', 'hieradata/common.yaml', 'manifests/nodes/maestro.acme.com.pp', 'puppet.conf', 'pkg')
+  'fileserver.conf', 'hieradata/common.yaml', 'manifests/nodes/maestro.acme.com.pp', 'puppet.conf', 'target')
 CLOBBER.include('.tmp', '.librarian')
 
 task :librarian do
   sh "librarian-puppet install#{" --verbose" if verbose == true}"
 end
 
-task :default => [:clean, :librarian, :spec]
+task :package do
+  files = "hiera.yaml manifests/*.pp manifests/nodes/default modules hieradata"
+  pom = Maestro::Plugin::RakeTasks::Pom.new
 
-# puppet module build includes too many files and no way to exclude them, so we overwrite the tarball manually
-task :build do
-  version = Blacksmith::Modulefile.new.version
-  sh "cd pkg/maestrodev-maestro-puppet-example-#{version} && tar -czf ../maestrodev-maestro-puppet-example-#{version}.tar.gz Modulefile Puppetfile* manifests"
+  # clean up specs in modules before packaging
+  Dir.glob('modules/*/spec/fixtures').each { |d| FileUtils.rm_rf(d) }
+
+  FileUtils.mkdir_p 'target'
+  version = pom[:version].chomp.split('-')
+  iteration = version.length > 1 ? "--iteration #{version[1]}" : ''
+  sh "tar -czf target/#{pom[:artifactId]}-#{pom[:version]}.tar.gz #{files}"
+  sh 'rpmbuild --version' do |ok, res|
+    sh "fpm -v #{version[0]} #{iteration} -n #{pom[:artifactId]} -s dir -t rpm -p target/#{pom[:artifactId]}-#{pom[:version]}.rpm -a all --prefix /etc/puppet --description '#{pom[:description]}' --url '#{pom[:url]}' --vendor 'MaestroDev, Inc.' #{files}" if ok
+  end
 end
+
+task :install => [:clean, :librarian, :spec, :package] do
+  sh "mvn install"
+end
+
+task :deploy => [:clean, :librarian, :spec, :package] do
+  sh "mvn deploy"
+end
+
+task :default => [:clean, :librarian, :spec, :package]
