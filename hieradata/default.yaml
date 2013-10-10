@@ -151,3 +151,4 @@ maestro::plugins::plugins:
 #     username: 'admin'
 #     password: 'admin1'
 
+rvm::version: 1.23.1
