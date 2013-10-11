@@ -24,7 +24,12 @@ task :package do
   iteration = version.length > 1 ? "--iteration #{version[1]}" : ''
   sh "tar -czf target/#{pom[:artifactId]}-#{pom[:version]}.tar.gz #{files}"
   sh 'rpmbuild --version' do |ok, res|
-    sh "fpm -v #{version[0]} #{iteration} -n #{pom[:artifactId]} -s dir -t rpm -p target/#{pom[:artifactId]}-#{pom[:version]}.rpm -a all --prefix /etc/puppet --description '#{pom[:description]}' --url '#{pom[:url]}' --vendor 'MaestroDev, Inc.' #{files}" if ok
+    fpm = <<-EOS
+      fpm -v #{version[0]} #{iteration} -n #{pom[:artifactId]} -s dir -t rpm -p target/#{pom[:artifactId]}-#{pom[:version]}.rpm
+      -a all --prefix /etc/puppet --description '#{pom[:description]}' --url '#{pom[:url]}'
+      --vendor 'MaestroDev, Inc.' -d puppet-server #{files}"
+    EOS
+    sh fpm if ok
   end
 end
 
