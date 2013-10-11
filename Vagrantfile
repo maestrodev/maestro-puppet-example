@@ -24,10 +24,7 @@ def setup_master(config)
   end
 
   # use local git repo
-  config.vm.synced_folder ".", "/etc/puppet", :owner => "puppet", :group => "puppet"
-
-  commit = `git rev-parse HEAD`
-  puts "Provisioning using commit #{commit} on branch #{ENV['BRANCH']}"
+  # config.vm.synced_folder ".", "/etc/puppet", :owner => "puppet", :group => "puppet"
 end
 
 # Vagrant::Config.run do |config|
@@ -39,13 +36,15 @@ Vagrant.configure("2") do |config|
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
 
+  branch = ENV['BRANCH'] || `git rev-parse HEAD`
+
   config.vm.define :default do |config|
     config.vm.hostname = "maestro.acme.com"
     config.vm.network :private_network, ip: "192.168.33.30"
     setup_master(config)
     config.vm.provision :shell do |shell|
       shell.path = "get-maestro.sh"
-      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{branch}"
     end
   end
   if ENV['MAESTRO_SLAVE']
@@ -55,7 +54,7 @@ Vagrant.configure("2") do |config|
       setup_master(config)
       config.vm.provision :shell do |shell|
         shell.path = "get-maestro.sh"
-        shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
+        shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{branch}"
       end
     end
   end
