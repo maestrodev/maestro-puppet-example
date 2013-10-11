@@ -30,9 +30,13 @@ function gem_version {
 set -e
 
 # Puppet repositories
-# TODO installs 2 versions if previous already exists
-rpm -q puppetlabs-release-6-7 || \
-  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+PUPPETLABS_RELEASE_VERSION=6-7
+PUPPETLABS_RELEASE_URL=http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-$PUPPETLABS_RELEASE_VERSION.noarch.rpm
+if ! rpm -q puppetlabs-release; then
+  rpm -i $PUPPETLABS_RELEASE_URL
+else
+  rpm -q puppetlabs-release-$PUPPETLABS_RELEASE_VERSION || rpm -U $PUPPETLABS_RELEASE_URL
+fi
 
 # get the puppet configuration skeleton
 echo "Getting puppet configuration from GitHub"
