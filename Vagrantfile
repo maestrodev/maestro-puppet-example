@@ -36,15 +36,13 @@ Vagrant.configure("2") do |config|
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
 
-  branch = ENV['BRANCH'] || `git rev-parse HEAD`
-
   config.vm.define :default do |config|
     config.vm.hostname = "maestro.acme.com"
     config.vm.network :private_network, ip: "192.168.33.30"
     setup_master(config)
     config.vm.provision :shell do |shell|
       shell.path = "get-maestro.sh"
-      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{branch}"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}'"
     end
   end
   if ENV['MAESTRO_SLAVE']
@@ -54,7 +52,7 @@ Vagrant.configure("2") do |config|
       setup_master(config)
       config.vm.provision :shell do |shell|
         shell.path = "get-maestro.sh"
-        shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{branch}"
+        shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}'"
       end
     end
   end

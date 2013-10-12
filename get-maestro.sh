@@ -6,30 +6,32 @@
 USERNAME=$1
 PASSWORD=$2
 NODE_TYPE=$3
-BRANCH=$4
+VERSION=$4
 
-PUPPET_MANIFESTS_URL=https://repo.maestrodev.com/archiva/repository/all/com/maestrodev/maestro/puppet/maestro-puppet-example/4.18.0-SNAPSHOT/maestro-puppet-example-4.18.0-20131012.173123-2.rpm
+PUPPET_VERSION=3.3.0
+FACTER_VERSION=1.7.3
+PUPPETLABS_RELEASE_VERSION=6-7
+
+if [ -z "$VERSION" ]; then
+  VERSION=4.18.0-20131012.173123-2
+fi
+
+if [[ $VERSION =~ -[0-9]*\.[0-9]*-[0-9]*$ ]]; then
+  VERSION_MAIN=`echo $VERSION | sed -e 's/-[0-9]*\.[0-9]*-[0-9]*$//'`-SNAPSHOT
+else
+  VERSION_MAIN=$VERSION
+fi
+PUPPET_MANIFESTS_URL=https://repo.maestrodev.com/archiva/repository/all/com/maestrodev/maestro/puppet/maestro-puppet-example/$VERSION_MAIN/maestro-puppet-example-$VERSION.rpm
 
 
 if [ -z "$NODE_TYPE" ]; then
   NODE_TYPE=master_with_agent
 fi
 
-if [ -z "$BRANCH" ]; then
-  BRANCH=master
-fi
-
-echo "get-maestro: Using branch $BRANCH"
-
-function gem_version {
-  eval "$1=`cat /tmp/Gemfile.lock | grep "^[ ]\+$2 (" | head -n 1 | sed -e 's/.*(\(.*\))/\1/'`"
-}
-
 # fail fast on any error
 set -e
 
 # Puppet repositories
-PUPPETLABS_RELEASE_VERSION=6-7
 PUPPETLABS_RELEASE_URL=http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-$PUPPETLABS_RELEASE_VERSION.noarch.rpm
 if ! rpm -q puppetlabs-release > /dev/null; then
   rpm -i $PUPPETLABS_RELEASE_URL
@@ -52,10 +54,7 @@ if [ -z "$MAESTRO_ENABLED" ]; then
   MAESTRO_ENABLED=true
 fi
 
-# install puppet with the version locked in gemfile
-curl -s -o /tmp/Gemfile.lock -L https://raw.github.com/maestrodev/maestro-puppet-example/$BRANCH/Gemfile.lock
-gem_version FACTER_VERSION facter
-gem_version PUPPET_VERSION puppet
+# install puppet
 
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION

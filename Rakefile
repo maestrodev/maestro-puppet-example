@@ -1,8 +1,9 @@
 require 'bundler'
-# Bundler.require(:rake)
+Bundler.require(:rake)
+require 'puppetlabs_spec_helper/rake_tasks'
 require 'rake/clean'
 require 'maestro/plugin/rake_tasks/pom'
-
+require 'puppet'
 
 CLEAN.include('modules', 'doc', 'spec/fixtures/manifests', 'spec/fixtures/modules', 'auth.conf',
   'fileserver.conf', 'hieradata/common.yaml', 'manifests/nodes/maestro.acme.com.pp', 'puppet.conf', 'target')
@@ -15,6 +16,15 @@ end
 task :package do
   files = "hiera.yaml manifests/*.pp manifests/nodes/default modules hieradata"
   pom = Maestro::Plugin::RakeTasks::Pom.new
+
+  ["get-maestro.sh", "get-agent.sh"].each do |f|
+    script = File.read(f)
+    File.open(f, "w") do |file|
+      file.puts(script.
+        gsub(/^PUPPET_VERSION=.*$/, "PUPPET_VERSION=#{Puppet.version}").
+        gsub(/^FACTER_VERSION=.*$/, "FACTER_VERSION=#{Facter.version}"))
+    end
+  end
 
   # clean up specs in modules before packaging
   Dir.glob('modules/*/spec/fixtures').each { |d| FileUtils.rm_rf(d) }

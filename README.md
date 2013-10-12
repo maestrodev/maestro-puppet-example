@@ -31,7 +31,6 @@ The `get-maestro.sh` script accepts the following parameters in order
 * username
 * password
 * node type [`master`, `master_with_agent`, or any of the other puppet nodes defined under `manifests/nodes/default`]
-* branch [`master`, `development`, or any other git branch]
 
 
 ### Setting up a Maestro server without any of the other servers (Maestro Agent, Jenkins, Archiva, etc)
