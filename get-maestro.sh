@@ -8,7 +8,7 @@ PASSWORD=$2
 NODE_TYPE=$3
 BRANCH=$4
 
-PUPPET_MANIFESTS_URL=https://repo.maestrodev.com/archiva/repository/all/com/maestrodev/maestro/puppet/maestro-puppet-example/4.18.0-SNAPSHOT/maestro-puppet-example-4.18.0-20131011.130339-1.rpm
+PUPPET_MANIFESTS_URL=https://repo.maestrodev.com/archiva/repository/all/com/maestrodev/maestro/puppet/maestro-puppet-example/4.18.0-SNAPSHOT/maestro-puppet-example-4.18.0-20131012.173123-2.rpm
 
 
 if [ -z "$NODE_TYPE" ]; then
