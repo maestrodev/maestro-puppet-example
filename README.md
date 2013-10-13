@@ -160,3 +160,11 @@ To just fetch the required puppet modules
 bundle exec librarian-puppet install
 ```
 
+Vagrant
+-------
+There are several Vagrant boxes defined:
+
+* default: provisions using the modules checkout out in the local repo
+* maestro: provisions using the script and modules from rpm as it would do in a real server
+* agent: provisions an agent from another Puppet server, configured by default to 192.168.33.30
+

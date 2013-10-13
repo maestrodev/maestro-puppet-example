@@ -65,7 +65,16 @@ if [ -z `facter fqdn` ]; then
 fi
 
 # Install puppet config
-rpm -q maestro-puppet-example > /dev/null || rpm -i $PUPPET_MANIFESTS_URL
+if [ `hostname` == maestro-development.acme.com ]; then
+  echo ************************************************************
+  echo ************************************************************
+  echo DEVELOPMENT MODE: Not installing Puppet modules RPM
+  echo ************************************************************
+  echo ************************************************************
+else
+  rpm -q maestro-puppet-example > /dev/null && rpm -U $PUPPET_MANIFESTS_URL
+  rpm -q maestro-puppet-example > /dev/null || rpm -i $PUPPET_MANIFESTS_URL
+fi
 
 
 puppet apply -e "

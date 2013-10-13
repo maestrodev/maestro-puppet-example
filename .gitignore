@@ -13,6 +13,7 @@ fileserver.conf
 hieradata/common.yaml
 manifests/nodes/maestro.acme.com.pp
 manifests/nodes/maestro-slave.acme.com.pp
+manifests/nodes/maestro-development.acme.com.pp
 puppet.conf
 .vagrant
 *.rpmnew
