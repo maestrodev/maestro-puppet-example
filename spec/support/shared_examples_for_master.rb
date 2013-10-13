@@ -94,5 +94,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     end
 
     it { should contain_class('maestro_nodes::maestroserver').with_repo(repo) }
+
+    it { should contain_class('maestro::lucee').with_is_demo(true) }
   end
 end

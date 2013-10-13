@@ -41,6 +41,7 @@ jenkins::jenkins_prefix: '/jenkins'
 maestro_nodes::repositories::host: 'localhost'
 
 # Demo compositions configuration
+maestro::lucee::is_demo: true
 maestro_demo::archiva_host: 'localhost'
 maestro_demo::jenkins_host: 'localhost'
 maestro_demo::sonar_host: 'localhost'
