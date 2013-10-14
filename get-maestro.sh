@@ -72,8 +72,11 @@ if [ `hostname` == maestro-development.acme.com ]; then
   echo ************************************************************
   echo ************************************************************
 else
-  rpm -q maestro-puppet-example > /dev/null && rpm -U $PUPPET_MANIFESTS_URL
-  rpm -q maestro-puppet-example > /dev/null || rpm -i $PUPPET_MANIFESTS_URL
+  if ! rpm -q maestro-puppet-example > /dev/null; then
+    rpm -i $PUPPET_MANIFESTS_URL
+  else
+    rpm -q maestro-puppet-example-$VERSION_MAIN > /dev/null || rpm -U $PUPPET_MANIFESTS_URL
+  fi
 fi
 
 

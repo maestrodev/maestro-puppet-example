@@ -14,7 +14,7 @@ task :librarian do
 end
 
 task :package do
-  files = "hiera.yaml manifests/*.pp manifests/nodes/default modules hieradata"
+  files = "hiera.yaml manifests/*.pp manifests/nodes/default modules hieradata get-*.sh"
   pom = Maestro::Plugin::RakeTasks::Pom.new
 
   ["get-maestro.sh", "get-agent.sh"].each do |f|
