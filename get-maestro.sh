@@ -125,10 +125,6 @@ maestro_nodes::repositories::host: '$MASTER'
 maestro_demo::archiva_host: '$MASTER'
 maestro_demo::jenkins_host: '$MASTER'
 maestro_demo::sonar_host: '$MASTER'
-
-classes:
- - maestro_nodes::maestrofirewall
- - maestro_nodes::firewall::puppetmaster
 EOF
 fi
 
@@ -136,7 +132,10 @@ fi
 if [ ! -e /etc/puppet/manifests/nodes/$MASTER.pp ]
   then
   cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
-node "$MASTER" inherits "$NODE_TYPE" {}
+node "$MASTER" inherits "$NODE_TYPE" {
+  include maestro_nodes::firewall::puppetmaster
+  include maestro_nodes::maestrofirewall
+}
 EOF
 fi
 
