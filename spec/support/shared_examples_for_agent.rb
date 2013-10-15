@@ -16,7 +16,8 @@ shared_examples 'maestro agent' do |master = 'localhost'|
     it 'should generate valid settings.xml' do
       expected = File.read(File.expand_path("basic_settings.xml", File.dirname(__FILE__)))
       expected.should_not be_nil
-      should contain_file("#{user_home}/.m2/settings.xml").with_content(expected.gsub(/localhost/, master))
+      params = catalogue.resource('file', "#{user_home}/.m2/settings.xml").send(:parameters)
+      params[:content].should eq(expected.gsub(/localhost/, master))
     end
 
     it 'should install the required packages for Selenium to run' do

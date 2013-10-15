@@ -8,7 +8,6 @@ group :build do
   gem 'rake',         '>=0.9.2.2'
   gem 'puppet-lint'
   gem 'puppetlabs_spec_helper'
-  # gem 'rspec-hiera-puppet'
   gem 'maestro-plugin-rake-tasks', '>=1.0.10'
   gem 'fpm'
 end
