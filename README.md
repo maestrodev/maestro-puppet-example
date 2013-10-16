@@ -31,6 +31,7 @@ The `get-maestro.sh` script accepts the following parameters in order
 * username
 * password
 * node type [`master`, `master_with_agent`, or any of the other puppet nodes defined under `manifests/nodes/default`]
+* version of the maestro-puppet-example RPM to install. If set to 0 the rpm won't be installed, useful for Vagrant environments
 
 
 ### Setting up a Maestro server without any of the other servers (Maestro Agent, Jenkins, Archiva, etc)

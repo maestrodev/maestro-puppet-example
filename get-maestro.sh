@@ -13,7 +13,7 @@ FACTER_VERSION=1.7.3
 PUPPETLABS_RELEASE_VERSION=6-7
 
 if [ -z "$VERSION" ]; then
-  VERSION=4.18.0-20131012.173123-2
+  VERSION=4.18.0-20131015.170832-6
 fi
 
 if [[ $VERSION =~ -[0-9]*\.[0-9]*-[0-9]*$ ]]; then
@@ -65,7 +65,7 @@ if [ -z `facter fqdn` ]; then
 fi
 
 # Install puppet config
-if [ `hostname` == maestro-development.acme.com ]; then
+if [ $VERSION == "0" ]; then
   echo ************************************************************
   echo ************************************************************
   echo DEVELOPMENT MODE: Not installing Puppet modules RPM

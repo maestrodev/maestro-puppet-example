@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision :shell do |shell|
       shell.path = "get-maestro.sh"
-      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}'"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' 0"
     end
   end
 
