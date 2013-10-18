@@ -12,6 +12,7 @@ CLOBBER.include('.tmp', '.librarian')
 task :librarian do
   sh "librarian-puppet install#{" --verbose" if verbose == true}"
 end
+task :spec_prep => :librarian
 
 task :package do
   files = "hiera.yaml manifests/*.pp manifests/nodes/default modules hieradata get-*.sh"
@@ -43,12 +44,12 @@ task :package do
   end
 end
 
-task :install => [:clean, :librarian, :spec, :package] do
+task :install => [:clean, :spec, :package] do
   sh "mvn install"
 end
 
-task :deploy => [:clean, :librarian, :spec, :package] do
+task :deploy => [:clean, :spec, :package] do
   sh "mvn deploy"
 end
 
-task :default => [:clean, :librarian, :spec, :package]
+task :default => [:clean, :spec, :package]
