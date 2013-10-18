@@ -6,26 +6,19 @@
 USERNAME=$1
 PASSWORD=$2
 NODE_TYPE=$3
-VERSION=$4
+ENVIRONMENT=$4
 
 PUPPET_VERSION=3.3.0
 FACTER_VERSION=1.7.3
 PUPPETLABS_RELEASE_VERSION=6-7
 
-if [ -z "$VERSION" ]; then
-  VERSION=4.18.0-20131015.170832-6
-fi
-
-if [[ $VERSION =~ -[0-9]*\.[0-9]*-[0-9]*$ ]]; then
-  VERSION_MAIN=`echo $VERSION | sed -e 's/-[0-9]*\.[0-9]*-[0-9]*$//'`-SNAPSHOT
-else
-  VERSION_MAIN=$VERSION
-fi
-PUPPET_MANIFESTS_URL=https://repo.maestrodev.com/archiva/repository/all/com/maestrodev/maestro/puppet/maestro-puppet-example/$VERSION_MAIN/maestro-puppet-example-$VERSION.rpm
-
 
 if [ -z "$NODE_TYPE" ]; then
   NODE_TYPE=master_with_agent
+fi
+
+if [ -z "$ENVIRONMENT" ]; then
+  ENVIRONMENT=production
 fi
 
 # fail fast on any error
@@ -64,19 +57,36 @@ if [ -z `facter fqdn` ]; then
   exit 1
 fi
 
+# Add MaestroDev yum repo
+
+if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
+  cat > /etc/yum.repos.d/maestrodev.repo << EOF
+[maestrodev]
+name=MaestroDev Products EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
+enabled=1
+gpgcheck=0
+
+[maestrodev-devel]
+name=Puppet Labs Devel EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/devel/\$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
+enabled=0
+gpgcheck=0
+EOF
+fi
+
 # Install puppet config
-if [ $VERSION == "0" ]; then
+
+if [ $ENVIRONMENT == "development" ]; then
   echo ************************************************************
   echo ************************************************************
   echo DEVELOPMENT MODE: Not installing Puppet modules RPM
   echo ************************************************************
   echo ************************************************************
 else
-  if ! rpm -q maestro-puppet-example > /dev/null; then
-    rpm -i $PUPPET_MANIFESTS_URL
-  else
-    rpm -q maestro-puppet-example-$VERSION_MAIN > /dev/null || rpm -U $PUPPET_MANIFESTS_URL
-  fi
+  rpm -q maestro-puppet-example || yum install maestro-puppet-example
 fi
 
 
