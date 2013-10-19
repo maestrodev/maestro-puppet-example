@@ -59,24 +59,6 @@ fi
 
 # Add MaestroDev yum repo
 
-if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
-  cat > /etc/yum.repos.d/maestrodev.repo << EOF
-[maestrodev]
-name=MaestroDev Products EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
-enabled=1
-gpgcheck=0
-
-[maestrodev-devel]
-name=Puppet Labs Devel EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/devel/\$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
-enabled=0
-gpgcheck=0
-EOF
-fi
-
 # Install puppet config
 
 if [ $ENVIRONMENT == "development" ]; then
@@ -86,7 +68,25 @@ if [ $ENVIRONMENT == "development" ]; then
   echo ************************************************************
   echo ************************************************************
 else
-  rpm -q maestro-puppet-example || yum install maestro-puppet-example
+  if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
+    cat > /etc/yum.repos.d/maestrodev.repo << EOF
+[maestrodev]
+name=MaestroDev Products EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
+enabled=0
+gpgcheck=0
+
+[maestrodev-devel]
+name=MaestroDev Devel EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/devel/\$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
+enabled=0
+gpgcheck=0
+EOF
+  fi
+
+  rpm -q maestro-puppet-example || yum install --enablerepo=maestrodev maestro-puppet-example
 fi
 
 
