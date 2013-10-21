@@ -10,14 +10,18 @@ MASTER_IP=$2
 
 PUPPET_VERSION=3.3.1
 FACTER_VERSION=1.7.3
+PUPPETLABS_RELEASE_VERSION=6-7
 
 # fail fast on any error
 set -e
 
 # Puppet repositories
-# TODO installs 2 versions if previous already exists
-rpm -q puppetlabs-release-6-7 || \
-  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+PUPPETLABS_RELEASE_URL=http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-$PUPPETLABS_RELEASE_VERSION.noarch.rpm
+if ! rpm -q puppetlabs-release > /dev/null; then
+  rpm -i $PUPPETLABS_RELEASE_URL
+else
+  rpm -q puppetlabs-release-$PUPPETLABS_RELEASE_VERSION > /dev/null || rpm -U $PUPPETLABS_RELEASE_URL
+fi
 
 # Puppet install and configuration
 echo "Installing Puppet agent $PUPPET_VERSION"
