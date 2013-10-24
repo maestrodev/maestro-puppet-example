@@ -31,7 +31,7 @@ The `get-maestro.sh` script accepts the following parameters in order
 * username
 * password
 * node type [`master`, `master_with_agent`, or any of the other puppet nodes defined under `manifests/nodes/default`]
-* branch [`master`, `development`, or any other git branch]
+* environment [`development`] If set to `development` the rpm won't be installed, useful for Vagrant environments
 
 
 ### Setting up a Maestro server without any of the other servers (Maestro Agent, Jenkins, Archiva, etc)
@@ -160,4 +160,12 @@ To just fetch the required puppet modules
 ```
 bundle exec librarian-puppet install
 ```
+
+Vagrant
+-------
+There are several Vagrant boxes defined:
+
+* default: provisions using the modules checkout out in the local repo
+* maestro: provisions using the script and modules from rpm as it would do in a real server
+* agent: provisions an agent from another Puppet server, configured by default to 192.168.33.30
 

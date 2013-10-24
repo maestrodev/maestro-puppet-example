@@ -22,12 +22,6 @@ def setup_master(config)
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", vm_memory]
   end
-
-  # use local git repo
-  config.vm.synced_folder ".", "/etc/puppet", :owner => "puppet", :group => "puppet"
-
-  commit = `git rev-parse HEAD`
-  puts "Provisioning using commit #{commit} on branch #{ENV['BRANCH']}"
 end
 
 # Vagrant::Config.run do |config|
@@ -39,24 +33,38 @@ Vagrant.configure("2") do |config|
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
 
+  # use local git repo for provisioning
   config.vm.define :default do |config|
-    config.vm.hostname = "maestro.acme.com"
+    config.vm.hostname = "maestro-development.acme.com"
     config.vm.network :private_network, ip: "192.168.33.30"
+    setup_master(config)
+
+    config.vm.synced_folder ".", "/etc/puppet", :owner => "puppet", :group => "puppet"
+
+    config.vm.provision :shell do |shell|
+      shell.path = "get-maestro.sh"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' development"
+    end
+  end
+
+  # use get-maestro script for provisioning
+  config.vm.define :maestro do |config|
+    config.vm.hostname = "maestro.acme.com"
+    config.vm.network :private_network, ip: "192.168.33.20"
     setup_master(config)
     config.vm.provision :shell do |shell|
       shell.path = "get-maestro.sh"
-      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}'"
     end
   end
-  if ENV['MAESTRO_SLAVE']
-    config.vm.define :slave do |config|
-      config.vm.hostname = "maestro-slave.acme.com"
-      config.vm.network :private_network, ip: "192.168.33.31"
-      setup_master(config)
-      config.vm.provision :shell do |shell|
-        shell.path = "get-maestro.sh"
-        shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}' #{ENV['BRANCH']}"
-      end
+
+  config.vm.define :slave do |config|
+    config.vm.hostname = "maestro-slave.acme.com"
+    config.vm.network :private_network, ip: "192.168.33.50"
+    setup_master(config)
+    config.vm.provision :shell do |shell|
+      shell.path = "get-maestro.sh"
+      shell.args = "#{ENV['MAESTRODEV_USERNAME']} #{ENV['MAESTRODEV_PASSWORD']} '#{ENV['NODE_TYPE']}'"
     end
   end
   config.vm.define :agent do |config|

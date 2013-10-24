@@ -6,65 +6,31 @@
 USERNAME=$1
 PASSWORD=$2
 NODE_TYPE=$3
-BRANCH=$4
+ENVIRONMENT=$4
+
+PUPPET_VERSION=3.3.1
+FACTER_VERSION=1.7.3
+PUPPETLABS_RELEASE_VERSION=6-7
+
 
 if [ -z "$NODE_TYPE" ]; then
   NODE_TYPE=master_with_agent
 fi
 
-if [ -z "$BRANCH" ]; then
-  BRANCH=master
+if [ -z "$ENVIRONMENT" ]; then
+  ENVIRONMENT=production
 fi
-
-echo "get-maestro: Using branch $BRANCH"
-
-function install_gem {
-  (gem list ^$1$ | grep $1 | grep $2) || gem install --no-rdoc --no-ri $1 -v $2
-  return $?
-}
-function gem_version {
-  eval "$1=`cat /etc/puppet/Gemfile.lock | grep "^[ ]\+$2 (" | head -n 1 | sed -e 's/.*(\(.*\))/\1/'`"
-}
 
 # fail fast on any error
 set -e
 
 # Puppet repositories
-# TODO installs 2 versions if previous already exists
-rpm -q puppetlabs-release-6-7 || \
-  rpm -i http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
-
-# get the puppet configuration skeleton
-echo "Getting puppet configuration from GitHub"
-yum -y install git
-if [ ! -d /etc/puppet/.git ]
-  then
-  rm -rf /etc/puppet
-  git clone https://github.com/maestrodev/maestro-puppet-example.git /etc/puppet
-  cd /etc/puppet && git checkout $BRANCH
+PUPPETLABS_RELEASE_URL=http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-$PUPPETLABS_RELEASE_VERSION.noarch.rpm
+if ! rpm -q puppetlabs-release > /dev/null; then
+  rpm -i $PUPPETLABS_RELEASE_URL
 else
-  cd /etc/puppet && git fetch && git checkout $BRANCH && git rebase origin/$BRANCH
+  rpm -q puppetlabs-release-$PUPPETLABS_RELEASE_VERSION > /dev/null || rpm -U $PUPPETLABS_RELEASE_URL
 fi
-
-echo "Installing librarian-puppet-maestrodev $LIBRARIAN_VERSION"
-yum -y install rubygems rubygem-json
-# install puppet with the version locked in gemfile. Installing before
-# librarian-puppet ensures we get the correct version here and in yum
-gem_version FACTER_VERSION facter
-install_gem facter $FACTER_VERSION
-gem_version PUPPET_VERSION puppet
-install_gem puppet $PUPPET_VERSION
-gem_version LIBRARIAN_VERSION librarian-puppet-maestrodev
-install_gem librarian-puppet-maestrodev $LIBRARIAN_VERSION
-
-if [ -z `facter fqdn` ]; then
-  echo "Unable to find fact 'fqdn', please check your networking configuration"
-  exit 1
-fi
-
-# fetch Puppet modules with librarian puppet
-echo "Fetching Puppet modules"
-cd /etc/puppet && librarian-puppet install --verbose
 
 # disable yum priorities, or fails to install puppet in Amazon AMI
 if [ -e /etc/yum/pluginconf.d/priorities.conf ]
@@ -80,8 +46,50 @@ MASTER=`hostname`
 if [ -z "$MAESTRO_ENABLED" ]; then
   MAESTRO_ENABLED=true
 fi
+
+# install puppet
+
 echo "Installing Puppet $PUPPET_VERSION"
 yum -y install puppet-server-$PUPPET_VERSION facter-$FACTER_VERSION
+
+if [ -z `facter fqdn` ]; then
+  echo "Unable to find fact 'fqdn', please check your networking configuration"
+  exit 1
+fi
+
+# Add MaestroDev yum repo
+
+# Install puppet config
+
+if [ $ENVIRONMENT == "development" ]; then
+  echo ************************************************************
+  echo ************************************************************
+  echo DEVELOPMENT MODE: Not installing Puppet modules RPM
+  echo ************************************************************
+  echo ************************************************************
+else
+  if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
+    cat > /etc/yum.repos.d/maestrodev.repo << EOF
+[maestrodev]
+name=MaestroDev Products EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
+enabled=0
+gpgcheck=0
+
+[maestrodev-devel]
+name=MaestroDev Devel EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/devel/\$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
+enabled=0
+gpgcheck=0
+EOF
+  fi
+
+  rpm -q maestro-puppet-example || yum install --enablerepo=maestrodev maestro-puppet-example
+fi
+
+
 puppet apply -e "
   augeas { 'puppet':
     context => '/files/etc/puppet/puppet.conf',
@@ -130,10 +138,6 @@ maestro_nodes::repositories::host: '$MASTER'
 maestro_demo::archiva_host: '$MASTER'
 maestro_demo::jenkins_host: '$MASTER'
 maestro_demo::sonar_host: '$MASTER'
-
-classes:
- - maestro_nodes::maestrofirewall
- - maestro_nodes::firewall::puppetmaster
 EOF
 fi
 
@@ -141,7 +145,10 @@ fi
 if [ ! -e /etc/puppet/manifests/nodes/$MASTER.pp ]
   then
   cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
-node "$MASTER" inherits "$NODE_TYPE" {}
+node "$MASTER" inherits "$NODE_TYPE" {
+  include maestro_nodes::firewall::puppetmaster
+  include maestro_nodes::maestrofirewall
+}
 EOF
 fi
 
