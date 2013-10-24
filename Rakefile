@@ -32,7 +32,7 @@ task :package do
 
   FileUtils.mkdir_p 'target'
   version = pom[:version].chomp.split('-')
-  iteration = version.length > 1 ? "--iteration #{Time.now.getutc.strftime("%Y%m%d%H%M%S")}" : ''
+  iteration = "--iteration #{Time.now.getutc.strftime("%Y%m%d%H%M%S")}"
   sh "tar -czf target/#{pom[:artifactId]}-#{pom[:version]}.tar.gz #{files}"
   sh 'rpmbuild --version' do |ok, res|
     fpm = <<-EOS
