@@ -159,3 +159,9 @@ maestro::plugins::plugins:
 #     password: 'admin1'
 
 rvm::version: 1.23.1
+
+# Customize NTP servers
+# ntp::servers:
+#   - '0.europe.pool.ntp.org'
+#   - '1.europe.pool.ntp.org'
+#   - '2.europe.pool.ntp.org'
