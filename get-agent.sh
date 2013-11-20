@@ -7,10 +7,15 @@
 
 MASTER_HOSTNAME=$1
 MASTER_IP=$2
+ENVIRONMENT=$3
 
 PUPPET_VERSION=3.3.1
 FACTER_VERSION=1.7.3
 PUPPETLABS_RELEASE_VERSION=6-7
+
+if [ -z "$ENVIRONMENT" ]; then
+  ENVIRONMENT=production
+fi
 
 # fail fast on any error
 set -e
@@ -39,6 +44,7 @@ puppet apply -e "augeas { 'puppet':
   context => '/files/etc/puppet/puppet.conf',
   changes => [
     \"set agent/server $MASTER_HOSTNAME\",
+    \"set environment $ENVIRONMENT\",
   ],
   incl => '/etc/puppet/puppet.conf',
   lens => 'Puppet.lns',
