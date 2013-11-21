@@ -90,7 +90,7 @@ EOF
 fi
 
 
-puppet apply -e "
+cat << EOS | puppet apply --detailed-exitcodes || [ $? -eq 2 ]
   augeas { 'puppet':
     context => '/files/etc/puppet/puppet.conf',
     changes => [
@@ -103,7 +103,8 @@ puppet apply -e "
   host { 'puppet':
     ensure => present,
     ip     => '127.0.0.1',
-  }"
+  }
+EOS
 
 # hiera configuration override
 mkdir -p /etc/puppet/hieradata

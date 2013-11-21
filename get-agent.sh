@@ -35,20 +35,24 @@ yum -y install puppet-$PUPPET_VERSION
 
 # point to puppet master
 if [ "$MASTER_IP" ]; then
-  puppet apply -e "host { \"$MASTER_HOSTNAME\": \
-    ip    => \"$MASTER_IP\", \
-    alias => 'puppet' \
-  }"
+  cat << EOS | puppet apply --detailed-exitcodes || [ $? -eq 2 ]
+    host { "$MASTER_HOSTNAME":
+      ip    => "$MASTER_IP",
+      alias => 'puppet'
+    }
+EOS
 fi
-puppet apply -e "augeas { 'puppet':
+cat << EOS | puppet apply --detailed-exitcodes || [ $? -eq 2 ]
+augeas { 'puppet':
   context => '/files/etc/puppet/puppet.conf',
   changes => [
-    \"set agent/server $MASTER_HOSTNAME\",
-    \"set environment $ENVIRONMENT\",
+    "set agent/server $MASTER_HOSTNAME",
+    "set agent/environment $ENVIRONMENT",
   ],
   incl => '/etc/puppet/puppet.conf',
   lens => 'Puppet.lns',
-}"
+}
+EOS
 
 
 # disable puppet agent polling
