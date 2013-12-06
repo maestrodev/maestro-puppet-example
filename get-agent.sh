@@ -7,10 +7,15 @@
 
 MASTER_HOSTNAME=$1
 MASTER_IP=$2
+ENVIRONMENT=$3
 
 PUPPET_VERSION=3.3.1
 FACTER_VERSION=1.7.3
 PUPPETLABS_RELEASE_VERSION=6-7
+
+if [ -z "$ENVIRONMENT" ]; then
+  ENVIRONMENT=production
+fi
 
 # fail fast on any error
 set -e
@@ -30,19 +35,24 @@ yum -y install puppet-$PUPPET_VERSION
 
 # point to puppet master
 if [ "$MASTER_IP" ]; then
-  puppet apply -e "host { \"$MASTER_HOSTNAME\": \
-    ip    => \"$MASTER_IP\", \
-    alias => 'puppet' \
-  }"
+  cat << EOS | puppet apply --detailed-exitcodes || [ $? -eq 2 ]
+    host { "$MASTER_HOSTNAME":
+      ip    => "$MASTER_IP",
+      alias => 'puppet'
+    }
+EOS
 fi
-puppet apply -e "augeas { 'puppet':
+cat << EOS | puppet apply --detailed-exitcodes || [ $? -eq 2 ]
+augeas { 'puppet':
   context => '/files/etc/puppet/puppet.conf',
   changes => [
-    \"set agent/server $MASTER_HOSTNAME\",
+    "set agent/server $MASTER_HOSTNAME",
+    "set agent/environment $ENVIRONMENT",
   ],
   incl => '/etc/puppet/puppet.conf',
   lens => 'Puppet.lns',
-}"
+}
+EOS
 
 
 # disable puppet agent polling
