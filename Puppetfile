@@ -16,3 +16,6 @@ mod 'maestrodev/maestro_demo'
 #mod 'mcollective',          :git => 'https://github.com/puppetlabs/puppetlabs-mcollective.git', :ref => '596ca9'
 #mod 'maestrodev/perforce',  '1.0.0'
 #mod 'subversion_edge',      :git => 'https://github.com/maestrodev/puppet-subversion_edge.git'
+
+mod 'puppetlabs/nodejs', :git => 'https://github.com/puppetlabs/puppetlabs-nodejs.git'
+mod 'jfryman/nginx', :git => 'https://github.com/jfryman/puppet-nginx.git'
