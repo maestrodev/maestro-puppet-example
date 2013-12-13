@@ -57,19 +57,9 @@ if [ -z `facter fqdn` ]; then
   exit 1
 fi
 
-# Add MaestroDev yum repo
-
-# Install puppet config
-
-if [ $ENVIRONMENT == "development" ]; then
-  echo ************************************************************
-  echo ************************************************************
-  echo DEVELOPMENT MODE: Not installing Puppet modules RPM
-  echo ************************************************************
-  echo ************************************************************
-else
-  if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
-    cat > /etc/yum.repos.d/maestrodev.repo << EOF
+# Add MaestroDev yum repos
+if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
+  cat > /etc/yum.repos.d/maestrodev.repo << EOF
 [maestrodev]
 name=MaestroDev Products EL 6 - \$basearch
 baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
@@ -77,15 +67,23 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
 enabled=0
 gpgcheck=0
 
-[maestrodev-devel]
-name=MaestroDev Devel EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/devel/\$basearch
+[maestrodev-snapshots]
+name=MaestroDev Snapshots EL 6 - \$basearch
+baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/snapshots/el/6/\$basearch
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
 enabled=0
 gpgcheck=0
 EOF
-  fi
+fi
 
+# install puppet config
+if [ $ENVIRONMENT == "development" ]; then
+  echo ************************************************************
+  echo ************************************************************
+  echo DEVELOPMENT MODE: Not installing Puppet modules RPM
+  echo ************************************************************
+  echo ************************************************************
+else
   rpm -q maestro-puppet-example || yum install --enablerepo=maestrodev maestro-puppet-example
 fi
 
