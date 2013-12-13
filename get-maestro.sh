@@ -145,8 +145,8 @@ if [ ! -e /etc/puppet/manifests/nodes/$MASTER.pp ]
   then
   cat > /etc/puppet/manifests/nodes/$MASTER.pp << EOF
 node "$MASTER" inherits "$NODE_TYPE" {
+  include maestro_nodes::firewall::maestro
   include maestro_nodes::firewall::puppetmaster
-  include maestro_nodes::maestrofirewall
 }
 EOF
 fi
