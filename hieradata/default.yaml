@@ -15,7 +15,7 @@ maestro_nodes::maestroserver::repo:
   password: 'CHANGEME'
 
 
-maestro::maestro::version: '4.19.3'
+maestro::maestro::version: '4.20.0'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::admin_password: 'admin1'
 maestro::maestro::master_password: 'maestro'
@@ -25,7 +25,7 @@ maestro::maestro::agent_auto_activate: true
 maestro::maestro::enabled: true
 maestro::maestro::metrics_enabled: true
 
-maestro::agent::agent_version: '2.2.0'
+maestro::agent::agent_version: '2.3.0'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: 'localhost'
 maestro::agent::agent_name: '%{hostname}'
