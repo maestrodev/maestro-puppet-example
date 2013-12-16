@@ -54,6 +54,18 @@ augeas { 'puppet':
 }
 EOS
 
+# Create external facts
+mkdir -p /etc/facter/facts.d
+if [ ! -e /etc/facter/facts.d/maestro_node_type.txt ]
+  then
+  echo "maestro_node_type=agent" > /etc/facter/facts.d/maestro_node_type.txt
+fi
+if [ ! -e /etc/facter/facts.d/maestro_host.txt ]
+  then
+  echo "maestro_host=$MASTER_HOSTNAME" > /etc/facter/facts.d/maestro_host.txt
+fi
+
+
 # Add MaestroDev yum repos
 if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
   cat > /etc/yum.repos.d/maestrodev.repo << EOF

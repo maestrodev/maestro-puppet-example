@@ -1,8 +1,3 @@
 ---
-maestro::agent::stomp_host: '%{maestro_host}'
-
-# Archiva repository
-maestro_nodes::repositories::host: '%{maestro_host}'
-
 classes:
   - maestro_nodes::firewall

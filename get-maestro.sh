@@ -126,19 +126,20 @@ maestro_nodes::maestroserver::repo:
 
 # Whether to start Maestro now or not (useful for creating images)
 maestro::maestro::enabled: $MAESTRO_ENABLED
-
-# Maestro Agent configuration
-maestro::agent::stomp_host: '$MASTER'
-
-# Archiva repository
-maestro_nodes::repositories::host: '$MASTER'
-
-# Demo compositions configuration
-maestro_demo::archiva_host: '$MASTER'
-maestro_demo::jenkins_host: '$MASTER'
-maestro_demo::sonar_host: '$MASTER'
 EOF
 fi
+
+# Create external facts
+mkdir -p /etc/facter/facts.d
+if [ ! -e /etc/facter/facts.d/maestro_node_type.txt ]
+  then
+  echo "maestro_node_type=$NODE_TYPE" > /etc/facter/facts.d/maestro_node_type.txt
+fi
+if [ ! -e /etc/facter/facts.d/maestro_host.txt ]
+  then
+  echo "maestro_host=localhost" > /etc/facter/facts.d/maestro_host.txt
+fi
+
 
 # create node if it doesn't exist already
 if [ ! -e /etc/puppet/manifests/nodes/$MASTER.pp ]
