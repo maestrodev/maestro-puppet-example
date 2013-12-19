@@ -17,7 +17,7 @@ FORGE
       maestrodev/wget (>= 1.0.0)
       puppetlabs/postgresql (< 3.0.0, >= 2.0.1)
       puppetlabs/stdlib (>= 3.2.0)
-    maestrodev/maestro_demo (1.0.14)
+    maestrodev/maestro_demo (1.0.15)
       maestrodev/android (>= 1.1.0)
       maestrodev/maestro (>= 1.2.0)
       puppetlabs/postgresql (>= 2.0.1)
