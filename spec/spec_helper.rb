@@ -7,11 +7,10 @@ RSpec.configure do |c|
   c.manifest_dir = './manifests'
   c.module_path = './modules'
 
-  c.before(:all) do
-    hiera_config = File.expand_path(File.join(__FILE__, '..', 'fixtures', 'hiera.yaml'))
-    raise "Hiera config file does not exist: #{hiera_config}" unless File.exists? hiera_config
-    Puppet[:hiera_config] = hiera_config
-  end
+  hiera_config = File.expand_path(File.join(__FILE__, '..', 'fixtures', 'hiera.yaml'))
+  raise "Hiera config file does not exist: #{hiera_config}" unless File.exists? hiera_config
+  c.hiera_config = hiera_config
+
   c.before(:each) do
     Puppet::Util::Log.level = :warning
     Puppet::Util::Log.newdestination(:console)

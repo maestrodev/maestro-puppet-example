@@ -47,8 +47,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     file = File.open(File.expand_path("basic_settings.xml", File.dirname(__FILE__)), "r")
     expected = file.read
 
-    content = catalogue.resource('file', '/var/lib/jenkins/.m2/settings.xml').send(:parameters)[:content]
-    content.should eq(expected)
+    should contain_file('/var/lib/jenkins/.m2/settings.xml').with_content(expected)
   end
 
   it { should contain_class('jenkins').with_jenkins_prefix('/jenkins') }
@@ -69,18 +68,10 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-4..*\.rpm$/)
   end
 
-  it 'should generate valid nginx proxy configurations' do
-    content = catalogue.resource('file', "/etc/nginx/conf.d/maestro_app-upstream.conf").send(:parameters)[:content]
-    content.should_not be_nil
-    content.should =~ %r[localhost:8080]
-
-    content = catalogue.resource('file', "/etc/nginx/conf.d/jenkins_app-upstream.conf").send(:parameters)[:content]
-    content.should_not be_nil
-    content.should =~ %r[localhost:8181]
-
-    content = catalogue.resource('file', "/etc/nginx/conf.d/archiva_app-upstream.conf").send(:parameters)[:content]
-    content.should_not be_nil
-    content.should =~ %r[localhost:8082]
+  context 'when generating valid nginx proxy configurations' do
+    it { should contain_file("/etc/nginx/conf.d/maestro_app-upstream.conf").with_content(%r[localhost:8080]) }
+    it { should contain_file("/etc/nginx/conf.d/jenkins_app-upstream.conf").with_content(%r[localhost:8181]) }
+    it { should contain_file("/etc/nginx/conf.d/archiva_app-upstream.conf").with_content(%r[localhost:8082]) }
   end
 
   it 'should establish an nginx proxy' do

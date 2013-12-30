@@ -14,8 +14,7 @@ shared_examples 'maestro agent' do |master = 'localhost'|
   it 'should generate valid settings.xml' do
     expected = File.read(File.expand_path("basic_settings.xml", File.dirname(__FILE__)))
     expected.should_not be_nil
-    params = catalogue.resource('file', "#{user_home}/.m2/settings.xml").send(:parameters)
-    params[:content].should eq(expected.gsub(/localhost/, master))
+    should contain_file("#{user_home}/.m2/settings.xml").with_content(expected.gsub(/localhost/, master))
   end
 
   it 'should install the required packages for Selenium to run' do
@@ -26,9 +25,9 @@ shared_examples 'maestro agent' do |master = 'localhost'|
     augeas_resource_name = "maestro-agent-wrapper-maxmemory"
     should contain_augeas(augeas_resource_name)
 
-    params = catalogue.resource('augeas', augeas_resource_name).send(:parameters)
-    params[:changes].should == "set wrapper.java.maxmemory #{agent_maxmem}"
-    params[:incl].should == "/var/local/maestro-agent/conf/wrapper.conf"
+    should contain_augeas(augeas_resource_name).with(
+      'changes' => "set wrapper.java.maxmemory #{agent_maxmem}",
+      'incl' => "/var/local/maestro-agent/conf/wrapper.conf")
   end
 
   it { should contain_class('maestro_nodes::agent').with_repo(repo) }
