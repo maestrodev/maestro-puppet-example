@@ -81,15 +81,19 @@ maestro::plugins::plugins:
     version: '1.1.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-bamboo-plugin':
-    version: '1.1'
+    version: '1.2'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-continuum-plugin':
-    version: '1.6.1'
+    version: '1.7'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-cucumber-plugin':
-    version: '1.0.1'
-  'maestro-flowdock-plugin':
     version: '1.1'
+    dir: 'com/maestrodev/maestro/plugins'
+  'maestro-flowdock-plugin':
+    version: '1.2'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-fog-plugin':
-    version: '1.13'
+    version: '1.16'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-git-plugin':
     version: '1.2'
@@ -129,7 +133,7 @@ maestro::plugins::plugins:
     version: '1.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-ssh-plugin':
-    version: '1.1'
+    version: '1.2.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-sonar-plugin':
     version: '1.1'
