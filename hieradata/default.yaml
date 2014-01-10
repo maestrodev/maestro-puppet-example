@@ -83,6 +83,9 @@ maestro::plugins::plugins:
   'maestro-bamboo-plugin':
     version: '1.2'
     dir: 'com/maestrodev/maestro/plugins'
+  'maestro-builtin-images-plugin':
+    version: '1.2'
+    dir: 'com/maestrodev/maestro/plugins'
   'maestro-continuum-plugin':
     version: '1.7'
     dir: 'com/maestrodev/maestro/plugins'
