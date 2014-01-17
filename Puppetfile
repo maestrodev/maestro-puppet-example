@@ -18,4 +18,3 @@ mod 'maestrodev/maestro_demo'
 #mod 'subversion_edge',      :git => 'https://github.com/maestrodev/puppet-subversion_edge.git'
 
 mod 'puppetlabs/nodejs', :git => 'https://github.com/puppetlabs/puppetlabs-nodejs.git'
-mod 'jfryman/nginx', :git => 'https://github.com/jfryman/puppet-nginx.git'

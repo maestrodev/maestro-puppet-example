@@ -1,6 +1,10 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
+    jfryman/nginx (0.0.7)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 0.1.6)
     maestrodev/activemq (1.2.1)
       maestrodev/wget (>= 1.0.0)
     maestrodev/android (1.1.5)
@@ -82,16 +86,6 @@ FORGE
     stahnma/epel (0.0.6)
 
 GIT
-  remote: https://github.com/jfryman/puppet-nginx.git
-  ref: master
-  sha: b61c745012d419781c7457081ba1b69851334933
-  specs:
-    jfryman/nginx (0.0.5)
-      puppetlabs/apt (>= 1.0.0)
-      puppetlabs/concat (>= 1.0.0)
-      puppetlabs/stdlib (>= 0.1.6)
-
-GIT
   remote: https://github.com/puppetlabs/puppetlabs-nodejs.git
   ref: master
   sha: 30ff2fe046f4ebbcf4b17c1ef44fb1f928d8086e
@@ -101,7 +95,6 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 DEPENDENCIES
-  jfryman/nginx (>= 0)
   maestrodev/maestro_demo (>= 0)
   maestrodev/maestro_nodes (>= 1.3.20)
   puppetlabs/nodejs (>= 0)
