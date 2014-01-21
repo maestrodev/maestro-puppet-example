@@ -50,7 +50,7 @@ will set up a Puppet master on the machine, which can then be customised and
 used for setting up other machines.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | NO_PROVISION=true bash -s USERNAME PASSWORD
+curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | sudo NO_PROVISION=true bash -s USERNAME PASSWORD
 ```
 
 ### Creating an Image
@@ -96,7 +96,7 @@ Upgrading
 
 You can run the `get-maestro.sh` to install all prerequisites (ie. Puppet and modules upgrades) in the master, but skipping the Puppet step at the end
 
-    curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | NO_PROVISION=true bash -s USERNAME PASSWORD
+    curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | sudo NO_PROVISION=true bash -s USERNAME PASSWORD
 
 
 Then puppet can be run as usual with the `--noop` flag to check that all changes look correct before applying them.
@@ -112,12 +112,12 @@ If all looks correct Puppet can be run again to aply the changes
 
 Agents can be updated the same way. First with `NO_PROVISION` to update the prerequisites if necessary, then running Puppet. We recommend updating one agent and check that it shows up in the Infrastructure tab in the Maestro Web UI before upgrading the rest of the agents.
 
-    curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-agent.sh | NO_PROVISION=true bash -s MASTER_HOSTNAME [MASTER_IP]
-    puppet agent --test --noop
+    curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-agent.sh | sudo NO_PROVISION=true bash -s MASTER_HOSTNAME [MASTER_IP]
+    sudo puppet agent --test --noop
 
 If all looks good
 
-    puppet agent --test
+    sudo puppet agent --test
 
 
 Troubleshooting
