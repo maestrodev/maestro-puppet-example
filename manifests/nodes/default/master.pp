@@ -8,13 +8,7 @@
 # * Jenkins
 # * Archiva
 
-node 'master' inherits 'parent' {
-
-  include maestro::repository
-  include maestro_nodes::repositories
-
-  # Maestro
-  include maestro_nodes::nginx::maestroservernginx
+node 'master' inherits 'master_base' {
 
   # Jenkins
   include maestro_nodes::nginx::jenkinsservernginx
