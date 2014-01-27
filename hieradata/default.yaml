@@ -3,13 +3,7 @@
 # Copy them to common.yaml or other hiera file specific to some nodes %{clientcert}.yaml
 # See Puppet Hiera documentation for more detail on config files
 
-maestro::repository::username: 'your_username'
-maestro::repository::password: 'CHANGEME'
-maestro_nodes::agent::repo:
-  url: 'https://repo.maestrodev.com/archiva/repository/all'
-  username: 'your_username'
-  password: 'CHANGEME'
-maestro_nodes::maestroserver::repo:
+maestro::params::repo:
   url: 'https://repo.maestrodev.com/archiva/repository/all'
   username: 'your_username'
   password: 'CHANGEME'

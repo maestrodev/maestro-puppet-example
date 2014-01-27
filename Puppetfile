@@ -1,6 +1,6 @@
 forge 'http://forge.puppetlabs.com'
 
-mod 'maestrodev/maestro_nodes', '>=1.3.20'
+mod 'maestrodev/maestro_nodes', '>=1.3.31'
 mod 'maestrodev/maestro_demo'
 
 # optional modules

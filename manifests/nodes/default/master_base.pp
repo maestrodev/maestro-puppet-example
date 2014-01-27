@@ -6,7 +6,6 @@
 
 node 'master_base' inherits 'parent' {
 
-  include maestro::repository
   include maestro_nodes::repositories
 
   # Maestro

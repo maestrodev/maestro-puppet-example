@@ -112,14 +112,7 @@ if [ ! -e /etc/puppet/hieradata/common.yaml ]
   cat > /etc/puppet/hieradata/common.yaml <<EOF
 ---
 # MaestroDev credentials
-maestro::repository::username: '$USERNAME'
-maestro::repository::password: '$PASSWORD'
-
-maestro_nodes::agent::repo:
-  url: 'https://repo.maestrodev.com/archiva/repository/all'
-  username: '$USERNAME'
-  password: '$PASSWORD'
-maestro_nodes::maestroserver::repo:
+maestro::params::repo:
   url: 'https://repo.maestrodev.com/archiva/repository/all'
   username: '$USERNAME'
   password: '$PASSWORD'
