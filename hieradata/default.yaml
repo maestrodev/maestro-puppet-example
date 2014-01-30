@@ -13,10 +13,10 @@ maestro::maestro::version: '4.20.1'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::admin_password: 'admin1'
 maestro::maestro::master_password: 'maestro'
-maestro::maestro::db_server_password: 'maestro'
-maestro::maestro::db_password: 'maestro'
+maestro::params::db_server_password: 'maestro'
+maestro::params::db_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
-maestro::maestro::enabled: true
+maestro::params::enabled: true
 maestro::maestro::metrics_enabled: true
 
 maestro::agent::agent_version: '2.3.0'

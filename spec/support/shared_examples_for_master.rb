@@ -61,7 +61,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
   end
 
   it 'should have the right postgres password' do
-    should contain_class('maestro::maestro').with_db_server_password('maestro')
+    should contain_class('maestro::maestro::db').with_password('maestro')
   end
 
   it 'should have the right version' do
