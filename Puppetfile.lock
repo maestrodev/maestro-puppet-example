@@ -7,7 +7,7 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     maestrodev/activemq (1.2.1)
       maestrodev/wget (>= 1.0.0)
-    maestrodev/android (1.1.5)
+    maestrodev/android (1.1.6)
       maestrodev/wget (>= 1.0.0)
       puppetlabs/stdlib (>= 3.2.0)
     maestrodev/ant (1.0.4)
@@ -21,11 +21,11 @@ FORGE
       maestrodev/wget (>= 1.3.0)
       puppetlabs/postgresql (< 3.0.0, >= 2.0.1)
       puppetlabs/stdlib (>= 3.2.0)
-    maestrodev/maestro_demo (1.0.15)
+    maestrodev/maestro_demo (1.0.16)
       maestrodev/android (>= 1.1.0)
       maestrodev/maestro (>= 1.2.0)
       puppetlabs/postgresql (>= 2.0.1)
-    maestrodev/maestro_nodes (1.3.32)
+    maestrodev/maestro_nodes (1.3.33)
       jfryman/nginx (>= 0.0.7)
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
@@ -48,7 +48,7 @@ FORGE
       stahnma/epel (>= 0.0.0)
     maestrodev/maven (1.1.9)
       maestrodev/wget (>= 1.0.0)
-    maestrodev/rvm (1.4.0)
+    maestrodev/rvm (1.4.1)
       puppetlabs/apache (>= 0.9.0)
       puppetlabs/stdlib (>= 3.2.0)
     maestrodev/sonar (1.0.4)
@@ -89,7 +89,7 @@ FORGE
 GIT
   remote: https://github.com/puppetlabs/puppetlabs-nodejs.git
   ref: master
-  sha: 30ff2fe046f4ebbcf4b17c1ef44fb1f928d8086e
+  sha: c236814d3bcdcaa9643d4cae132f3523b9bd6f0b
   specs:
     puppetlabs/nodejs (0.4.0)
       puppetlabs/apt (>= 0.0.3)
