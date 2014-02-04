@@ -18,6 +18,7 @@ maestro::params::db_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 maestro::params::enabled: true
 maestro::maestro::metrics_enabled: true
+maestro::params::lucee_password: maestro
 
 maestro::agent::agent_version: '2.3.0'
 maestro::agent::package_type: 'rpm'
