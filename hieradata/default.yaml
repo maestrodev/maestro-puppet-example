@@ -15,7 +15,7 @@ maestro::maestro::master_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 maestro::maestro::metrics_enabled: true
 # some other default values that can be changed
-# maestro::params::admin_password: 'admin1'
+# maestro::params::admin_password: 'admin1' # needs to match password validation rules
 # maestro::params::db_server_password: 'maestro'
 # maestro::params::db_password: 'maestro'
 # maestro::params::lucee_password: maestro
