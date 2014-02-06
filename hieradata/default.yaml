@@ -15,11 +15,12 @@ maestro::maestro::master_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 maestro::maestro::metrics_enabled: true
 # some other default values that can be changed
-# maestro::params::admin_password: 'admin1' # needs to match password validation rules
 # maestro::params::db_server_password: 'maestro'
 # maestro::params::db_password: 'maestro'
 # maestro::params::lucee_password: maestro
 # maestro::params::enabled: true
+# needs to match password validation rules: 1-24 characters and a numeric value
+# maestro::params::admin_password: 'admin1'
 
 maestro::agent::agent_version: '2.3.0'
 maestro::agent::package_type: 'rpm'
