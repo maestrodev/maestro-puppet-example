@@ -42,7 +42,7 @@ EOF
 fi
 
 # Puppet install and configuration
-MASTER=`hostname`
+MASTER=`hostname -f`
 if [ -z "$MAESTRO_ENABLED" ]; then
   MAESTRO_ENABLED=true
 fi
