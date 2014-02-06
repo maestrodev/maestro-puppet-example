@@ -112,7 +112,7 @@ maestro::plugins::plugins:
     version: '1.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-maven-plugin':
-    version: '1.1.1'
+    version: '1.2'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-puppet-plugin':
     version: '1.2'
