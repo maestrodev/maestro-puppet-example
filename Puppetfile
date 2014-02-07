@@ -1,7 +1,7 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'maestrodev/maestro_nodes', '>=1.3.34'
-mod 'maestrodev/maestro_demo', '>=1.0.17'
+mod 'maestrodev/maestro_demo', '>=1.0.19'
 
 # optional modules
 #mod 'artifactory',          :git => 'https://github.com/maestrodev/puppet-artifactory.git'
