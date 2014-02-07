@@ -118,7 +118,7 @@ maestro::params::repo:
   password: '$PASSWORD'
 
 # Whether to start Maestro now or not (useful for creating images)
-maestro::maestro::enabled: $MAESTRO_ENABLED
+maestro::params::enabled: $MAESTRO_ENABLED
 EOF
 fi
 
