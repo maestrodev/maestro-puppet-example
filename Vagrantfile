@@ -27,8 +27,8 @@ end
 # Vagrant::Config.run do |config|
 Vagrant.configure("2") do |config|
 
-  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "CentOS-6.4-x86_64-minimal"
-  config.vm.box_url = "https://repo.maestrodev.com/archiva/repository/public-releases/com/maestrodev/vagrant/CentOS/6.4/CentOS-6.4-x86_64-minimal.box"
+  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "opscode-centos-6.5"
+  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
 
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']
@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: "192.168.33.30"
     setup_master(config)
 
-    config.vm.synced_folder ".", "/etc/puppet", :owner => "puppet", :group => "puppet"
+    config.vm.provision :shell, :inline => "rm -r /etc/puppet; ln -s /vagrant /etc/puppet"
 
     config.vm.provision :shell do |shell|
       shell.path = "get-maestro.sh"
