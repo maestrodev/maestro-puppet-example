@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'agent' do
-  let(:facts) { centos_facts.merge({
+describe 'agent', :compile do
+  let(:facts) {{
     :hostname => 'agent-01',
     :fqdn => 'agent-01.maestrodev.net',
     :maestro_node_type => 'agent',
     :maestro_host => 'maestro.maestrodev.net'
-  }) }
+  }}
 
   include_context :maestro
   it_behaves_like 'maestro agent', 'maestro.maestrodev.net'
