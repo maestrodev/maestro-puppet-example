@@ -5,8 +5,8 @@ def setup(config)
     src = File.expand_path("~/.maestro/src")
     File.exists?(File.expand_path(src)) or Dir.mkdir(src)
     config.vm.synced_folder src, "/usr/local/src", :owner => "root", :group => "root"
-    config.vm.synced_folder File.expand_path("~/.m2/repository"), "/var/local/maestro-agent/.m2/repository", :extra => "dmode=777,fmode=666"
-    config.vm.synced_folder File.expand_path("~/.m2/repository"), "/var/lib/jenkins/.m2/repository", :extra => "dmode=777,fmode=666"
+    config.vm.synced_folder File.expand_path("~/.m2/repository"), "/var/local/maestro-agent/.m2/repository", mount_options_arwx
+    config.vm.synced_folder File.expand_path("~/.m2/repository"), "/var/lib/jenkins/.m2/repository", mount_options_arwx
     # keep yum cache in host
     config.vm.provision :shell, :inline => "sed -i 's/keepcache=0/keepcache=1/' /etc/yum.conf"
     yum = File.expand_path("~/.maestro/yum")
@@ -24,6 +24,10 @@ def setup_master(config)
   end
 end
 
+def mount_options_arwx
+  Vagrant::VERSION =~ /1\.2\..*/ ? {:extra => "dmode=777,fmode=666"} : {:mount_options => ["dmode=777","fmode=666"]}
+end
+
 # Vagrant::Config.run do |config|
 Vagrant.configure("2") do |config|
 
@@ -39,7 +43,7 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: "192.168.33.30"
     setup_master(config)
 
-    config.vm.provision :shell, :inline => "rm -r /etc/puppet; ln -s /vagrant /etc/puppet"
+    config.vm.synced_folder ".", "/etc/puppet", mount_options_arwx
 
     config.vm.provision :shell do |shell|
       shell.path = "get-maestro.sh"
