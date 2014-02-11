@@ -9,7 +9,7 @@ maestro::params::repo:
   password: 'CHANGEME'
 
 
-maestro::maestro::version: '4.20.1'
+maestro::maestro::version: '5.0.0'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::master_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
@@ -22,7 +22,7 @@ maestro::maestro::metrics_enabled: true
 # needs to match password validation rules: 1-24 characters and a numeric value
 # maestro::params::admin_password: 'admin1'
 
-maestro::agent::agent_version: '2.3.0'
+maestro::agent::agent_version: '2.4.0'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: '%{maestro_host}'
 maestro::agent::agent_name: '%{hostname}'
