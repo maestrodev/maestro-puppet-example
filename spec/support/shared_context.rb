@@ -1,6 +1,6 @@
 shared_context :maestro do
 
-  let(:maestro_version) { '5.0.0' }
+  let(:maestro_version) { '5.0.1' }
   let(:agent_version) { '2.4.0' }
 
   let(:repo) {{
