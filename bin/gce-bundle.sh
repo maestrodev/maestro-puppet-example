@@ -18,7 +18,7 @@ sudo gcimagebundle -d /dev/sda -o /tmp/ --log_file=/tmp/abc.log
 IMAGE_NAME=$IMAGE_NAME-`echo $RPM | head -n 1 | sed -e 's/.*-\(.*\)\.rpm/\1/' | sed -e 's/\./-/g'`-`date +"%Y%m%d%H%M"`
 echo IMAGE_NAME=$IMAGE_NAME
 IMAGE_TAR=`/bin/ls -1 /tmp/*.image.tar.gz | sed -e 's/\/tmp\/\(.*\).image.tar.gz/\1/'`
-echo IMAGE_TAR=$IMAGE_TAR
+echo IMAGE_TAR=$IMAGE_TAR
 
 # gsutil credentials
 cat << EOF > ~/.boto
