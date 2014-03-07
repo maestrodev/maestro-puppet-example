@@ -84,7 +84,7 @@ if [ $ENVIRONMENT == "development" ]; then
   echo ************************************************************
   echo ************************************************************
 else
-  rpm -q maestro-puppet-example || yum install --enablerepo=maestrodev maestro-puppet-example
+  rpm -q maestro-puppet-example || yum install -y --enablerepo=maestrodev maestro-puppet-example
 fi
 
 
