@@ -50,7 +50,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     should contain_file('/var/lib/jenkins/.m2/settings.xml').with_content(expected)
   end
 
-  it { should contain_class('jenkins').with_jenkins_prefix('/jenkins') }
+  it { should contain_class('jenkins') }
 
   it 'should download packages from maestrodev repo' do
     should contain_wget__authfetch('archiva_download').with(
