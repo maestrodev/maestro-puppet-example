@@ -113,7 +113,7 @@ maestro::plugins::plugins:
     version: '1.17'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-git-plugin':
-    version: '1.2'
+    version: '1.3'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-gitblit-plugin':
     version: '1.1'
@@ -161,7 +161,7 @@ maestro::plugins::plugins:
     version: '1.2'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-tomcat-plugin':
-    version: '1.4'
+    version: '1.5'
     dir: 'com/maestrodev/maestro/plugins'
 
 # Using an existing Maven repository manager for Maven builds
