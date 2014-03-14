@@ -120,7 +120,7 @@ maestro::plugins::plugins:
     version: '1.3'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-rake-plugin':
-    version: '1.4'
+    version: '1.5'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-rightscale-plugin':
     version: '1.5'
