@@ -22,7 +22,7 @@ maestro::maestro::metrics_enabled: true
 # needs to match password validation rules: 1-24 characters and a numeric value
 # maestro::params::admin_password: 'admin1'
 
-maestro::agent::agent_version: '2.4.0'
+maestro::agent::agent_version: '2.5.0'
 maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: '%{maestro_host}'
 maestro::agent::agent_name: '%{hostname}'
