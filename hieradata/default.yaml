@@ -43,6 +43,19 @@ jenkins::config_hash:
     value: "%{hiera('jenkins_port')}"
   JENKINS_ARGS:
     value: --prefix=/jenkins
+
+# Jenkins plugins...
+# Need to specify dependencies
+# git: 2.0.4
+#   dep: git-client: 1.6.4 (docs say 1.6.3)
+#   dep: scm-api: 0.2
+# nodelabelparameter: 1.5.1
+#   dep: token-macro: 1.9
+#     dep: none
+#   dep: jquery: 1.7.2-1
+#     dep: none
+# swarm: 1.15
+#   dep: none
 jenkins::plugin_hash:
   git:
     version: 2.0.4
@@ -50,6 +63,14 @@ jenkins::plugin_hash:
     version: 1.6.4
   scm-api:
     version: 0.2
+  nodelabelparameter:
+    version: 1.5.1
+  token-macro:
+    version: 1.9
+  jquery:
+    version: 1.7.2-1
+  swarm:
+    version: 1.15
 
 
 # Archiva repository
