@@ -9,6 +9,7 @@
   - '%{::maestro_node_type}_%{::environment}'
   - '%{::maestro_node_type}'
   - '%{::environment}'
+  - '%{::productname}'
   - 'template_%{::template}'
   - 'pe_%{::puppet_enterprise}'
   - 'common'
