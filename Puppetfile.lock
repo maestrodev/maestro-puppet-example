@@ -2,7 +2,7 @@ FORGE
   remote: http://forge.puppetlabs.com
   specs:
     darin/zypprepo (1.0.1)
-    jfryman/nginx (0.0.7)
+    jfryman/nginx (0.0.8)
       puppetlabs/apt (>= 1.0.0)
       puppetlabs/concat (>= 1.0.0)
       puppetlabs/stdlib (>= 0.1.6)
@@ -21,10 +21,10 @@ FORGE
       maestrodev/wget (>= 1.3.0)
       puppetlabs/postgresql (>= 3.0.0)
       puppetlabs/stdlib (>= 3.2.0)
-    maestrodev/maestro_demo (1.1.3)
+    maestrodev/maestro_demo (1.1.4)
       maestrodev/android (>= 1.1.6)
       maestrodev/maestro (>= 1.5.0)
-    maestrodev/maestro_nodes (1.5.1)
+    maestrodev/maestro_nodes (1.5.2)
       jfryman/nginx (>= 0.0.7)
       maestrodev/activemq (>= 1.0.0)
       maestrodev/ant (>= 1.0.3)
@@ -45,9 +45,9 @@ FORGE
       rtyler/jenkins (>= 1.0.0)
       saz/ssh (>= 0.0.0)
       stahnma/epel (>= 0.0.0)
-    maestrodev/maven (1.1.10)
+    maestrodev/maven (1.1.11)
       maestrodev/wget (>= 1.0.0)
-    maestrodev/rvm (1.5.0)
+    maestrodev/rvm (1.5.1)
       puppetlabs/stdlib (>= 3.2.0)
     maestrodev/sonar (1.0.4)
       maestrodev/maven (>= 0.0.2)
@@ -63,12 +63,12 @@ FORGE
     puppetlabs/concat (1.1.0-rc1)
       puppetlabs/stdlib (>= 3.0.0)
     puppetlabs/firewall (1.0.2)
-    puppetlabs/java (1.0.1)
+    puppetlabs/java (1.1.0)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.3.0)
       puppetlabs/apt (>= 1.0.0)
       puppetlabs/stdlib (>= 2.2.0)
-    puppetlabs/ntp (3.0.1)
+    puppetlabs/ntp (3.0.3)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/postgresql (3.3.3)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
@@ -81,16 +81,16 @@ FORGE
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/java (>= 1.0.1)
       puppetlabs/stdlib (>= 2.0.0)
-    saz/ssh (1.4.0)
+    saz/ssh (2.3.3)
       puppetlabs/stdlib (>= 2.2.1)
     stahnma/epel (0.0.6)
 
 GIT
   remote: https://github.com/puppetlabs/puppetlabs-nodejs.git
   ref: master
-  sha: c236814d3bcdcaa9643d4cae132f3523b9bd6f0b
+  sha: 341240dc027c9d1d2980b9c24bf7dd2518383723
   specs:
-    puppetlabs/nodejs (0.4.0)
+    puppetlabs/nodejs (0.5.0)
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/stdlib (>= 2.0.0)
 
