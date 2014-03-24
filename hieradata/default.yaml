@@ -9,7 +9,7 @@ maestro::params::repo:
   password: 'CHANGEME'
 
 
-maestro::maestro::version: '5.0.1'
+maestro::maestro::version: '5.0.2'
 maestro::maestro::package_type: 'rpm'
 maestro::maestro::master_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
