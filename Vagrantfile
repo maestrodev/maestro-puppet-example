@@ -31,8 +31,8 @@ end
 # Vagrant::Config.run do |config|
 Vagrant.configure("2") do |config|
 
-  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "opscode-centos-6.5"
-  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
+  config.vm.box = ENV["MAESTRO_CENTOS_BOX"] || "centos-65-x64-virtualbox-nocm"
+  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-nocm.box"
 
   abort "MAESTRODEV_USERNAME must be set" unless ENV['MAESTRODEV_USERNAME']
   abort "MAESTRODEV_PASSWORD must be set" unless ENV['MAESTRODEV_PASSWORD']

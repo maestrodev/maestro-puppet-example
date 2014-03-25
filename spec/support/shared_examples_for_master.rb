@@ -17,7 +17,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
   it { should contain_service('activemq').with_ensure('running') }
   it { should contain_service('jenkins').with_ensure('running') }
   it { should_not contain_service('maestro-test-remote-control') }
-  it { should contain_service('postgresqld').with_ensure('running') }
+  it { should contain_service('postgresqld').with_ensure(/running|true/) }
   it { should contain_service('ntp').with_ensure('running') }
   it { should_not contain_service('maestro-test-hub') }
   it { should_not contain_service('continuum') }
@@ -50,7 +50,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
     should contain_file('/var/lib/jenkins/.m2/settings.xml').with_content(expected)
   end
 
-  it { should contain_class('jenkins').with_jenkins_prefix('/jenkins') }
+  it { should contain_class('jenkins') }
 
   it 'should download packages from maestrodev repo' do
     should contain_wget__authfetch('archiva_download').with(
