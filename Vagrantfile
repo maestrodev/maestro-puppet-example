@@ -7,11 +7,14 @@ def setup(config)
     config.vm.synced_folder src, "/usr/local/src", :owner => "root", :group => "root"
     config.vm.synced_folder File.expand_path("~/.m2/repository"), "/var/local/maestro-agent/.m2/repository", mount_options_arwx
     config.vm.synced_folder File.expand_path("~/.m2/repository"), "/var/lib/jenkins/.m2/repository", mount_options_arwx
-    # keep yum cache in host
-    config.vm.provision :shell, :inline => "sed -i 's/keepcache=0/keepcache=1/' /etc/yum.conf"
-    yum = File.expand_path("~/.maestro/yum")
-    File.exists?(File.expand_path(yum)) or Dir.mkdir(yum)
-    config.vm.synced_folder yum, "/var/cache/yum", :owner => "root", :group => "root"
+
+    unless Vagrant.has_plugin?("vagrant-cachier")
+      # keep yum cache in host
+      config.vm.provision :shell, :inline => "sed -i 's/keepcache=0/keepcache=1/' /etc/yum.conf"
+      yum = File.expand_path("~/.maestro/yum")
+      File.exists?(File.expand_path(yum)) or Dir.mkdir(yum)
+      config.vm.synced_folder yum, "/var/cache/yum", :owner => "root", :group => "root"
+    end
   end
 end
 
