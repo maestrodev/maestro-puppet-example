@@ -1,4 +1,5 @@
 ---
+# IF THIS FILE IS CHANGED THE PUPPET MASTER MUST BE RESTARTED!!!
 :backends:
   - yaml
 :yaml:
