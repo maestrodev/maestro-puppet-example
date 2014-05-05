@@ -57,25 +57,6 @@ if [ -z `facter fqdn` ]; then
   exit 1
 fi
 
-# Add MaestroDev yum repos
-if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
-  cat > /etc/yum.repos.d/maestrodev.repo << EOF
-[maestrodev]
-name=MaestroDev Products EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
-enabled=0
-gpgcheck=0
-
-[maestrodev-snapshots]
-name=MaestroDev Snapshots EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/snapshots/el/6/\$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
-enabled=0
-gpgcheck=0
-EOF
-fi
-
 # install puppet config
 if [ $ENVIRONMENT == "development" ]; then
   echo ************************************************************
@@ -116,6 +97,9 @@ maestro::params::repo:
   url: 'https://repo.maestrodev.com/archiva/repository/all'
   username: '$USERNAME'
   password: '$PASSWORD'
+
+maestro::yumrepo::username: '$USERNAME'
+maestro::yumrepo::password: '$PASSWORD'
 
 # Whether to start Maestro now or not (useful for creating images)
 maestro::params::enabled: $MAESTRO_ENABLED

@@ -3,7 +3,7 @@ shared_examples 'maestro agent' do |master = 'localhost'|
   let(:agent_maxmem) { "128" }
 
   it 'should honor hiera configuration' do
-    should contain_class('maestro::agent').with_agent_version(agent_version)
+    should contain_class('maestro::agent').with_agent_version('present')
   end
 
   it { should contain_user('maestro_agent') }

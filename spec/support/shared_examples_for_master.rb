@@ -1,7 +1,7 @@
 shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
 
   it 'should honor hiera configuration' do
-    should contain_class('maestro::maestro').with_version(maestro_version)
+    should contain_class('maestro::maestro').with_version('present')
   end
 
   it { should contain_user('maestro') }
@@ -65,7 +65,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
   end
 
   it 'should have the right version' do
-    should contain_wget__authfetch('fetch-maestro-rpm').with_source(/-5..*\.rpm$/)
+    should contain_package('maestro').with_ensure('present')
   end
 
   context 'when generating valid nginx proxy configurations' do

@@ -65,27 +65,6 @@ if [ ! -e /etc/facter/facts.d/maestro_host.txt ]
   echo "maestro_host=$MASTER_HOSTNAME" > /etc/facter/facts.d/maestro_host.txt
 fi
 
-
-# Add MaestroDev yum repos
-if [ ! -e /etc/yum.repos.d/maestrodev.repo ]; then
-  cat > /etc/yum.repos.d/maestrodev.repo << EOF
-[maestrodev]
-name=MaestroDev Products EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/el/6/\$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
-enabled=0
-gpgcheck=0
-
-[maestrodev-snapshots]
-name=MaestroDev Snapshots EL 6 - \$basearch
-baseurl=https://$USERNAME:$PASSWORD@yum.maestrodev.com/snapshots/el/6/\$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-maestrodev
-enabled=0
-gpgcheck=0
-EOF
-fi
-
-
 # disable puppet agent polling
 puppet resource service puppet ensure=stopped enable=false
 

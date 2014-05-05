@@ -9,8 +9,6 @@ maestro::params::repo:
   password: 'CHANGEME'
 
 
-maestro::maestro::version: '5.1.1'
-maestro::maestro::package_type: 'rpm'
 maestro::maestro::master_password: 'maestro'
 maestro::maestro::agent_auto_activate: true
 maestro::maestro::metrics_enabled: true
@@ -22,8 +20,6 @@ maestro::maestro::metrics_enabled: true
 # needs to match password validation rules: 1-24 characters and a numeric value
 # maestro::params::admin_password: 'admin1'
 
-maestro::agent::agent_version: '2.6.0'
-maestro::agent::package_type: 'rpm'
 maestro::agent::stomp_host: '%{maestro_host}'
 maestro::agent::agent_name: '%{hostname}'
 
@@ -93,9 +89,12 @@ maestro::maestro::jetty_forwarded: true
 #maestro::maestro::maxmemory: '256'
 #maestro::maestro::permsize: '384m'
 #maestro::maestro::maxpermsize: '384m'
-activemq::max_memory: '64'
 #archiva::maxmemory: '64'
 maestro_nodes::agent::maxmemory: '128'
+
+# activemq
+activemq::package_type: rpm
+activemq::max_memory: 64
 
 # LDAP configuration
 #
