@@ -48,7 +48,7 @@ FORGE
       stahnma/epel (>= 0.0.6)
     maestrodev/maven (1.1.11)
       maestrodev/wget (>= 1.0.0)
-    maestrodev/rvm (1.5.2)
+    maestrodev/rvm (1.5.5)
       puppetlabs/stdlib (>= 3.2.0)
     maestrodev/sonar (1.0.4)
       maestrodev/maven (>= 0.0.2)
