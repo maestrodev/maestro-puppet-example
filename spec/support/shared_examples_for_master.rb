@@ -53,7 +53,7 @@ shared_examples 'maestro master' do |hostname = 'myhostname.acme.com'|
   it { should contain_class('jenkins') }
 
   it 'should download packages from maestrodev repo' do
-    should contain_wget__authfetch('archiva_download').with(
+    should contain_wget__fetch('archiva_download').with(
       :user => 'your_username',
       :password => /.+/,
       :source => /https:\/\/repo.maestrodev.com\/archiva\/repository\/all/
