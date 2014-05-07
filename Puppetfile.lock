@@ -14,7 +14,7 @@ FORGE
       puppetlabs/stdlib (>= 3.2.0)
     maestrodev/ant (1.0.4)
       maestrodev/wget (>= 0.0.1)
-    maestrodev/archiva (1.2.2)
+    maestrodev/archiva (1.2.3)
       maestrodev/wget (>= 1.3.0)
     maestrodev/git (1.0.2)
     maestrodev/maestro (2.0.0)
