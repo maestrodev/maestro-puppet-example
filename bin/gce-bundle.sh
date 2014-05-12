@@ -6,16 +6,12 @@ IMAGE_NAME=$1
 PROJECT=$2
 TOKEN=$3
 
-if /bin/ls -1 /usr/local/src/maestro-*.rpm &> /dev/null; then
-  RPM=`/bin/ls -1 /usr/local/src/maestro-*.rpm`
-else
-  RPM=`/bin/ls -1 /usr/local/src/agent-*.rpm`
-fi
+RPM=`rpm -q maestro || rpm -q maestro-agent`
 echo RPM=$RPM
 
 sudo gcimagebundle -d /dev/sda -o /tmp/ --log_file=/tmp/abc.log
 
-IMAGE_NAME=$IMAGE_NAME-`echo $RPM | head -n 1 | sed -e 's/.*-\(.*\)\.rpm/\1/' | sed -e 's/\./-/g'`-`date +"%Y%m%d%H%M"`
+IMAGE_NAME=$IMAGE_NAME-`echo $RPM | sed -e 's/.*-\(.*\)\.noarch/\1/' | sed -e 's/\./-/g'`-`date +"%Y%m%d%H%M"`
 echo IMAGE_NAME=$IMAGE_NAME
 IMAGE_TAR=`/bin/ls -1 /tmp/*.image.tar.gz | sed -e 's/\/tmp\/\(.*\).image.tar.gz/\1/'`
 echo IMAGE_TAR=$IMAGE_TAR
