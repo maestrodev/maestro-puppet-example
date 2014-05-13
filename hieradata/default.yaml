@@ -173,7 +173,7 @@ maestro::plugins::plugins:
     version: '1.2'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-ssh-plugin':
-    version: '1.4'
+    version: '1.5'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-sonar-plugin':
     version: '1.1'
