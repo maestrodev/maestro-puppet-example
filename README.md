@@ -15,13 +15,13 @@ The script `get-maestro.sh` can install a Puppet master with all the required Ma
 From a minimal CentOS 6.3 server you can run the script to automatically install everything, passing your MaestroDev provided username and password.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD
+curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD
 ```
 
 The puppet process can also be run in the background by setting the environment variable DAEMON to true.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
+curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | DAEMON=true bash -s USERNAME PASSWORD
 ```
 
 ### Other parameters
@@ -40,7 +40,7 @@ You can install the Maestro server without any of the servers needed by the defa
 the master_base node type when invoking the get-maestro.sh script. Like so:
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD master_base
+curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | bash -s USERNAME PASSWORD master_base
 ```
 
 ### Setting up a Puppet Master only
@@ -50,7 +50,7 @@ will set up a Puppet master on the machine, which can then be customised and
 used for setting up other machines.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | sudo NO_PROVISION=true bash -s USERNAME PASSWORD
+curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | sudo NO_PROVISION=true bash -s USERNAME PASSWORD
 ```
 
 ### Creating an Image
@@ -60,7 +60,7 @@ software as it will configure itself for the current host. In this case, set
 `MAESTRO_ENABLED` to `false`.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | MAESTRO_ENABLED=false bash -s USERNAME PASSWORD
+curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | MAESTRO_ENABLED=false bash -s USERNAME PASSWORD
 ```
 
 To later re-enable Maestro, edit the value in Hiera (see Customizing below).
@@ -73,7 +73,7 @@ From a minimal CentOS 6.3 server you can automatically install the Maestro Agent
 Optionally you can pass the ip of the master server too if there is no dns entry for the master hostname and it will create an entry in the agent /etc/hosts file to properly resolve the name to that ip.
 
 ```
-curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-agent.sh | bash -s MASTER_HOSTNAME [MASTER_IP]
+curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-agent.sh | bash -s MASTER_HOSTNAME [MASTER_IP]
 ```
 
 ### Installing the agents on a machine with non-standard hostname.
@@ -96,7 +96,7 @@ Upgrading
 
 You can run the `get-maestro.sh` to install all prerequisites (ie. Puppet and modules upgrades) in the master, but skipping the Puppet step at the end
 
-    curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | sudo NO_PROVISION=true bash -s USERNAME PASSWORD
+    curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-maestro.sh | sudo NO_PROVISION=true bash -s USERNAME PASSWORD
 
 
 Then puppet can be run as usual with the `--noop` flag to check that all changes look correct before applying them.
@@ -112,7 +112,7 @@ If all looks correct Puppet can be run again to aply the changes
 
 Agents can be updated the same way. First with `NO_PROVISION` to update the prerequisites if necessary, then running Puppet. We recommend updating one agent and check that it shows up in the Infrastructure tab in the Maestro Web UI before upgrading the rest of the agents.
 
-    curl -L http://raw.github.com/maestrodev/maestro-puppet-example/master/get-agent.sh | sudo NO_PROVISION=true bash -s MASTER_HOSTNAME [MASTER_IP]
+    curl -L https://raw.githubusercontent.com/maestrodev/maestro-puppet-example/master/get-agent.sh | sudo NO_PROVISION=true bash -s MASTER_HOSTNAME [MASTER_IP]
     sudo puppet agent --test --noop
 
 If all looks good
