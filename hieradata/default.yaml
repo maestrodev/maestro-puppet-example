@@ -91,6 +91,7 @@ maestro::maestro::jetty_forwarded: true
 #maestro::maestro::maxpermsize: '384m'
 #archiva::maxmemory: '64'
 maestro_nodes::agent::maxmemory: '128'
+maestro::agent::maxmemory: '128'
 
 # activemq
 activemq::package_type: rpm
