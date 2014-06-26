@@ -4,7 +4,7 @@
 
 IMAGE_NAME=$1
 
-RPM=`rpm -q maestro || rpm -q maestro-agent`
+RPM=`(rpm -q maestro || rpm -q maestro-agent) | tail -n 1`
 echo RPM=$RPM
 
 sudo gcimagebundle -d /dev/sda -o /tmp/ --log_file=/tmp/abc.log
