@@ -3,8 +3,6 @@
 # Sample script to package a running GCE instance with maestro or agent and upload to storage as an image
 
 IMAGE_NAME=$1
-PROJECT=$2
-TOKEN=$3
 
 RPM=`rpm -q maestro || rpm -q maestro-agent`
 echo RPM=$RPM
@@ -15,21 +13,5 @@ IMAGE_NAME=$IMAGE_NAME-`echo $RPM | sed -e 's/.*-\(.*\)-[0-9]\.noarch/\1/' | sed
 echo IMAGE_NAME=$IMAGE_NAME
 IMAGE_TAR=`/bin/ls -1 /tmp/*.image.tar.gz | sed -e 's/\/tmp\/\(.*\).image.tar.gz/\1/'`
 echo IMAGE_TAR=$IMAGE_TAR
-
-# gsutil credentials
-cat << EOF > ~/.boto
-[Credentials]
-gs_oauth2_refresh_token = $TOKEN
-
-[Boto]
-https_validate_certificates = True
-
-[GSUtil]
-content_language = en
-default_api_version = 2
-default_project_id = $PROJECT
-
-[OAuth2]
-EOF
 
 gsutil cp /tmp/$IMAGE_TAR.image.tar.gz gs://maestrodev-images/$IMAGE_NAME.image.tar.gz
