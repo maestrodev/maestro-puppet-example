@@ -17,10 +17,6 @@ shared_examples 'maestro agent' do |master = 'localhost'|
     should contain_file("#{user_home}/.m2/settings.xml").with_content(expected.gsub(/localhost/, master))
   end
 
-  it 'should install the required packages for Selenium to run' do
-    should contain_package('xorg-x11-server-Xvfb')
-  end
-
   it "modify wrapper.conf correctly" do
     augeas_resource_name = "maestro-agent-wrapper-maxmemory"
     should contain_augeas(augeas_resource_name)
