@@ -23,7 +23,7 @@ maestro::maestro::metrics_enabled: true
 maestro::agent::stomp_host: '%{maestro_host}'
 maestro::agent::agent_name: '%{hostname}'
 
-archiva::version: '1.3.8'
+archiva::version: '1.3.9'
 
 sonar::context_path: '/sonar'
 sonar::version: '3.5.1'
