@@ -18,3 +18,4 @@ mod 'maestrodev/maestro_demo', '>=1.1.0'
 #mod 'subversion_edge',      :git => 'https://github.com/maestrodev/puppet-subversion_edge.git'
 
 mod 'puppetlabs/nodejs', :git => 'https://github.com/puppetlabs/puppetlabs-nodejs.git'
+mod 'rtyler/jenkins', :git => 'https://github.com/maestrodev/puppet-jenkins', :ref => 'maestrodev'
