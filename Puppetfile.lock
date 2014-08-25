@@ -87,7 +87,7 @@ FORGE
 GIT
   remote: https://github.com/maestrodev/puppet-jenkins
   ref: maestrodev
-  sha: 4f0f2424003ef4709b466eb7abc57e1a1995b1ef
+  sha: 59184cee125f737cbac6033421dbcbc10cd13d4b
   specs:
     rtyler-jenkins (1.1.0)
       darin-zypprepo (>= 1.0.1)
