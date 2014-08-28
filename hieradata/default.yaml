@@ -31,7 +31,7 @@ sonar::version: '3.5.1'
 # Jenkins
 jenkins_port: "8181"
 jenkins::lts: true
-jenkins::version: 1.532.2-1.1
+jenkins::version: 1.532.3-1.1
 jenkins::install_java: false
 jenkins::configure_firewall: false
 jenkins::config_hash:
