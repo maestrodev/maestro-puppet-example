@@ -156,7 +156,7 @@ maestro::plugins::plugins:
     version: '1.2.1'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-puppet-plugin':
-    version: '1.4'
+    version: '1.5'
     dir: 'com/maestrodev/maestro/plugins'
   'maestro-rake-plugin':
     version: '1.5'
