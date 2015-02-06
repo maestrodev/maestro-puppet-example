@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'librarian-puppet', '>=1.3.1'
 
 group :build do
-  gem 'puppet',       '>=3.4.0'
+  gem 'puppet',       '>=3.5.0'
   gem 'rspec-puppet', '>=1.0.0'
   gem 'rake',         '>=0.9.2.2'
   gem 'puppet-lint'

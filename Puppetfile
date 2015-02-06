@@ -1,4 +1,4 @@
-forge 'http://forge.puppetlabs.com'
+forge 'https://forgeapi.puppetlabs.com'
 
 mod 'maestrodev/maestro_nodes', '>=1.5.0'
 mod 'maestrodev/maestro_demo', '>=1.1.0'
