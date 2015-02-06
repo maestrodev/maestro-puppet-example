@@ -66,7 +66,7 @@ FORGE
       puppetlabs-stdlib (>= 2.2.1)
     puppetlabs-concat (1.1.0)
       puppetlabs-stdlib (>= 4.0.0)
-    puppetlabs-firewall (1.1.2)
+    puppetlabs-firewall (1.4.0)
     puppetlabs-java (1.1.0)
       puppetlabs-stdlib (>= 0.1.6)
     puppetlabs-mongodb (0.3.0)
