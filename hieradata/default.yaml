@@ -203,7 +203,7 @@ maestro::plugins::plugins:
 #     username: 'admin'
 #     password: 'admin1'
 
-rvm::version: 1.25.14
+rvm::version: 1.26.10
 
 # Customize NTP servers
 # ntp::servers:
