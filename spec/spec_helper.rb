@@ -5,7 +5,7 @@ require 'puppetlabs_spec_helper/module_spec_helper'
 RSpec.configure do |c|
   c.manifest_dir = './manifests'
   c.module_path = './modules'
-  c.default_facts = MaestroNodes::CentOS.centos_facts
+  c.default_facts = MaestroNodes::CentOS.centos_facts.merge({:path => '/bin:/usr/bin'})
 
   hiera_config = File.expand_path(File.join(__FILE__, '..', 'fixtures', 'hiera.yaml'))
   raise "Hiera config file does not exist: #{hiera_config}" unless File.exists? hiera_config
