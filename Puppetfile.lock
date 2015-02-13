@@ -60,7 +60,7 @@ FORGE
     maestrodev-ssh_keygen (1.1.0)
     maestrodev-statsd (1.0.4)
       puppetlabs-nodejs (>= 0.2.0)
-    maestrodev-svn (1.1.0)
+    maestrodev-svn (1.2.0)
     maestrodev-wget (1.4.3)
     puppetlabs-apt (1.5.0)
       puppetlabs-stdlib (>= 2.2.1)
