@@ -13,7 +13,7 @@ FORGE
     maestrodev-android (1.1.9)
       maestrodev-wget (>= 1.0.0)
       puppetlabs-stdlib (>= 3.2.0)
-    maestrodev-ant (1.0.4)
+    maestrodev-ant (1.0.5)
       maestrodev-wget (>= 0.0.1)
     maestrodev-archiva (2.1.0)
       maestrodev-maven (>= 1.0.0)
@@ -28,10 +28,10 @@ FORGE
     maestrodev-maestro_demo (1.1.7)
       maestrodev-android (>= 1.1.6)
       maestrodev-maestro (>= 1.5.0)
-    maestrodev-maestro_nodes (1.6.0)
+    maestrodev-maestro_nodes (1.8.0)
       jfryman-nginx (>= 0.0.7)
       maestrodev-activemq (>= 2.0.0)
-      maestrodev-ant (>= 1.0.3)
+      maestrodev-ant (>= 1.0.5)
       maestrodev-archiva (>= 1.0.0)
       maestrodev-git (>= 1.0.0)
       maestrodev-maestro (>= 2.0.0)
@@ -46,7 +46,7 @@ FORGE
       puppetlabs-nodejs (>= 0.3.0)
       puppetlabs-ntp (>= 3.0.0)
       puppetlabs-stdlib (>= 3.2.0)
-      rtyler-jenkins (>= 1.0.0)
+      rtyler-jenkins (>= 1.1.0)
       saz-ssh (>= 1.2.0)
       stahnma-epel (>= 0.0.6)
     maestrodev-maven (1.2.0)
@@ -80,20 +80,14 @@ FORGE
       puppetlabs-firewall (>= 0.0.4)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs-stdlib (4.5.1)
-    saz-ssh (2.3.3)
-      puppetlabs-stdlib (>= 2.2.1)
-    stahnma-epel (0.0.6)
-
-GIT
-  remote: https://github.com/maestrodev/puppet-jenkins
-  ref: maestrodev
-  sha: c3823a8ba9fff71c6ba8cf03eae53daab4f0587d
-  specs:
     rtyler-jenkins (1.1.0)
       darin-zypprepo (>= 1.0.1)
       puppetlabs-apt (>= 0.0.3)
       puppetlabs-java (>= 1.0.1)
       puppetlabs-stdlib (>= 2.0.0)
+    saz-ssh (2.3.3)
+      puppetlabs-stdlib (>= 2.2.1)
+    stahnma-epel (0.0.6)
 
 GIT
   remote: https://github.com/puppetlabs/puppetlabs-nodejs.git
@@ -106,7 +100,6 @@ GIT
 
 DEPENDENCIES
   maestrodev-maestro_demo (>= 1.1.0)
-  maestrodev-maestro_nodes (>= 1.5.0)
+  maestrodev-maestro_nodes (>= 1.8.0)
   puppetlabs-nodejs (>= 0)
-  rtyler-jenkins (>= 0)
 
